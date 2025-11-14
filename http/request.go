@@ -7,11 +7,10 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-	"io"
-	
+
 	"github.com/aaronland/go-http/v4/sanitize"
-	"github.com/whosonfirst/go-whosonfirst/http/webfinger"
 	wof_uri "github.com/whosonfirst/go-whosonfirst-uri"
+	"github.com/whosonfirst/go-whosonfirst/http/webfinger"
 )
 
 var re_path_id = regexp.MustCompile(`/id/(\d+)/.*$`)
@@ -93,9 +92,9 @@ func ParseURIFromPath(ctx context.Context, path string) (*URI, error, int) {
 	fname = strings.Replace(fname, ext, "", 1)
 
 	parsed_uri := &URI{
-		Id:      wofid,
-		URI:     fname,
-		URIArgs: uri_args,
+		Id:          wofid,
+		URI:         fname,
+		URIArgs:     uri_args,
 		IsAlternate: uri_args.IsAlternate,
 	}
 

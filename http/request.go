@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/aaronland/go-http/v4/sanitize"
-	wof_uri "github.com/whosonfirst/go-whosonfirst-uri"
 	"github.com/whosonfirst/go-whosonfirst/http/webfinger"
+	wof_uri "github.com/whosonfirst/go-whosonfirst/uri"
 )
 
 var re_path_id = regexp.MustCompile(`/id/(\d+)/.*$`)

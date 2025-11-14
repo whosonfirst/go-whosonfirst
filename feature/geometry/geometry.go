@@ -3,7 +3,7 @@ package geometry
 
 import (
 	"fmt"
-	
+
 	"github.com/paulmach/orb/geojson"
 	"github.com/tidwall/gjson"
 )

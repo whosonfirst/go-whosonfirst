@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/whosonfirst/go-whosonfirst/flags"	
+	"github.com/whosonfirst/go-whosonfirst/flags"
 )
 
 type KnownUnknownFlag struct {

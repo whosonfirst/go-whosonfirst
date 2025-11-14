@@ -1,9 +1,39 @@
+# github.com/aaronland/go-artisanal-integers v0.9.1
+## explicit; go 1.16
+github.com/aaronland/go-artisanal-integers/client
+# github.com/aaronland/go-brooklynintegers-api v1.2.10
+## explicit; go 1.22
+github.com/aaronland/go-brooklynintegers-api
 # github.com/aaronland/go-http/v4 v4.0.0
 ## explicit; go 1.25.0
 github.com/aaronland/go-http/v4/sanitize
+# github.com/aaronland/go-pool/v2 v2.0.0
+## explicit; go 1.18
+github.com/aaronland/go-pool/v2
 # github.com/aaronland/go-roster v1.0.0
 ## explicit; go 1.16
 github.com/aaronland/go-roster
+# github.com/aaronland/go-string v1.0.0
+## explicit; go 1.16
+github.com/aaronland/go-string/random
+# github.com/aaronland/go-uid v0.5.0
+## explicit; go 1.22
+github.com/aaronland/go-uid
+# github.com/aaronland/go-uid-artisanal v0.0.5
+## explicit; go 1.22
+github.com/aaronland/go-uid-artisanal
+# github.com/aaronland/go-uid-proxy v0.4.1
+## explicit; go 1.22
+github.com/aaronland/go-uid-proxy
+# github.com/aaronland/go-uid-whosonfirst v0.0.7
+## explicit; go 1.22
+github.com/aaronland/go-uid-whosonfirst
+# github.com/benbjohnson/clock v1.3.0
+## explicit; go 1.15
+github.com/benbjohnson/clock
+# github.com/cenkalti/backoff/v4 v4.3.0
+## explicit; go 1.18
+github.com/cenkalti/backoff/v4
 # github.com/disintegration/imaging v1.6.2
 ## explicit
 github.com/disintegration/imaging
@@ -95,6 +125,9 @@ github.com/tidwall/match
 # github.com/tidwall/pretty v1.2.0
 ## explicit; go 1.16
 github.com/tidwall/pretty
+# github.com/whosonfirst/go-rfc-5646 v0.1.0
+## explicit; go 1.12
+github.com/whosonfirst/go-rfc-5646
 # github.com/whosonfirst/go-sanitize v0.1.0
 ## explicit; go 1.12
 github.com/whosonfirst/go-sanitize
@@ -110,6 +143,9 @@ go.mongodb.org/mongo-driver/bson/bsonrw
 go.mongodb.org/mongo-driver/bson/bsontype
 go.mongodb.org/mongo-driver/bson/primitive
 go.mongodb.org/mongo-driver/x/bsonx/bsoncore
+# go.uber.org/ratelimit v0.3.1
+## explicit; go 1.20
+go.uber.org/ratelimit
 # golang.org/x/image v0.21.0
 ## explicit; go 1.18
 golang.org/x/image/bmp

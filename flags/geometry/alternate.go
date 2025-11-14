@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/whosonfirst/go-whosonfirst/flags"
-	"github.com/whosonfirst/go-whosonfirst/uri"	
+	"github.com/whosonfirst/go-whosonfirst/uri"
 )
 
 const DUMMY_ID int64 = 0

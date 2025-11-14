@@ -3,7 +3,7 @@ package existential
 import (
 	"strconv"
 
-	"github.com/whosonfirst/go-whosonfirst/flags"	
+	"github.com/whosonfirst/go-whosonfirst/flags"
 )
 
 type NullFlag struct {

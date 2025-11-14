@@ -5,15 +5,26 @@ go 1.25.0
 require (
 	github.com/aaronland/go-http/v4 v4.0.0
 	github.com/aaronland/go-roster v1.0.0
+	github.com/aaronland/go-uid v0.5.0
+	github.com/aaronland/go-uid-proxy v0.4.1
+	github.com/aaronland/go-uid-whosonfirst v0.0.7
 	github.com/dominikbraun/graph v0.23.0
 	github.com/goccy/go-graphviz v0.2.9
 	github.com/paulmach/orb v0.12.0
 	github.com/sfomuseum/go-edtf v1.2.1
 	github.com/tidwall/gjson v1.18.0
+	github.com/whosonfirst/go-rfc-5646 v0.1.0
 	github.com/whosonfirst/warning v0.1.1
 )
 
 require (
+	github.com/aaronland/go-artisanal-integers v0.9.1 // indirect
+	github.com/aaronland/go-brooklynintegers-api v1.2.10 // indirect
+	github.com/aaronland/go-pool/v2 v2.0.0 // indirect
+	github.com/aaronland/go-string v1.0.0 // indirect
+	github.com/aaronland/go-uid-artisanal v0.0.5 // indirect
+	github.com/benbjohnson/clock v1.3.0 // indirect
+	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/flopp/go-findfont v0.1.0 // indirect
 	github.com/fogleman/gg v1.3.0 // indirect
@@ -25,6 +36,7 @@ require (
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/whosonfirst/go-sanitize v0.1.0 // indirect
 	go.mongodb.org/mongo-driver v1.11.4 // indirect
+	go.uber.org/ratelimit v0.3.1 // indirect
 	golang.org/x/image v0.21.0 // indirect
 	golang.org/x/text v0.28.0 // indirect
 )

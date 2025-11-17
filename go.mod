@@ -8,12 +8,21 @@ require (
 	github.com/aaronland/go-uid v0.5.0
 	github.com/aaronland/go-uid-proxy v0.4.1
 	github.com/aaronland/go-uid-whosonfirst v0.0.7
+	github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883
 	github.com/dominikbraun/graph v0.23.0
 	github.com/goccy/go-graphviz v0.2.9
 	github.com/paulmach/orb v0.12.0
 	github.com/sfomuseum/go-edtf v1.2.1
+	github.com/sfomuseum/go-flags v0.11.0
+	github.com/tidwall/geojson v1.4.5
 	github.com/tidwall/gjson v1.18.0
+	github.com/tidwall/pretty v1.2.1
+	github.com/tidwall/sjson v1.2.5
+	github.com/whosonfirst/go-reader/v2 v2.1.0
 	github.com/whosonfirst/go-rfc-5646 v0.1.0
+	github.com/whosonfirst/go-whosonfirst-export/v3 v3.3.0
+	github.com/whosonfirst/go-whosonfirst-feature v0.0.29
+	github.com/whosonfirst/go-writer/v3 v3.1.1
 	github.com/whosonfirst/warning v0.1.1
 )
 
@@ -28,13 +37,22 @@ require (
 	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/flopp/go-findfont v0.1.0 // indirect
 	github.com/fogleman/gg v1.3.0 // indirect
+	github.com/g8rswimmer/error-chain v1.0.0 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
-	github.com/hashicorp/errwrap v0.0.0-20141028054710-7554cd9344ce // indirect
-	github.com/hashicorp/go-multierror v0.0.0-20171204182908-b7773ae21874 // indirect
+	github.com/hashicorp/errwrap v1.0.0 // indirect
+	github.com/hashicorp/go-multierror v1.1.1 // indirect
+	github.com/natefinch/atomic v1.0.1 // indirect
+	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/tetratelabs/wazero v1.8.1 // indirect
+	github.com/tidwall/geoindex v1.4.4 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
-	github.com/tidwall/pretty v1.2.0 // indirect
+	github.com/tidwall/rtree v1.3.1 // indirect
+	github.com/whosonfirst/go-ioutil v1.0.2 // indirect
 	github.com/whosonfirst/go-sanitize v0.1.0 // indirect
+	github.com/whosonfirst/go-whosonfirst-flags v0.5.2 // indirect
+	github.com/whosonfirst/go-whosonfirst-id v1.3.1 // indirect
+	github.com/whosonfirst/go-whosonfirst-sources v0.1.0 // indirect
+	github.com/whosonfirst/go-whosonfirst-uri v1.3.0 // indirect
 	go.mongodb.org/mongo-driver v1.11.4 // indirect
 	go.uber.org/ratelimit v0.3.1 // indirect
 	golang.org/x/image v0.21.0 // indirect

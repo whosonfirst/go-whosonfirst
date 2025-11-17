@@ -19,3 +19,9 @@ Documentation is incomplete at this time.
 * [whosonfirst/go-whosonfirst-placetypes](https://github.com/whosonfirst/go-whosonfirst-placetypes)
 * [whosonfirst/go-whosonfirst-sources](https://github.com/whosonfirst/go-whosonfirst-sources)
 * [whosonfirst/go-whosonfirst-uri](https://github.com/whosonfirst/go-whosonfirst-uri)
+
+* go-whosonfirst-export
+* go-whosonfirst-format
+* go-whosonfirst-validate
+* go-whosonfirst-reader
+* go-whosonfirst-writer

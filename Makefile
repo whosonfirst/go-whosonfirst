@@ -6,6 +6,14 @@ TAGS=null
 vuln:
 	govulncheck -show verbose ./...
 
+cli:
+	@make cli-database
+	@make cli-iterate
+
+cli-iterate:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags $(TAGS) -o bin/wof-iterate-count cmd/wof-iterate-count/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags $(TAGS) -o bin/wof-iterate-emit cmd/wof-iterate-emit/main.go
+
 cli-database:
 	@make cli-database-sql
 	@make cli-database-opensearch

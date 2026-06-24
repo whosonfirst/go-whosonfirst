@@ -5,6 +5,7 @@ go 1.25.0
 require (
 	github.com/aaronland/go-aws/v3 v3.5.3
 	github.com/aaronland/go-http/v4 v4.0.4
+	github.com/aaronland/go-json-query v0.1.6
 	github.com/aaronland/go-pagination v0.3.0
 	github.com/aaronland/go-pagination-sql v0.2.0
 	github.com/aaronland/go-roster v1.0.0
@@ -16,6 +17,7 @@ require (
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/dhconnelly/rtreego v1.2.0
 	github.com/dominikbraun/graph v0.23.0
+	github.com/dustin/go-humanize v1.0.1
 	github.com/go-sql-driver/mysql v1.10.0
 	github.com/goccy/go-graphviz v0.2.10
 	github.com/lib/pq v1.12.0
@@ -37,27 +39,16 @@ require (
 	github.com/whosonfirst/go-reader/v2 v2.1.0
 	github.com/whosonfirst/go-rfc-5646 v0.1.0
 	github.com/whosonfirst/go-sanitize v0.1.0
-	github.com/whosonfirst/go-whosonfirst-database v0.6.0
-	github.com/whosonfirst/go-whosonfirst-feature v0.0.29
-	github.com/whosonfirst/go-whosonfirst-flags v0.5.2
-	github.com/whosonfirst/go-whosonfirst-iterate-git/v3 v3.0.7
 	github.com/whosonfirst/go-whosonfirst-iterate/v3 v3.2.0
 	github.com/whosonfirst/go-whosonfirst-iterwriter/v4 v4.0.4
-	github.com/whosonfirst/go-whosonfirst-names v0.1.0
-	github.com/whosonfirst/go-whosonfirst-spr/v2 v2.3.8
-	github.com/whosonfirst/go-whosonfirst-uri v1.3.0
 	github.com/whosonfirst/go-writer/v3 v3.1.1
 	github.com/whosonfirst/warning v0.1.1
 )
 
 require (
-	dario.cat/mergo v1.0.0 // indirect
 	filippo.io/edwards25519 v1.2.0 // indirect
-	github.com/Microsoft/go-winio v0.6.2 // indirect
-	github.com/ProtonMail/go-crypto v1.1.6 // indirect
 	github.com/aaronland/go-artisanal-integers v0.9.1 // indirect
 	github.com/aaronland/go-brooklynintegers-api v1.2.10 // indirect
-	github.com/aaronland/go-json-query v0.1.6 // indirect
 	github.com/aaronland/go-pool/v2 v2.0.0 // indirect
 	github.com/aaronland/go-string v1.0.0 // indirect
 	github.com/aaronland/go-uid-artisanal v0.0.5 // indirect
@@ -86,42 +77,29 @@ require (
 	github.com/aws/smithy-go v1.27.0 // indirect
 	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/cloudflare/circl v1.6.3 // indirect
-	github.com/cyphar/filepath-securejoin v0.4.1 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
-	github.com/dustin/go-humanize v1.0.1 // indirect
-	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/flopp/go-findfont v0.1.0 // indirect
 	github.com/fogleman/gg v1.3.0 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/g8rswimmer/error-chain v1.0.0 // indirect
-	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
-	github.com/go-git/go-billy/v5 v5.8.0 // indirect
-	github.com/go-git/go-git/v5 v5.17.2 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
-	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/google/wire v0.7.0 // indirect
 	github.com/googleapis/gax-go/v2 v2.19.0 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/jtacoma/uritemplates v1.0.0 // indirect
-	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect
-	github.com/pjbgf/sha1cd v0.3.2 // indirect
 	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/sfomuseum/iso8601duration v1.1.0 // indirect
-	github.com/skeema/knownhosts v1.3.1 // indirect
 	github.com/tetratelabs/wazero v1.10.1 // indirect
 	github.com/tidwall/geoindex v1.4.4 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/rtree v1.3.1 // indirect
-	github.com/whosonfirst/go-whosonfirst-placetypes v0.9.0 // indirect
 	github.com/whosonfirst/go-whosonfirst-sources v0.1.0 // indirect
-	github.com/xanzy/ssh-agent v0.3.3 // indirect
+	github.com/whosonfirst/go-whosonfirst-uri v1.3.0 // indirect
 	go.mongodb.org/mongo-driver/v2 v2.5.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/otel v1.43.0 // indirect
@@ -131,7 +109,6 @@ require (
 	go.opentelemetry.io/otel/trace v1.43.0 // indirect
 	go.uber.org/ratelimit v0.3.1 // indirect
 	gocloud.dev v0.46.0 // indirect
-	golang.org/x/crypto v0.53.0 // indirect
 	golang.org/x/image v0.41.0 // indirect
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
@@ -142,5 +119,4 @@ require (
 	google.golang.org/grpc v1.79.3 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/ini.v1 v1.67.2 // indirect
-	gopkg.in/warnings.v0 v0.1.2 // indirect
 )

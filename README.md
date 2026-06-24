@@ -12,16 +12,18 @@ Documentation is incomplete at this time.
 
 ## Packages that have merged/superseded in to this package
 
+* [whosonfirst/go-whosonfirst-database](https://github.com/whosonfirst/go-whosonfirst-database)
+* [whosonfirst/go-whosonfirst-export](https://github.com/whosonfirst/go-whosonfirst-export)
 * [whosonfirst/go-whosonfirst-features](https://github.com/whosonfirst/go-whosonfirst-feature)
 * [whosonfirst/go-whosonfirst-flags](https://github.com/whosonfirst/go-whosonfirst-flags)
+* [whosonfirst/go-whosonfirst-format](https://github.com/whosonfirst/go-whosonfirst-format)
 * [whosonfirst/go-whosonfirst-id](https://github.com/whosonfirst/go-whosonfirst-id)
 * [whosonfirst/go-whosonfirst-names](https://github.com/whosonfirst/go-whosonfirst-names)
 * [whosonfirst/go-whosonfirst-placetypes](https://github.com/whosonfirst/go-whosonfirst-placetypes)
+* [whosonfirst/go-whosonfirst-reader](https://github.com/whosonfirst/go-whosonfirst-reader)
 * [whosonfirst/go-whosonfirst-sources](https://github.com/whosonfirst/go-whosonfirst-sources)
+* [whosonfirst/go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial)
+* [whosonfirst/go-whosonfirst-spr](https://github.com/whosonfirst/go-whosonfirst-spr)
 * [whosonfirst/go-whosonfirst-uri](https://github.com/whosonfirst/go-whosonfirst-uri)
-
-* go-whosonfirst-export
-* go-whosonfirst-format
-* go-whosonfirst-validate
-* go-whosonfirst-reader
-* go-whosonfirst-writer
+* [whosonfirst/go-whosonfirst-validate](https://github.com/whosonfirst/go-whosonfirst-validate)
+* [whosonfirst/go-whosonfirst-writer](https://github.com/whosonfirst/go-whosonfirst-writer)

@@ -1,8 +1,8 @@
-//go:build !amd64 || tinygo
+//go:build !(amd64 || arm64) || !gc
 
 package platform
 
-var CpuFeatures CpuFeatureFlags = &cpuFeatureFlags{}
+var CpuFeatures = func() CpuFeatureFlags { return &cpuFeatureFlags{} }
 
 // cpuFeatureFlags implements CpuFeatureFlags for unsupported platforms.
 type cpuFeatureFlags struct{}

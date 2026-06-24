@@ -6,15 +6,23 @@ Go package for common Who's On First operations.
 
 This package is work in progress and aims to merge a whole bunch of disparate `go-whosonfirst-*` packages in to one. This process is likely to happen slowly.
 
+### Versioning
+
 ## Documentation
 
 Documentation is incomplete at this time.
 
+## Tests
+
+Tests are also incomplete at this time.
+
 ## Packages that have merged/superseded in to this package
 
+* [whosonfirst/go-reader-findingaid](https://github.com/whosonfirst/go-reader-findingaid)
 * [whosonfirst/go-whosonfirst-database](https://github.com/whosonfirst/go-whosonfirst-database)
 * [whosonfirst/go-whosonfirst-export](https://github.com/whosonfirst/go-whosonfirst-export)
 * [whosonfirst/go-whosonfirst-features](https://github.com/whosonfirst/go-whosonfirst-feature)
+* [whosonfirst/go-whosonfirst-findingaid](https://github.com/whosonfirst/go-whosonfirst-findingaid)
 * [whosonfirst/go-whosonfirst-flags](https://github.com/whosonfirst/go-whosonfirst-flags)
 * [whosonfirst/go-whosonfirst-format](https://github.com/whosonfirst/go-whosonfirst-format)
 * [whosonfirst/go-whosonfirst-id](https://github.com/whosonfirst/go-whosonfirst-id)

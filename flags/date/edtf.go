@@ -14,6 +14,8 @@ This package is not stable yet. Specifically:
 */
 
 import (
+	"slices"
+
 	"github.com/sfomuseum/go-edtf"
 	"github.com/sfomuseum/go-edtf/parser"
 	"github.com/whosonfirst/go-whosonfirst/flags"
@@ -111,14 +113,7 @@ func (fl *EDTFDateFlag) describeRange(start_ts *edtf.Timestamp, end_ts *edtf.Tim
 
 func (fl *EDTFDateFlag) MatchesAny(others ...flags.DateFlag) bool {
 
-	for _, o := range others {
-
-		if fl.matches(o) {
-			return true
-		}
-	}
-
-	return false
+	return slices.ContainsFunc(others, fl.matches)
 }
 
 func (fl *EDTFDateFlag) MatchesAll(others ...flags.DateFlag) bool {

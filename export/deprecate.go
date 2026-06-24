@@ -19,7 +19,7 @@ func DeprecateRecord(ctx context.Context, ex Exporter, old_body []byte) ([]byte,
 // This method does not handle assigning or updating "supersedes" or "superseded_by" properties.
 func DeprecateRecordWithTime(ctx context.Context, ex Exporter, t time.Time, old_body []byte) ([]byte, error) {
 
-	to_update := map[string]interface{}{
+	to_update := map[string]any{
 		wof_properties.PATH_EDTF_DEPRECATED: t.Format("2006-01-02"),
 		wof_properties.PATH_MZ_ISCURRENT:    0,
 	}

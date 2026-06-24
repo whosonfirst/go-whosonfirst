@@ -4,6 +4,7 @@ import (
 	"fmt"
 	_ "log"
 	"math/rand"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -150,15 +151,7 @@ func NewAlternateGeometryFlag(uri_str string) (flags.AlternateGeometryFlag, erro
 
 func (f *AlternateGeometryFlag) MatchesAny(others ...flags.AlternateGeometryFlag) bool {
 
-	for _, o := range others {
-
-		if f.isEqual(o) {
-			return true
-		}
-
-	}
-
-	return false
+	return slices.ContainsFunc(others, f.isEqual)
 }
 
 func (f *AlternateGeometryFlag) MatchesAll(others ...flags.AlternateGeometryFlag) bool {

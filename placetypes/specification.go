@@ -8,6 +8,7 @@ import (
 	"io"
 	_ "log"
 	_ "log/slog"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
@@ -567,15 +568,7 @@ func (spec *WOFPlacetypeSpecification) fetchAncestors(pt *WOFPlacetype, roles []
 
 		parent, _ := spec.GetPlacetypeById(id)
 
-		role_ok := false
-
-		for _, r := range roles {
-
-			if r == parent.Role {
-				role_ok = true
-				break
-			}
-		}
+		role_ok := slices.Contains(roles, parent.Role)
 
 		if !role_ok {
 			continue
@@ -654,15 +647,7 @@ func (spec *WOFPlacetypeSpecification) appendPlacetype(pt *WOFPlacetype, roles [
 		return others
 	}
 
-	has_role := false
-
-	for _, r := range roles {
-
-		if pt.Role == r {
-			has_role = true
-			break
-		}
-	}
+	has_role := slices.Contains(roles, pt.Role)
 
 	if !has_role {
 		return others
@@ -756,7 +741,7 @@ func (spec *WOFPlacetypeSpecification) indexRelationships() {
 	roles := AllRoles()
 	count_roles := len(roles)
 
-	for i := 0; i < count_roles; i++ {
+	for i := range count_roles {
 
 		pt_roles := roles[0:i]
 

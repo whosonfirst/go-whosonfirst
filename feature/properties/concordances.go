@@ -4,9 +4,9 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-func Concordances(body []byte) map[string]interface{} {
+func Concordances(body []byte) map[string]any {
 
-	concordances := make(map[string]interface{})
+	concordances := make(map[string]any)
 
 	rsp := gjson.GetBytes(body, "properties.wof:concordances")
 

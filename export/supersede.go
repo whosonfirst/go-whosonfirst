@@ -54,7 +54,7 @@ func SupersedeRecord(ctx context.Context, ex Exporter, old_body []byte) ([]byte,
 
 	// Update the old record
 
-	to_update := map[string]interface{}{
+	to_update := map[string]any{
 		wof_properties.PATH_MZ_ISCURRENT:      0,
 		wof_properties.PATH_WOF_SUPERSEDED_BY: []int64{new_id},
 	}
@@ -101,11 +101,11 @@ func SupersedeRecordWithParent(ctx context.Context, ex Exporter, to_supersede_f 
 	inception := inception_rsp.String()
 	cessation := cessation_rsp.String()
 
-	to_update_old := map[string]interface{}{
+	to_update_old := map[string]any{
 		wof_properties.PATH_EDTF_INCEPTION: inception,
 	}
 
-	to_update_new := map[string]interface{}{
+	to_update_new := map[string]any{
 		wof_properties.PATH_WOF_PARENTID:   parent_id,
 		wof_properties.PATH_WOF_HIERARCHY:  parent_hierarchy,
 		wof_properties.PATH_EDTF_INCEPTION: inception,

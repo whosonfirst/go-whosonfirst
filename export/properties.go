@@ -12,9 +12,9 @@ import (
 
 // EnsureProperties ensure that all the properties in 'to_ensure' are present in 'body', assigning them
 // if necessary.
-func EnsureProperties(ctx context.Context, body []byte, to_ensure map[string]interface{}) ([]byte, error) {
+func EnsureProperties(ctx context.Context, body []byte, to_ensure map[string]any) ([]byte, error) {
 
-	to_assign := make(map[string]interface{})
+	to_assign := make(map[string]any)
 
 	for path, v := range to_ensure {
 
@@ -31,7 +31,7 @@ func EnsureProperties(ctx context.Context, body []byte, to_ensure map[string]int
 }
 
 // EnsureProperties writes all the properties in 'to_assign' to 'body'.
-func AssignProperties(ctx context.Context, body []byte, to_assign map[string]interface{}) ([]byte, error) {
+func AssignProperties(ctx context.Context, body []byte, to_assign map[string]any) ([]byte, error) {
 
 	var err error
 
@@ -48,7 +48,7 @@ func AssignProperties(ctx context.Context, body []byte, to_assign map[string]int
 }
 
 // EnsureProperties writes all the properties in 'to_assign' to 'body' if they are absent or contain a new value.
-func AssignPropertiesIfChanged(ctx context.Context, body []byte, to_assign map[string]interface{}) (bool, []byte, error) {
+func AssignPropertiesIfChanged(ctx context.Context, body []byte, to_assign map[string]any) (bool, []byte, error) {
 
 	var err error
 	changed := false

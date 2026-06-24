@@ -67,7 +67,7 @@ func MergeHierarchies(features ...[]byte) ([]map[string]int64, error) {
 }
 
 // hash_interface will return the SHA-256 hash for the JSON-encoding of 'i'.
-func hash_interface(i interface{}) (string, error) {
+func hash_interface(i any) (string, error) {
 
 	enc_i, err := json.Marshal(i)
 

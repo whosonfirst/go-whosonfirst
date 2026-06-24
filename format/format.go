@@ -69,7 +69,7 @@ func FormatFeature(feature *geojson.Feature) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-func writeKey(buf *bytes.Buffer, key string, value interface{}, usePretty, lastLine bool) error {
+func writeKey(buf *bytes.Buffer, key string, value any, usePretty, lastLine bool) error {
 	valueJSON, err := json.Marshal(value)
 	if err != nil {
 		return err

@@ -66,7 +66,7 @@ func BoundingBoxToFeature(str_bbox string, is_latlon bool) (*geojson.Feature, er
 	f := geojson.NewFeature(poly)
 	// Without this orb/geojson returns a null element for 'properties'
 	// which makes tools like geojson.io sad...
-	f.Properties = map[string]interface{}{"bbox": bbox}
+	f.Properties = map[string]any{"bbox": bbox}
 
 	return f, nil
 }

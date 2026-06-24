@@ -11,10 +11,10 @@ import (
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 	"github.com/whosonfirst/go-reader/v2"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
-type PropertiesResponse map[string]interface{}
+type PropertiesResponse map[string]any
 
 type PropertiesResponseResults struct {
 	Properties []*PropertiesResponse `json:"places"` // match spr response

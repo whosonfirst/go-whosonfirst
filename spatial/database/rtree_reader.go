@@ -46,7 +46,7 @@ func (r *RTreeSpatialDatabase) Read(ctx context.Context, str_uri string) (io.Rea
 		return nil, fmt.Errorf("Failed to marchal cache record, %w", err)
 	}
 
-	var props map[string]interface{}
+	var props map[string]any
 
 	err = json.Unmarshal(enc_spr, &props)
 

@@ -6,8 +6,8 @@ import (
 
 	"github.com/paulmach/orb/geojson"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2/sort"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr/sort"
 )
 
 type SpatialQuery struct {

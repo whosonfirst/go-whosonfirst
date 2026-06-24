@@ -8,24 +8,24 @@ import (
 	"github.com/whosonfirst/go-reader/v2"
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 	wof_reader "github.com/whosonfirst/go-whosonfirst/v4/reader"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 // PointInPolygonHierarchyResolverUpdateCallback is a function definition for a custom callback to convert 'spr' in to a dictionary of properties
 // containining hierarchy information. Records in 'spr' are expected to be able to be read from 'r'.
-type PointInPolygonHierarchyResolverUpdateCallback func(context.Context, reader.Reader, spr.StandardPlacesResult) (map[string]interface{}, error)
+type PointInPolygonHierarchyResolverUpdateCallback func(context.Context, reader.Reader, spr.StandardPlacesResult) (map[string]any, error)
 
 // DefaultPointInPolygonHierarchyResolverUpdateCallback returns a `PointInPolygonHierarchyResolverUpdateCallback` function that will return a dictionary
 // containing the following properties: wof:parent_id, wof:country, wof:hierarchy
 func DefaultPointInPolygonHierarchyResolverUpdateCallback() PointInPolygonHierarchyResolverUpdateCallback {
 
-	fn := func(ctx context.Context, r reader.Reader, parent_spr spr.StandardPlacesResult) (map[string]interface{}, error) {
+	fn := func(ctx context.Context, r reader.Reader, parent_spr spr.StandardPlacesResult) (map[string]any, error) {
 
-		to_update := make(map[string]interface{})
+		to_update := make(map[string]any)
 
 		if parent_spr == nil {
 
-			to_update = map[string]interface{}{
+			to_update = map[string]any{
 				"properties.wof:parent_id": -1,
 			}
 
@@ -46,7 +46,7 @@ func DefaultPointInPolygonHierarchyResolverUpdateCallback() PointInPolygonHierar
 			parent_hierarchy := properties.Hierarchies(parent_f)
 			parent_country := properties.Country(parent_f)
 
-			to_update = map[string]interface{}{
+			to_update = map[string]any{
 				"properties.wof:parent_id": parent_id,
 				"properties.wof:country":   parent_country,
 				"properties.wof:hierarchy": parent_hierarchy,

@@ -201,7 +201,7 @@ func RunWithOptions(ctx context.Context, opts *RunOptions) error {
 			Sort:                opts.Sort,
 		}
 
-		var rsp interface{}
+		var rsp any
 
 		intersects_rsp, err := query.ExecuteQuery(ctx, spatial_app.SpatialDatabase, intersects_fn, intersects_q)
 
@@ -240,7 +240,7 @@ func RunWithOptions(ctx context.Context, opts *RunOptions) error {
 
 		<-done_ch
 
-		handler := func(ctx context.Context, intersects_q *query.SpatialQuery) (interface{}, error) {
+		handler := func(ctx context.Context, intersects_q *query.SpatialQuery) (any, error) {
 			return query.ExecuteQuery(ctx, spatial_app.SpatialDatabase, intersects_fn, intersects_q)
 		}
 

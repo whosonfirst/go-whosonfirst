@@ -106,7 +106,7 @@ func RunWithOptions(ctx context.Context, opts *RunOptions) error {
 			Sort:                opts.Sort,
 		}
 
-		var rsp interface{}
+		var rsp any
 
 		pip_rsp, err := query.ExecuteQuery(ctx, spatial_app.SpatialDatabase, fn, req)
 
@@ -145,7 +145,7 @@ func RunWithOptions(ctx context.Context, opts *RunOptions) error {
 
 		<-done_ch
 
-		handler := func(ctx context.Context, req *query.SpatialQuery) (interface{}, error) {
+		handler := func(ctx context.Context, req *query.SpatialQuery) (any, error) {
 			return query.ExecuteQuery(ctx, spatial_app.SpatialDatabase, fn, req)
 		}
 

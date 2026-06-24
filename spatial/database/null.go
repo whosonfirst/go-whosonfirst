@@ -3,7 +3,7 @@ package database
 import (
 	"context"
 
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 func init() {

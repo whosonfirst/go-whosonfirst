@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/whosonfirst/go-reader/v2"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 func WhosOnFirstSPRResultsFunc(ctx context.Context, r reader.Reader, body []byte, possible []spr.StandardPlacesResult) (spr.StandardPlacesResult, error) {

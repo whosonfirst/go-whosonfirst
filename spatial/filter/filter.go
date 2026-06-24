@@ -9,7 +9,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/flags/geometry"
 	"github.com/whosonfirst/go-whosonfirst/v4/flags/placetypes"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 func FilterSPR(filters spatial.Filter, s spr.StandardPlacesResult) error {

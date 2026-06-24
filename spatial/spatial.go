@@ -6,7 +6,7 @@ import (
 
 	"github.com/paulmach/orb"
 	_ "github.com/whosonfirst/go-reader/v2"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 	_ "github.com/whosonfirst/go-writer/v3"
 )
 

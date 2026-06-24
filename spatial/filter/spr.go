@@ -448,7 +448,7 @@ func stringList(raw string, sep string) ([]string, error) {
 
 	str = strings.Trim(str, " ")
 
-	for _, str_i := range strings.Split(str, sep) {
+	for str_i := range strings.SplitSeq(str, sep) {
 
 		str_i = strings.Trim(str_i, " ")
 
@@ -474,7 +474,7 @@ func int64List(raw string, sep string) ([]int64, error) {
 
 	str = strings.Trim(str, " ")
 
-	for _, str_i := range strings.Split(str, sep) {
+	for str_i := range strings.SplitSeq(str, sep) {
 
 		str_i = strings.Trim(str_i, " ")
 

@@ -10,7 +10,7 @@ import (
 	"github.com/dhconnelly/rtreego"
 	gocache "github.com/patrickmn/go-cache"
 	"github.com/paulmach/orb/geojson"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 func init() {

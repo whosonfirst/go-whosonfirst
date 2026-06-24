@@ -17,7 +17,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/filter"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/geo"
 	hierarchy_filter "github.com/whosonfirst/go-whosonfirst/v4/spatial/hierarchy/filter"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 type PointInPolygonHierarchyResolverOptions struct {

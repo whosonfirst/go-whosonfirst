@@ -15,7 +15,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/filter"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/geo"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 func (db *RTreeSpatialDatabase) PointInPolygon(ctx context.Context, coord *orb.Point, filters ...spatial.Filter) (spr.StandardPlacesResults, error) {

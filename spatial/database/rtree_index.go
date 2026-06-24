@@ -15,7 +15,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/geometry"
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 func (r *RTreeSpatialDatabase) Disconnect(ctx context.Context) error {

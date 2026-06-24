@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/whosonfirst/go-reader/v2"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 // FilterSPRResultsFunc defines a custom function for deriving a single `spr.StandardPlacesResult` from a list of `spr.StandardPlacesResult` instances.

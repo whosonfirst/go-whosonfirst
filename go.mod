@@ -29,7 +29,6 @@ require (
 	github.com/whosonfirst/go-rfc-5646 v0.1.0
 	github.com/whosonfirst/go-sanitize v0.1.0
 	github.com/whosonfirst/go-whosonfirst-iterate/v3 v3.2.0
-	github.com/whosonfirst/go-whosonfirst-spr/v2 v2.3.8
 	github.com/whosonfirst/go-writer/v3 v3.1.1
 	github.com/whosonfirst/warning v0.1.1
 )
@@ -58,9 +57,6 @@ require (
 	github.com/tidwall/geoindex v1.4.4 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/rtree v1.3.1 // indirect
-	github.com/whosonfirst/go-whosonfirst-feature v0.0.29 // indirect
-	github.com/whosonfirst/go-whosonfirst-flags v0.5.2 // indirect
-	github.com/whosonfirst/go-whosonfirst-placetypes v0.9.0 // indirect
 	github.com/whosonfirst/go-whosonfirst-sources v0.1.0 // indirect
 	github.com/whosonfirst/go-whosonfirst-uri v1.3.0 // indirect
 	go.mongodb.org/mongo-driver/v2 v2.5.0 // indirect

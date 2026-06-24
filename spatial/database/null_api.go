@@ -8,7 +8,7 @@ import (
 
 	"github.com/paulmach/orb"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial"
-	"github.com/whosonfirst/go-whosonfirst-spr/v2"
+	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 
 // PointInPolygon performs a point-in-polygon operation to retrieve matching records from the index.

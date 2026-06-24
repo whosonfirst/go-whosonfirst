@@ -28,10 +28,10 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/paulmach/orb/encoding/wkt"
 	"github.com/paulmach/orb/geojson"
-	"github.com/whosonfirst/go-whosonfirst-spatial"
-	app "github.com/whosonfirst/go-whosonfirst-spatial/application"
-	"github.com/whosonfirst/go-whosonfirst-spatial/geo"
-	"github.com/whosonfirst/go-whosonfirst-spatial/query"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial"
+	app "github.com/whosonfirst/go-whosonfirst/v4/spatial/application"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/geo"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/query"
 )
 
 func Run(ctx context.Context) error {

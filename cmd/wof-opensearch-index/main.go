@@ -7,7 +7,7 @@ import (
 	// _ "github.com/whosonfirst/go-whosonfirst-iterate-git/v3"
 	_ "github.com/whosonfirst/go-whosonfirst/v4/database/opensearch/writer"
 
-	"github.com/whosonfirst/go-whosonfirst-iterwriter/v4/app/iterwriter"
+	iterwriter "github.com/whosonfirst/go-whosonfirst/v4/app/iterate/writer"
 )
 
 func main() {

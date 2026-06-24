@@ -31,7 +31,7 @@ func AppendConcordancesMachineTags(ctx context.Context, body []byte) ([]byte, er
 		tags = append(tags, mt)
 	}
 
-	updates := map[string]interface{}{
+	updates := map[string]any{
 		"wof:concordances_machinetags": tags,
 	}
 
@@ -81,7 +81,7 @@ func AppendConcordancesStats(ctx context.Context, body []byte) ([]byte, error) {
 		sources = append(sources, k)
 	}
 
-	stats := map[string]interface{}{
+	stats := map[string]any{
 		"wof:concordances_sources":  sources,
 		"counts:concordances_total": len(sources),
 	}

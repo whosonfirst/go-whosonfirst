@@ -442,7 +442,6 @@ github.com/whosonfirst/go-sanitize
 github.com/whosonfirst/go-whosonfirst-iterate/v3
 github.com/whosonfirst/go-whosonfirst-iterate/v3/filters
 github.com/whosonfirst/go-whosonfirst-iterate/v3/fixtures
-github.com/whosonfirst/go-whosonfirst-iterate/v3/flags
 # github.com/whosonfirst/go-whosonfirst-iterwriter/v4 v4.0.4
 ## explicit; go 1.25.0
 github.com/whosonfirst/go-whosonfirst-iterwriter/v4

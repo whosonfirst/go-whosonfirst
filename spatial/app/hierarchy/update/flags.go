@@ -8,7 +8,7 @@ import (
 
 	"github.com/sfomuseum/go-flags/flagset"
 	"github.com/sfomuseum/go-flags/multi"
-	iter_flags "github.com/whosonfirst/go-whosonfirst-iterate/v3/flags"
+	iter_flags "github.com/whosonfirst/go-whosonfirst/v4/iterate/flags"
 )
 
 var source_iterator_uris iter_flags.MultiIteratorURIFlag

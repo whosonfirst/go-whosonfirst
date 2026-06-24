@@ -84,7 +84,7 @@ func NewBulkIndexerWithOptions(ctx context.Context, opensearch_client *opensearc
 	return idx, nil
 }
 
-func (idx *Indexer) IndexDocument(ctx context.Context, doc_id string, doc interface{}) error {
+func (idx *Indexer) IndexDocument(ctx context.Context, doc_id string, doc any) error {
 
 	b, err := json.Marshal(doc)
 

@@ -21,7 +21,7 @@ func TestFiltersInterface(t *testing.T) {
 
 	tf := &TestFilters{}
 
-	var p interface{} = tf
+	var p any = tf
 	_, ok := p.(Filters)
 
 	if !ok {

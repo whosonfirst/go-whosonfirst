@@ -80,13 +80,13 @@ func AppendNameStats(ctx context.Context, body []byte) ([]byte, error) {
 
 	translations := make([]string, 0)
 
-	translations_key.Range(func(k interface{}, v interface{}) bool {
+	translations_key.Range(func(k any, v any) bool {
 		t := k.(string)
 		translations = append(translations, t)
 		return true
 	})
 
-	count_props := map[string]interface{}{
+	count_props := map[string]any{
 		"translations":           translations,
 		"counts:names_total":     count_names_total,
 		"counts:names_preferred": count_names_preferred,

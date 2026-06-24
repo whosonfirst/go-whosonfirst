@@ -9,7 +9,7 @@ import (
 	"github.com/sfomuseum/go-flags/flagset"
 	"github.com/sfomuseum/go-flags/multi"
 	"github.com/whosonfirst/go-reader/v2"
-	iter_flags "github.com/whosonfirst/go-whosonfirst-iterate/v3/flags"
+	iter_flags "github.com/whosonfirst/go-whosonfirst/v4/iterate/flags"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
 )
 

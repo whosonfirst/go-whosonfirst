@@ -299,7 +299,7 @@ func (it *concurrentIterator) Iterate(ctx context.Context, uris ...string) iter.
 		procs := it.max_procs
 		throttle := make(chan bool, procs)
 
-		for i := 0; i < procs; i++ {
+		for range procs {
 			throttle <- true
 		}
 

@@ -96,7 +96,7 @@ func (t *SpelunkerTable) InitializeTable(ctx context.Context, db *sql.DB) error 
 	return database_sql.CreateTableIfNecessary(ctx, db, t)
 }
 
-func (t *SpelunkerTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i interface{}) error {
+func (t *SpelunkerTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i any) error {
 	return t.IndexFeature(ctx, db, tx, i.([]byte))
 }
 

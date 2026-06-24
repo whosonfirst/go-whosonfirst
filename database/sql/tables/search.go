@@ -59,7 +59,7 @@ func (t *SearchTable) Schema(db *sql.DB) (string, error) {
 	return LoadSchema(db, SEARCH_TABLE_NAME)
 }
 
-func (t *SearchTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i interface{}) error {
+func (t *SearchTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i any) error {
 	return t.IndexFeature(ctx, db, tx, i.([]byte))
 }
 
@@ -175,7 +175,7 @@ func (t *SearchTable) IndexFeature(ctx context.Context, db *sql.DB, tx *sql.Tx, 
 		?, ?, ?, ?
 		)`, t.Name()) // ON CONFLICT DO BLAH BLAH BLAH
 
-	args := []interface{}{
+	args := []any{
 		id, placetype,
 		name, strings.Join(names_all, " "), strings.Join(names_preferred, " "), strings.Join(names_variant, " "), strings.Join(names_colloquial, " "),
 		is_current.Flag(), is_ceased.Flag(), is_deprecated.Flag(), is_superseded.Flag(),

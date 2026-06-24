@@ -6,8 +6,8 @@ import (
 	"io"
 	"log/slog"
 
-	"github.com/whosonfirst/go-whosonfirst-iterate/v3"
 	"github.com/whosonfirst/go-whosonfirst/v4/export"
+	"github.com/whosonfirst/go-whosonfirst/v4/iterate"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/filter"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/hierarchy"

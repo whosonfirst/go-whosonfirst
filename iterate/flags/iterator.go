@@ -74,7 +74,7 @@ func (fl *IteratorURIFlag) Key() string {
 }
 
 // Values returns the list of URIs defined in the `{PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}` string.
-func (fl *IteratorURIFlag) Value() interface{} {
+func (fl *IteratorURIFlag) Value() any {
 	return fl.iter_sources
 }
 
@@ -112,7 +112,7 @@ func (fl *MultiIteratorURIFlag) Key() string {
 	return ""
 }
 
-func (fl *MultiIteratorURIFlag) Value() interface{} {
+func (fl *MultiIteratorURIFlag) Value() any {
 	return fl
 }
 
@@ -148,7 +148,7 @@ type MultiCSVIteratorURIFlag []*IteratorURIFlag
 
 func (fl *MultiCSVIteratorURIFlag) Set(value string) error {
 
-	for _, str_fl := range strings.Split(value, SEP_CSV) {
+	for str_fl := range strings.SplitSeq(value, SEP_CSV) {
 
 		iter_fl := new(MultiIteratorURIFlag)
 
@@ -170,7 +170,7 @@ func (fl *MultiCSVIteratorURIFlag) Key() string {
 	return ""
 }
 
-func (fl *MultiCSVIteratorURIFlag) Value() interface{} {
+func (fl *MultiCSVIteratorURIFlag) Value() any {
 	return fl
 }
 

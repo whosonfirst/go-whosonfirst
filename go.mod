@@ -12,6 +12,7 @@ require (
 	github.com/aaronland/go-uid v0.5.0
 	github.com/aaronland/go-uid-proxy v0.4.1
 	github.com/aaronland/go-uid-whosonfirst v0.0.7
+	github.com/aaronland/gocloud v1.3.0
 	github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883
 	github.com/aws/aws-lambda-go v1.54.0
 	github.com/cenkalti/backoff/v4 v4.3.0
@@ -52,7 +53,6 @@ require (
 	github.com/aaronland/go-pool/v2 v2.0.0 // indirect
 	github.com/aaronland/go-string v1.0.0 // indirect
 	github.com/aaronland/go-uid-artisanal v0.0.5 // indirect
-	github.com/aaronland/gocloud v1.3.0 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.41.11 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.12 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.32.20 // indirect

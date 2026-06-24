@@ -12,7 +12,7 @@ import (
 
 // QueryPaginated will iterate over all the rows for 'q' in batches determined by 'pg_opts' and return a `spr.StandardPlacesResults` and `pagination.Results`
 // instance for the results.
-func QueryPaginated(ctx context.Context, conn *sql.DB, pg_opts pagination.Options, q string, args ...interface{}) (spr.StandardPlacesResults, pagination.Results, error) {
+func QueryPaginated(ctx context.Context, conn *sql.DB, pg_opts pagination.Options, q string, args ...any) (spr.StandardPlacesResults, pagination.Results, error) {
 
 	rsp, err := sql_pagination.QueryPaginated(conn, pg_opts, q, args...)
 

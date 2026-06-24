@@ -40,7 +40,7 @@ func AppendExistentialDetails(ctx context.Context, body []byte) ([]byte, error) 
 		}
 	}
 
-	to_assign := map[string]interface{}{
+	to_assign := map[string]any{
 		"mz:is_deprecated": is_deprecated,
 		"mz:is_ceased":     is_ceased,
 	}

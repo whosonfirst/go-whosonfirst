@@ -14,10 +14,10 @@ import (
 )
 
 // IndexerPostIndexFunc is a custom function to invoke after a record has been indexed.
-type IndexerPostIndexFunc func(context.Context, *sql.DB, []database_sql.Table, interface{}) error
+type IndexerPostIndexFunc func(context.Context, *sql.DB, []database_sql.Table, any) error
 
 // IndexerLoadRecordFunc is a custom function to be invoked for each record processed by the `IndexURIs` method.
-type IndexerLoadRecordFunc func(context.Context, string, io.ReadSeeker, ...interface{}) (interface{}, error)
+type IndexerLoadRecordFunc func(context.Context, string, io.ReadSeeker, ...any) (any, error)
 
 // Indexer is a struct that provides methods for indexing records in one or more SQLite database_sql.tables
 type Indexer struct {
@@ -70,7 +70,7 @@ func (idx *Indexer) IndexURIs(ctx context.Context, iterator_uri string, uris ...
 	iter_workers := idx.options.Workers
 	iter_throttle := make(chan bool, iter_workers)
 
-	for i := 0; i < iter_workers; i++ {
+	for range iter_workers {
 		iter_throttle <- true
 	}
 

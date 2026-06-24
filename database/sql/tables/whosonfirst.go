@@ -57,7 +57,7 @@ func (t *WhosonfirstTable) InitializeTable(ctx context.Context, db *sql.DB) erro
 	return database_sql.CreateTableIfNecessary(ctx, db, t)
 }
 
-func (t *WhosonfirstTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i interface{}) error {
+func (t *WhosonfirstTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i any) error {
 	return t.IndexFeature(ctx, db, tx, i.([]byte))
 }
 

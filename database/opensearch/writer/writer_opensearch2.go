@@ -239,7 +239,7 @@ func (wr *OpensearchV2Writer) Write(ctx context.Context, path string, r io.ReadS
 		return 0, nil
 	}
 
-	var f interface{}
+	var f any
 	err = json.Unmarshal(body, &f)
 
 	if err != nil {

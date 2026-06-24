@@ -53,7 +53,7 @@ func AppendPlacetypeDetails(ctx context.Context, body []byte) ([]byte, error) {
 		placetype_names = append(placetype_names, a.String())
 	}
 
-	details := map[string]interface{}{
+	details := map[string]any{
 		"wof:placetype_id":    pt.Id,
 		"wof:placetype_names": placetype_names,
 	}

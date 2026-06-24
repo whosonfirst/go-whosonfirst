@@ -96,7 +96,7 @@ func (t *SPRTable) Schema(db *sql.DB) (string, error) {
 	return LoadSchema(db, SPR_TABLE_NAME)
 }
 
-func (t *SPRTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i interface{}) error {
+func (t *SPRTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i any) error {
 	return t.IndexFeature(ctx, db, tx, i.([]byte))
 }
 
@@ -243,7 +243,7 @@ func (t *SPRTable) IndexFeature(ctx context.Context, db *sql.DB, tx *sql.Tx, f [
 		str_cessation = cessation.String()
 	}
 
-	args := []interface{}{
+	args := []any{
 		s.Id(), s.ParentId(), s.Name(), s.Placetype(),
 		str_inception, str_cessation,
 		s.Country(), s.Repo(),

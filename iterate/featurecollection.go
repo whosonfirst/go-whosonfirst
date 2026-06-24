@@ -94,7 +94,7 @@ func (it *FeatureCollectionIterator) Iterate(ctx context.Context, uris ...string
 
 			type FC struct {
 				Type     string
-				Features []interface{}
+				Features []any
 			}
 
 			var collection FC

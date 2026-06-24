@@ -35,7 +35,7 @@ type IndexRelationsFuncOptions struct {
 // function that will ensure the the record being processed is a valid Who's On First GeoJSON Feature record.
 func LoadRecordFunc(opts *LoadRecordFuncOptions) IndexerLoadRecordFunc {
 
-	cb := func(ctx context.Context, path string, r io.ReadSeeker, args ...interface{}) (interface{}, error) {
+	cb := func(ctx context.Context, path string, r io.ReadSeeker, args ...any) (any, error) {
 
 		select {
 
@@ -86,7 +86,7 @@ func IndexRelationsFuncWithOptions(opts *IndexRelationsFuncOptions) IndexerPostI
 
 	seen := new(sync.Map)
 
-	cb := func(ctx context.Context, db *sql.DB, tables []database_sql.Table, record interface{}) error {
+	cb := func(ctx context.Context, db *sql.DB, tables []database_sql.Table, record any) error {
 
 		geojson_t, err := wof_tables.NewGeoJSONTableWithDatabase(ctx, db)
 

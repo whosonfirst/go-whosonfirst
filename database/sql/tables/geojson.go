@@ -101,7 +101,7 @@ func (t *GeoJSONTable) InitializeTable(ctx context.Context, db *sql.DB) error {
 	return database_sql.CreateTableIfNecessary(ctx, db, t)
 }
 
-func (t *GeoJSONTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i interface{}) error {
+func (t *GeoJSONTable) IndexRecord(ctx context.Context, db *sql.DB, tx *sql.Tx, i any) error {
 	return t.IndexFeature(ctx, db, tx, i.([]byte))
 }
 

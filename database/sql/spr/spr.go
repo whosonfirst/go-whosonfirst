@@ -176,7 +176,7 @@ func (spr *StandardPlacesResult) LastModified() int64 {
 
 func RetrieveSPR(ctx context.Context, spr_db *sql.DB, spr_table database_sql.Table, id int64, alt_label string) (wof_spr.StandardPlacesResult, error) {
 
-	args := []interface{}{
+	args := []any{
 		id,
 		alt_label,
 	}
@@ -241,7 +241,7 @@ func RetrieveSPRWithRows(ctx context.Context, rows *sql.Rows) (wof_spr.StandardP
 // The latter expects: Scan(src interface{}) error
 // But the former pxpect: Scan(src ...interface{}) error
 
-func retrieveSPRWithScanner(ctx context.Context, scanner interface{}) (wof_spr.StandardPlacesResult, error) {
+func retrieveSPRWithScanner(ctx context.Context, scanner any) (wof_spr.StandardPlacesResult, error) {
 
 	switch scanner.(type) {
 	case *sql.Row, *sql.Rows:

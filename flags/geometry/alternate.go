@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/whosonfirst/go-whosonfirst/flags"
-	"github.com/whosonfirst/go-whosonfirst/uri"
+	"github.com/whosonfirst/go-whosonfirst/v4/flags"
+	"github.com/whosonfirst/go-whosonfirst/v4/uri"
 )
 
 const DUMMY_ID int64 = 0

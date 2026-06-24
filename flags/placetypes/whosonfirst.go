@@ -7,8 +7,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/whosonfirst/go-whosonfirst/flags"
-	wof_placetypes "github.com/whosonfirst/go-whosonfirst/placetypes"
+	"github.com/whosonfirst/go-whosonfirst/v4/flags"
+	wof_placetypes "github.com/whosonfirst/go-whosonfirst/v4/placetypes"
 )
 
 // placetype_definitions is a local cache of go-whosonfirst-placetypes.Definition instances.

@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/whosonfirst/go-whosonfirst/feature"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature"
 )
 
 var valid_id = strings.NewReader(`{"properties":{"wof:id": 1234 }}`)

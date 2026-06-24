@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/whosonfirst/go-whosonfirst/flags"
+	"github.com/whosonfirst/go-whosonfirst/v4/flags"
 )
 
 type KnownUnknownFlag struct {
 	flags.ExistentialFlag
-	flag       int64 // https://github.com/whosonfirst/go-whosonfirst-flags/issues/2
+	flag       int64 // https://github.com/whosonfirst/go-whosonfirst/v4-flags/issues/2
 	status     bool
 	confidence bool
 }

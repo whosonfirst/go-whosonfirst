@@ -2,7 +2,7 @@ package filter
 
 import (
 	"fmt"
-	"github.com/whosonfirst/go-whosonfirst/placetypes"
+	"github.com/whosonfirst/go-whosonfirst/v4/placetypes"
 	"github.com/whosonfirst/warning"
 )
 

@@ -5,8 +5,8 @@ import (
 	"regexp"
 
 	"github.com/tidwall/gjson"
-	"github.com/whosonfirst/go-whosonfirst/feature"
-	"github.com/whosonfirst/go-whosonfirst/feature/constants"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/constants"
 )
 
 var re_wofid = regexp.MustCompile(`^\-?\d+$`)

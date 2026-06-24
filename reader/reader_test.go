@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/whosonfirst/go-reader/v2"
-	"github.com/whosonfirst/go-whosonfirst/feature/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func TestLoadBytes(t *testing.T) {

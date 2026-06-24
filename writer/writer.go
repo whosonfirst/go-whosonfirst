@@ -6,14 +6,14 @@ import (
 	"fmt"
 
 	"github.com/paulmach/orb/geojson"
-	"github.com/whosonfirst/go-whosonfirst/export"
-	"github.com/whosonfirst/go-whosonfirst/feature/alt"
-	"github.com/whosonfirst/go-whosonfirst/feature/properties"
-	"github.com/whosonfirst/go-whosonfirst/uri"
+	"github.com/whosonfirst/go-whosonfirst/v4/export"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/alt"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/uri"
 	go_writer "github.com/whosonfirst/go-writer/v3"
 )
 
-// WriteFeature will serialize and write 'f' using 'wr' using a default `whosonfirst/go-whosonfirst-export/v2.Exporter` instance.
+// WriteFeature will serialize and write 'f' using 'wr' using a default `whosonfirst/go-whosonfirst/v4-export/v2.Exporter` instance.
 func WriteFeature(ctx context.Context, wr go_writer.Writer, f *geojson.Feature) (int64, error) {
 
 	body, err := f.MarshalJSON()
@@ -25,7 +25,7 @@ func WriteFeature(ctx context.Context, wr go_writer.Writer, f *geojson.Feature) 
 	return WriteBytes(ctx, wr, body)
 }
 
-// WriteFeatureWithExporter will serialize and write 'f' using 'wr' using a custom `whosonfirst/go-whosonfirst-export/v2.Exporter` instance.
+// WriteFeatureWithExporter will serialize and write 'f' using 'wr' using a custom `whosonfirst/go-whosonfirst/v4-export/v2.Exporter` instance.
 func WriteFeatureWithExporter(ctx context.Context, wr go_writer.Writer, ex export.Exporter, f *geojson.Feature) (int64, error) {
 
 	body, err := f.MarshalJSON()
@@ -37,7 +37,7 @@ func WriteFeatureWithExporter(ctx context.Context, wr go_writer.Writer, ex expor
 	return WriteBytesWithExporter(ctx, wr, ex, body)
 }
 
-// WriteBytes will write 'body' using 'wr' using a default `whosonfirst/go-whosonfirst-export/v2.Exporter` instance.
+// WriteBytes will write 'body' using 'wr' using a default `whosonfirst/go-whosonfirst/v4-export/v2.Exporter` instance.
 func WriteBytes(ctx context.Context, wr go_writer.Writer, body []byte) (int64, error) {
 
 	ex, err := export.NewExporter(ctx, "whosonfirst://")
@@ -49,7 +49,7 @@ func WriteBytes(ctx context.Context, wr go_writer.Writer, body []byte) (int64, e
 	return WriteBytesWithExporter(ctx, wr, ex, body)
 }
 
-// WriteBytesWithExporter will write 'body' using 'wr' using a custom `whosonfirst/go-whosonfirst-export/v2.Exporter` instance.
+// WriteBytesWithExporter will write 'body' using 'wr' using a custom `whosonfirst/go-whosonfirst/v4/export.Exporter` instance.
 func WriteBytesWithExporter(ctx context.Context, wr go_writer.Writer, ex export.Exporter, body []byte) (int64, error) {
 
 	_, body, err := ex.Export(ctx, body)

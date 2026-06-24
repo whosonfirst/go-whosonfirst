@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/whosonfirst/go-rfc-5646"
-	"github.com/whosonfirst/go-whosonfirst/names"
+	"github.com/whosonfirst/go-whosonfirst/v4/names"
 )
 
 type LangTag struct {

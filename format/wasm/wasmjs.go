@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"syscall/js"
 
-	"github.com/whosonfirst/go-whosonfirst/format"
+	"github.com/whosonfirst/go-whosonfirst/v4/format"
 )
 
 func FormatFunc() js.Func {

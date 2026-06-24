@@ -3,8 +3,8 @@ package validate
 import (
 	"fmt"
 
-	"github.com/whosonfirst/go-whosonfirst/feature"
-	"github.com/whosonfirst/go-whosonfirst/feature/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func ValidateId(body []byte) error {

@@ -18,7 +18,7 @@ import (
 
 	"github.com/sfomuseum/go-edtf"
 	"github.com/sfomuseum/go-edtf/parser"
-	"github.com/whosonfirst/go-whosonfirst/flags"
+	"github.com/whosonfirst/go-whosonfirst/v4/flags"
 )
 
 const CONTAINS int = 0

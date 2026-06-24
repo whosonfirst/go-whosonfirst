@@ -5,7 +5,7 @@ import (
 
 	"github.com/sfomuseum/go-edtf"
 	"github.com/sfomuseum/go-edtf/parser"
-	"github.com/whosonfirst/go-whosonfirst/feature/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func ValidateEDTF(body []byte) error {

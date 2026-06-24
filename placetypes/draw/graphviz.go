@@ -14,7 +14,7 @@ import (
 	"strings"
 
 	"github.com/goccy/go-graphviz"
-	"github.com/whosonfirst/go-whosonfirst/placetypes"
+	"github.com/whosonfirst/go-whosonfirst/v4/placetypes"
 )
 
 // DrawPlacetypesGraphToWriter will derive a Graphviz "dot" representation of 'spec' and render it as an image

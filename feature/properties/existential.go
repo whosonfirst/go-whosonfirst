@@ -3,8 +3,8 @@ package properties
 import (
 	"github.com/sfomuseum/go-edtf"
 	"github.com/tidwall/gjson"
-	"github.com/whosonfirst/go-whosonfirst/flags"
-	"github.com/whosonfirst/go-whosonfirst/flags/existential"
+	"github.com/whosonfirst/go-whosonfirst/v4/flags"
+	"github.com/whosonfirst/go-whosonfirst/v4/flags/existential"
 )
 
 func IsCurrent(body []byte) (flags.ExistentialFlag, error) {

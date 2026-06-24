@@ -1,7 +1,7 @@
 package geometry
 
 import (
-	"github.com/whosonfirst/go-whosonfirst/flags"
+	"github.com/whosonfirst/go-whosonfirst/v4/flags"
 )
 
 type NullAlternateGeometryFlag struct {

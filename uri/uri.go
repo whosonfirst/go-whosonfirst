@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/whosonfirst/go-whosonfirst/sources"
+	"github.com/whosonfirst/go-whosonfirst/v4/sources"
 )
 
 // URIArgs is a struct indicating whether or not a URI is considered an alternate geometry and specific details if it is.

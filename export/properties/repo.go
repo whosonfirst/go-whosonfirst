@@ -3,7 +3,7 @@ package properties
 import (
 	"context"
 
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func EnsureRepo(ctx context.Context, feature []byte) ([]byte, error) {

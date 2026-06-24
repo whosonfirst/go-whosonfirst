@@ -3,7 +3,7 @@ package export
 import (
 	"context"
 
-	"github.com/whosonfirst/go-whosonfirst/export/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/export/properties"
 )
 
 // PrepareTimestamps ensure that 'feature' has all the necessary timestamp-related properties

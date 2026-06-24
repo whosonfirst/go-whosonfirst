@@ -6,7 +6,7 @@
 //		"context"
 //		"os
 //
-//		"github.com/whosonfirst/go-whosonfirst-export/v3"
+//		"github.com/whosonfirst/go-whosonfirst/v4/export"
 //	)
 //
 //	func main() {

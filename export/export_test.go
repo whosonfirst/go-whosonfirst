@@ -10,7 +10,7 @@ import (
 	"testing"
 
 	"github.com/tidwall/gjson"
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func TestExportAlt(t *testing.T) {

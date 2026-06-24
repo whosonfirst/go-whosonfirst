@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/whosonfirst/go-whosonfirst/export/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/export/properties"
 )
 
 // PrepareAltFeatureWithoutTimestamps ensures the presence of necessary field and/or default values for a Who's On First "alternate geometry"

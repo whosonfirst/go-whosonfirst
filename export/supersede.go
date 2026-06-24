@@ -6,8 +6,8 @@ import (
 
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
-	"github.com/whosonfirst/go-whosonfirst/export/properties"
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/export/properties"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func SupersedeRecord(ctx context.Context, ex Exporter, old_body []byte) ([]byte, []byte, error) {

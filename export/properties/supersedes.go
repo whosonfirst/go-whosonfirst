@@ -5,7 +5,7 @@ import (
 
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func EnsureSupersedes(ctx context.Context, feature []byte) ([]byte, error) {

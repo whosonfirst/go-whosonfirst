@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 // DeprecateRecord will assign the relevant properties to make 'old_body' as deprecated using the current time.

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func EnsureSourceAltLabel(ctx context.Context, feature []byte) ([]byte, error) {

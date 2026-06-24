@@ -7,8 +7,8 @@ import (
 
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
-	"github.com/whosonfirst/go-whosonfirst/id"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/id"
 )
 
 const ID_PROVIDER string = "org.whosonfirst.id.provider"

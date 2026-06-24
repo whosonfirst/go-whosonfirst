@@ -1,4 +1,4 @@
-module github.com/whosonfirst/go-whosonfirst
+module github.com/whosonfirst/go-whosonfirst/v4
 
 go 1.25.0
 

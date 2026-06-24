@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/whosonfirst/go-whosonfirst/export/properties"
-	"github.com/whosonfirst/go-whosonfirst/feature/alt"
-	"github.com/whosonfirst/go-whosonfirst/format"
-	"github.com/whosonfirst/go-whosonfirst/validate"
+	"github.com/whosonfirst/go-whosonfirst/v4/export/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/alt"
+	"github.com/whosonfirst/go-whosonfirst/v4/format"
+	"github.com/whosonfirst/go-whosonfirst/v4/validate"
 )
 
 // Export will perform all the steps necessary to "export" (as in create or update) 'feature' taking care to ensure correct formatting, default values and validation. It returns a boolean value indicating whether the feature was changed during the export process.

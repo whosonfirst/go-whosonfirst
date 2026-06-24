@@ -7,7 +7,7 @@ import (
 
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
-	"github.com/whosonfirst/go-whosonfirst/export/properties"
+	"github.com/whosonfirst/go-whosonfirst/v4/export/properties"
 )
 
 // EnsureProperties ensure that all the properties in 'to_ensure' are present in 'body', assigning them

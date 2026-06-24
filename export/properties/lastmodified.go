@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/tidwall/sjson"
-	wof_properties "github.com/whosonfirst/go-whosonfirst/feature/properties"
+	wof_properties "github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
 func EnsureLastModified(ctx context.Context, feature []byte) ([]byte, error) {

@@ -8,7 +8,7 @@ import (
 	"os"
 
 	"github.com/sfomuseum/go-flags/flagset"
-	"github.com/whosonfirst/go-whosonfirst/export"
+	"github.com/whosonfirst/go-whosonfirst/v4/export"
 )
 
 func Run(ctx context.Context) error {

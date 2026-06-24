@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/whosonfirst/go-whosonfirst/id"
+	"github.com/whosonfirst/go-whosonfirst/v4/id"
 )
 
 type testIdProvider struct {

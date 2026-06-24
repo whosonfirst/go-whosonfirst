@@ -6,8 +6,8 @@ import (
         "fmt"
         "syscall/js"
 
-        "github.com/whosonfirst/go-whosonfirst/export"
-	"github.com/whosonfirst/go-whosonfirst/feature/alt"	
+        "github.com/whosonfirst/go-whosonfirst/v4/export"
+	"github.com/whosonfirst/go-whosonfirst/v4/feature/alt"	
 )
 
 func PrepareWithoutTimestampsFunc() js.Func {

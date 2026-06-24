@@ -5,7 +5,7 @@ import (
 	"io"
 	"testing"
 
-	"github.com/whosonfirst/go-whosonfirst-iterate/v3/fixtures"
+	"github.com/whosonfirst/go-whosonfirst/v4/iterate/fixtures"
 )
 
 func TestFSIterator(t *testing.T) {

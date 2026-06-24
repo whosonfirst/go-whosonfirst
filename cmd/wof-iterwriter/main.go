@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/whosonfirst/go-whosonfirst-iterwriter/v4/app/iterwriter"
+	iterwriter "github.com/whosonfirst/go-whosonfirst/v4/app/iterate/writer"
 )
 
 func main() {

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"runtime/debug"
 
-	"github.com/whosonfirst/go-whosonfirst-iterate/v3"
+	"github.com/whosonfirst/go-whosonfirst/v4/iterate"
 )
 
 func IndexDatabaseWithIterators(ctx context.Context, db SpatialDatabase, sources map[string][]string) error {

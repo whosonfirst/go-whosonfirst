@@ -18,6 +18,8 @@ Documentation is incomplete at this time.
 * [whosonfirst/go-whosonfirst-flags](https://github.com/whosonfirst/go-whosonfirst-flags)
 * [whosonfirst/go-whosonfirst-format](https://github.com/whosonfirst/go-whosonfirst-format)
 * [whosonfirst/go-whosonfirst-id](https://github.com/whosonfirst/go-whosonfirst-id)
+* [whosonfirst/go-whosonfirst-iterate](https://github.com/whosonfirst/go-whosonfirst-iterate)
+* [whosonfirst/go-whosonfirst-iterwriter](https://github.com/whosonfirst/go-whosonfirst-iterwriter)
 * [whosonfirst/go-whosonfirst-names](https://github.com/whosonfirst/go-whosonfirst-names)
 * [whosonfirst/go-whosonfirst-placetypes](https://github.com/whosonfirst/go-whosonfirst-placetypes)
 * [whosonfirst/go-whosonfirst-reader](https://github.com/whosonfirst/go-whosonfirst-reader)

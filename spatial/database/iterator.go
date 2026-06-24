@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/whosonfirst/go-whosonfirst-iterate/v3"
+	"github.com/whosonfirst/go-whosonfirst/v4/iterate"
 )
 
 // TBD - Should this be remove in favour of IndexDatabaseWithIterators or does it just supplement it?

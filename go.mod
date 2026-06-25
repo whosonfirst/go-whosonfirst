@@ -30,6 +30,7 @@ require (
 	github.com/lib/pq v1.12.0
 	github.com/mattn/go-sqlite3 v1.14.47
 	github.com/mitchellh/copystructure v1.2.0
+	github.com/mitchellh/go-wordwrap v1.0.1
 	github.com/opensearch-project/opensearch-go/v4 v4.6.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/paulmach/orb v0.13.0

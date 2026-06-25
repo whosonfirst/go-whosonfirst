@@ -16,8 +16,8 @@ import (
 	"net/url"
 	"os"
 
-	fa_reader "github.com/whosonfirst/go-whosonfirst/v4/findingaid/reader"
 	"github.com/whosonfirst/go-reader/v2"
+	fa_reader "github.com/whosonfirst/go-whosonfirst/v4/findingaid/reader"
 )
 
 func main() {

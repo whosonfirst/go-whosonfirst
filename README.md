@@ -20,6 +20,7 @@ Tests are also incomplete at this time.
 
 * [whosonfirst/go-reader-findingaid](https://github.com/whosonfirst/go-reader-findingaid)
 * [whosonfirst/go-whosonfirst-database](https://github.com/whosonfirst/go-whosonfirst-database)
+* [whosonfirst/go-whosonfirst-edtf](https://github.com/whosonfirst/go-whosonfirst-edtf)
 * [whosonfirst/go-whosonfirst-export](https://github.com/whosonfirst/go-whosonfirst-export)
 * [whosonfirst/go-whosonfirst-features](https://github.com/whosonfirst/go-whosonfirst-feature)
 * [whosonfirst/go-whosonfirst-findingaid](https://github.com/whosonfirst/go-whosonfirst-findingaid)
@@ -34,6 +35,7 @@ Tests are also incomplete at this time.
 * [whosonfirst/go-whosonfirst-sources](https://github.com/whosonfirst/go-whosonfirst-sources)
 * [whosonfirst/go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial)
 * [whosonfirst/go-whosonfirst-spr](https://github.com/whosonfirst/go-whosonfirst-spr)
+* [whosonfirst/go-whosonfirst-travel](https://github.com/whosonfirst/go-whosonfirst-travel)
 * [whosonfirst/go-whosonfirst-uri](https://github.com/whosonfirst/go-whosonfirst-uri)
 * [whosonfirst/go-whosonfirst-validate](https://github.com/whosonfirst/go-whosonfirst-validate)
 * [whosonfirst/go-whosonfirst-writer](https://github.com/whosonfirst/go-whosonfirst-writer)

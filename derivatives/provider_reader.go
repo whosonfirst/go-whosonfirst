@@ -5,8 +5,8 @@ import (
 	"io"
 	"net/url"
 
-	_ "github.com/whosonfirst/go-whosonfirst/v4/findingaid/reader"
 	_ "github.com/whosonfirst/go-reader-github/v2"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/findingaid/reader"
 
 	"github.com/whosonfirst/go-reader/v2"
 	"github.com/whosonfirst/go-whosonfirst/v4/uri"

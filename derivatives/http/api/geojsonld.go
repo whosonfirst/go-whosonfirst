@@ -2,7 +2,7 @@ package api
 
 import (
 	"net/http"
-	
+
 	"github.com/aaronland/go-http/v4/slog"
 	"github.com/sfomuseum/go-geojsonld"
 	"github.com/whosonfirst/go-whosonfirst/v4/derivatives"

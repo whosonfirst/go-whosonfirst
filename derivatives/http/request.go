@@ -4,16 +4,16 @@ import (
 	"context"
 	"fmt"
 	"io"
-	
-	"github.com/whosonfirst/go-whosonfirst/v4/derivatives"	
-	wof_http "github.com/whosonfirst/go-whosonfirst/v4/http"	
+
+	"github.com/whosonfirst/go-whosonfirst/v4/derivatives"
+	wof_http "github.com/whosonfirst/go-whosonfirst/v4/http"
 )
 
 func FeatureFromRequestURI(ctx context.Context, prv derivatives.Provider, req_uri *wof_http.URI) ([]byte, error) {
 
 	wof_id := req_uri.Id
 
-	r, err := prv.GetFeature(ctx, wof_id, req_uri.URIArgs)	
+	r, err := prv.GetFeature(ctx, wof_id, req_uri.URIArgs)
 
 	if err != nil {
 		return nil, fmt.Errorf("Failed to retrieve feature for %d, %w", wof_id, err)

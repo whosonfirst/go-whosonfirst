@@ -8,9 +8,9 @@ import (
 	"github.com/tidwall/gjson"
 	"github.com/whosonfirst/go-sanitize"
 	"github.com/whosonfirst/go-whosonfirst/v4/derivatives"
-	wof_http "github.com/whosonfirst/go-whosonfirst/v4/http"
-	derivatives_http "github.com/whosonfirst/go-whosonfirst/v4/derivatives/http"			
+	derivatives_http "github.com/whosonfirst/go-whosonfirst/v4/derivatives/http"
 	"github.com/whosonfirst/go-whosonfirst/v4/derivatives/svg"
+	wof_http "github.com/whosonfirst/go-whosonfirst/v4/http"
 )
 
 type SVGSize struct {

@@ -13,7 +13,7 @@ import (
 	"strconv"
 
 	_ "github.com/mattn/go-sqlite3"
-	
+
 	"github.com/sfomuseum/go-csvdict/v2"
 	"github.com/whosonfirst/go-whosonfirst/v4/findingaid/producer/sql"
 )

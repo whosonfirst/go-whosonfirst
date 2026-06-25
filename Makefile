@@ -9,8 +9,22 @@ vuln:
 cli:
 	@make cli-database
 	@make cli-derivatives
+	@make cli-edtf
+	@make cli-fetch
 	@make cli-findingaids
 	@make cli-iterate
+	@make cli-travel
+
+cli-edtf:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-edtf-find-invalid cmd/wof-edtf-find-invalid/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-edtf-update-unknown-uncertain cmd/wof-edtf-update-unknown-uncertain/main.go
+
+cli-fetch:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-fetch-records cmd/wof-fetch-records/main.go
+
+cli-travel:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-travel-id cmd/wof-travel-id/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-travel-belongsto cmd/wof-travel-belongsto/main.go
 
 cli-derivatives:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags $(TAGS) -o bin/wof-derivatives-server cmd/wof-derivatives-server/main.go
@@ -60,6 +74,11 @@ lambda-findingaids-resolverd:
 	GOARCH=arm64 GOOS=linux go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags lambda.norpc -o bootstrap cmd/wof-findingaid-resolverd/main.go
 	zip resolverd.zip bootstrap
 	rm -f bootstrap
+
+
+test-fetch:
+	@make cli-fetch
+	./bin/wof-fetch-records -verbose 1360695651
 
 
 bump-version:

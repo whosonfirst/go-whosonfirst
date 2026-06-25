@@ -59,7 +59,6 @@ require (
 	github.com/whosonfirst/go-reader/v2 v2.1.0
 	github.com/whosonfirst/go-rfc-5646 v0.1.0
 	github.com/whosonfirst/go-sanitize v0.1.0
-	github.com/whosonfirst/go-whosonfirst-github v0.9.5
 	github.com/whosonfirst/go-writer-featurecollection/v3 v3.0.2
 	github.com/whosonfirst/go-writer/v3 v3.1.1
 	github.com/whosonfirst/warning v0.1.1

@@ -10,7 +10,7 @@ import (
 
 	"github.com/jtacoma/uritemplates"
 	"github.com/sfomuseum/iso8601duration"
-	"github.com/whosonfirst/go-whosonfirst-github/organizations"
+	"github.com/whosonfirst/go-whosonfirst/v4/github/organizations"
 )
 
 type GitHubProvider struct {

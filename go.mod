@@ -44,6 +44,8 @@ require (
 	github.com/sfomuseum/go-sfomuseum-mapshaper v0.0.4
 	github.com/sfomuseum/go-timings v1.4.0
 	github.com/sfomuseum/iso8601duration v1.1.0
+	github.com/srwiley/oksvg v0.0.0-20221011165216-be6e8873101c
+	github.com/srwiley/rasterx v0.0.0-20220730225603-2ab79fcdd4ef
 	github.com/tidwall/geojson v1.4.6
 	github.com/tidwall/gjson v1.19.0
 	github.com/tidwall/pretty v1.2.1

@@ -7,6 +7,7 @@ vuln:
 	govulncheck -show verbose ./...
 
 cli:
+	@make cli-concordances
 	@make cli-database
 	@make cli-derivatives
 	@make cli-edtf
@@ -14,6 +15,9 @@ cli:
 	@make cli-findingaids
 	@make cli-iterate
 	@make cli-travel
+
+cli-concordances:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-concordances-keys cmd/wof-concordances-keys/main.go
 
 cli-edtf:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-edtf-find-invalid cmd/wof-edtf-find-invalid/main.go

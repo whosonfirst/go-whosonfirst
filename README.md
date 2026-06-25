@@ -78,9 +78,17 @@ Replace with `github.com/whosonfirst/go-whosonfirst/v4/derivatives/image`.
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/iterate`.
 
-### [whosonfirst/go-whosonfirst-iterate](https://github.com/whosonfirst/go-whosonfirst-iterate-git)
+### [whosonfirst/go-whosonfirst-iterate-bucket](https://github.com/whosonfirst/go-whosonfirst-iterate-bucket)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/iterate/bucket`.
+
+### [whosonfirst/go-whosonfirst-iterate-git](https://github.com/whosonfirst/go-whosonfirst-iterate-git)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/iterate/git`.
+
+### [whosonfirst/go-whosonfirst-iterate-reader](https://github.com/whosonfirst/go-whosonfirst-iterate-reader)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/iterate/reader`.
 
 ### [whosonfirst/go-whosonfirst-iterwriter](https://github.com/whosonfirst/go-whosonfirst-iterwriter)
 

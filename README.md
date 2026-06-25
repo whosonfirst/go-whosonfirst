@@ -16,7 +16,7 @@ The "v4" version number reflects the largest version number plus one for the set
 
 Version "4" aims to introduce the least amount of change as possible to existing package names and method signatures. The goal for version 4 is to only require changes to path imports in existing code and nothing else. Once it has seen actual production use and "baked" for a little while then it might be time to consider a version "5" which could potentially introduce backwards-incompatible changes.
 
-For example the `whosonfirst/go-whosonfirst-iterate` packages may be refactored into non-WOF-specific packages. This remains "tomorrow's problem" for the time being.
+For example the `whosonfirst/go-whosonfirst/v4/iterate` and `whosonfirst/go-whosonfirst/v4/github` packages may be refactored into non-WOF-specific packages. This remains "tomorrow's problem" for the time being.
 
 ## Documentation
 
@@ -77,6 +77,10 @@ Replace with `github.com/whosonfirst/go-whosonfirst/v4/derivatives/image`.
 ### [whosonfirst/go-whosonfirst-iterate](https://github.com/whosonfirst/go-whosonfirst-iterate)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/iterate`.
+
+### [whosonfirst/go-whosonfirst-iterate](https://github.com/whosonfirst/go-whosonfirst-iterate-git)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/iterate/git`.
 
 ### [whosonfirst/go-whosonfirst-iterwriter](https://github.com/whosonfirst/go-whosonfirst-iterwriter)
 

@@ -427,8 +427,11 @@ github.com/golang/groupcache/lru
 # github.com/google/go-github/v74 v74.0.0
 ## explicit; go 1.23.0
 github.com/google/go-github/v74/github
-# github.com/google/go-querystring v1.1.0
-## explicit; go 1.10
+# github.com/google/go-github/v88 v88.0.0
+## explicit; go 1.25.0
+github.com/google/go-github/v88/github
+# github.com/google/go-querystring v1.2.0
+## explicit; go 1.13
 github.com/google/go-querystring/query
 # github.com/google/uuid v1.6.0
 ## explicit
@@ -654,14 +657,6 @@ github.com/whosonfirst/go-sanitize
 ## explicit; go 1.25.0
 github.com/whosonfirst/go-whosonfirst-github/organizations
 github.com/whosonfirst/go-whosonfirst-github/util
-# github.com/whosonfirst/go-whosonfirst-iterate-git/v3 v3.0.7
-## explicit; go 1.25.0
-github.com/whosonfirst/go-whosonfirst-iterate-git/v3
-github.com/whosonfirst/go-whosonfirst-iterate-git/v3/github
-# github.com/whosonfirst/go-whosonfirst-iterate/v3 v3.2.0
-## explicit; go 1.24
-github.com/whosonfirst/go-whosonfirst-iterate/v3
-github.com/whosonfirst/go-whosonfirst-iterate/v3/filters
 # github.com/whosonfirst/go-whosonfirst-sources v0.1.0
 ## explicit; go 1.12
 github.com/whosonfirst/go-whosonfirst-sources

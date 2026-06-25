@@ -13,7 +13,7 @@ import (
 	"os"
 	"path/filepath"
 
-	_ "github.com/whosonfirst/go-whosonfirst-iterate-git/v3/github"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/iterate/git"
 
 	"github.com/sfomuseum/go-flags/multi"
 	"github.com/tidwall/gjson"

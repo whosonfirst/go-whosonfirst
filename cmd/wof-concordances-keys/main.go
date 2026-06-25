@@ -8,8 +8,9 @@ import (
 	"os"
 	"strings"
 
+	_ "github.com/whosonfirst/go-whosonfirst/v4/iterate/git/github"
+
 	"github.com/whosonfirst/go-whosonfirst/v4/concordances"
-	// _ "github.com/whosonfirst/go-whosonfirst-iterate-git/v3/github"
 )
 
 func main() {

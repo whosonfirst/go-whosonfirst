@@ -27,11 +27,11 @@ func ListKeys(ctx context.Context, iterator_uri string, iterator_sources ...stri
 	for rec, err := range iter.Iterate(ctx, iterator_sources...) {
 
 		if err != nil {
-		   return nil, err
+			return nil, err
 		}
 
 		defer rec.Body.Close()
-		
+
 		body, err := io.ReadAll(rec.Body)
 
 		if err != nil {

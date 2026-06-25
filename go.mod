@@ -25,8 +25,10 @@ require (
 	github.com/dominikbraun/graph v0.23.0
 	github.com/dustin/go-humanize v1.0.1
 	github.com/facebookgo/atomicfile v0.0.0-20151019160806-2de1f203e7d5
+	github.com/go-git/go-git/v5 v5.17.2
 	github.com/go-sql-driver/mysql v1.10.0
 	github.com/goccy/go-graphviz v0.2.10
+	github.com/google/go-github/v88 v88.0.0
 	github.com/jtacoma/uritemplates v1.0.0
 	github.com/lib/pq v1.12.0
 	github.com/mattn/go-sqlite3 v1.14.47
@@ -58,11 +60,11 @@ require (
 	github.com/whosonfirst/go-rfc-5646 v0.1.0
 	github.com/whosonfirst/go-sanitize v0.1.0
 	github.com/whosonfirst/go-whosonfirst-github v0.9.5
-	github.com/whosonfirst/go-whosonfirst-iterate-git/v3 v3.0.7
 	github.com/whosonfirst/go-writer-featurecollection/v3 v3.0.2
 	github.com/whosonfirst/go-writer/v3 v3.1.1
 	github.com/whosonfirst/warning v0.1.1
 	gocloud.dev v0.46.0
+	golang.org/x/oauth2 v0.36.0
 )
 
 require (
@@ -111,13 +113,12 @@ require (
 	github.com/g8rswimmer/error-chain v1.0.0 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.8.0 // indirect
-	github.com/go-git/go-git/v5 v5.17.2 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
 	github.com/google/go-github/v74 v74.0.0 // indirect
-	github.com/google/go-querystring v1.1.0 // indirect
+	github.com/google/go-querystring v1.2.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/google/wire v0.7.0 // indirect
 	github.com/googleapis/gax-go/v2 v2.19.0 // indirect
@@ -135,7 +136,6 @@ require (
 	github.com/tidwall/geoindex v1.4.4 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/rtree v1.3.1 // indirect
-	github.com/whosonfirst/go-whosonfirst-iterate/v3 v3.2.0 // indirect
 	github.com/whosonfirst/go-whosonfirst-sources v0.1.0 // indirect
 	github.com/whosonfirst/go-whosonfirst-uri v1.3.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
@@ -150,7 +150,6 @@ require (
 	golang.org/x/crypto v0.53.0 // indirect
 	golang.org/x/image v0.41.0 // indirect
 	golang.org/x/net v0.56.0 // indirect
-	golang.org/x/oauth2 v0.36.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/text v0.38.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect

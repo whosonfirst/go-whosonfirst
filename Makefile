@@ -12,8 +12,10 @@ cli:
 	@make cli-derivatives
 	@make cli-edtf
 	@make cli-fetch
-	@make cli-findingaids
+	@make cli-findingaids	
 	@make cli-iterate
+	@make cli-properties
+	@make cli-spr
 	@make cli-travel
 
 cli-concordances:
@@ -68,6 +70,13 @@ cli-findingaids:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-findingaid-resolverd cmd/wof-findingaid-resolverd/main.go
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-findingaid-resolve cmd/wof-findingaid-resolve/main.go
 
+
+cli-properties:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-properties-report cmd/wof-properties-report/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-properties-index cmd/wof-properties-index/main.go
+
+cli-spr:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spr-as-geojson cmd/wof-spr-as-geojson/main.go
 
 lambda:
 	@make lambda-findingaids-resolverd

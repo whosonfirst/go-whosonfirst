@@ -16,9 +16,17 @@ cli:
 	@make cli-findingaids
 	@make cli-format
 	@make cli-iterate
+	@make cli-placetypes
 	@make cli-properties
 	@make cli-spr
 	@make cli-travel
+
+spec:
+	@make spec-placetypes
+
+wasmjs:
+	@make wasmjs-format
+	@make wasmjs-placetypes
 
 cli-concordances:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-concordances-keys cmd/wof-concordances-keys/main.go
@@ -79,6 +87,13 @@ cli-findingaids:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-findingaid-resolve cmd/wof-findingaid-resolve/main.go
 
 
+cli-placetypes:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes-ancestors cmd/wof-placetypes-ancestors/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes-children cmd/wof-placetypes-children/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes-descendants cmd/wof-placetypes-descendants/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes cmd/wof-placetypes/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes-is-valid cmd/wof-placetypes-is-valid/main.go
+
 cli-properties:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-properties-report cmd/wof-properties-report/main.go
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-properties-index cmd/wof-properties-index/main.go
@@ -86,14 +101,30 @@ cli-properties:
 cli-spr:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spr-as-geojson cmd/wof-spr-as-geojson/main.go
 
-wasmjs:
-	@make wasmjs-format
+
+# SPECS
+
+spec-placetypes:
+	# fetch wof-placetypes repo here...
+	go run cmd/wof-placetypes-compile-spec/main.go > placetypes.json.tmp
+	mv placetypes.json.tmp placetypes/placetypes.json
+	go run cmd/wof-placetypes-render-spec/main.go -path placetypes/docs/images/placetypes.png
+
+# WASM
 
 wasmjs-format:
 	GOOS=js GOARCH=wasm \
 		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \
 		-o format/www/wasm/wof_format.wasm \
 		cmd/wof-format-wasm/main.go
+
+wasmjs-placetypes:
+	GOOS=js GOARCH=wasm \
+		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \
+		-o www/wasm/wof_placetypes.wasm \
+		cmd/wof-placetypes-wasm/main.go
+
+# LAMBDA
 
 lambda:
 	@make lambda-findingaids-resolverd
@@ -105,11 +136,14 @@ lambda-findingaids-resolverd:
 	zip resolverd.zip bootstrap
 	rm -f bootstrap
 
+# TESTS
 
 test-fetch:
 	@make cli-fetch
 	./bin/wof-fetch-records -verbose 1360695651
 
+
+# MISC
 
 bump-version:
 	perl -i -p -e 's/github.com\/whosonfirst\/go-whosonfirst\/$(OLD)/github.com\/whosonfirst\/go-whosonfirst\/$(NEW)/g' go.mod

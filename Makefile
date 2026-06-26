@@ -16,6 +16,7 @@ cli:
 	@make cli-findingaids
 	@make cli-format
 	@make cli-iterate
+	@make cli-names
 	@make cli-placetypes
 	@make cli-properties
 	@make cli-spr
@@ -88,6 +89,9 @@ cli-findingaids:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-findingaid-resolverd cmd/wof-findingaid-resolverd/main.go
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-findingaid-resolve cmd/wof-findingaid-resolve/main.go
 
+
+cli-names:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-names-parse cmd/wof-names-parse/main.go
 
 cli-placetypes:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes-ancestors cmd/wof-placetypes-ancestors/main.go

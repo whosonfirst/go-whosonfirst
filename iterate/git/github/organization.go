@@ -38,7 +38,7 @@ type OrganizationIterator struct {
 // NewOrganizationIterator returns a new `OrganizationIterator` configured by 'uri' which takes the form
 // of:
 //
-//	org://{PATH}?{PARAMETERS}
+//	githuborg://{PATH}?{PARAMETERS}
 //
 // Where {PATH} is an optional path where individual Git repositories should be downloaded for processing; {PARAMETERS} is
 // optional and may be any of the valid parameters used in URIs to create a new `whosonfirst/go-whosonfirst-iterate-git.GitIterator`.
@@ -100,6 +100,8 @@ func (it *OrganizationIterator) Iterate(ctx context.Context, uris ...string) ite
 		it.iterating.Swap(true)
 		defer it.iterating.Swap(false)
 
+		slog.Info("YO")
+
 		for _, uri := range uris {
 
 			logger := slog.Default()
@@ -112,6 +114,8 @@ func (it *OrganizationIterator) Iterate(ctx context.Context, uris ...string) ite
 			}
 
 			logger = logger.With("uri", logger_uri)
+
+			logger.Info("HI")
 
 			u, err := url.Parse(uri)
 
@@ -152,6 +156,7 @@ func (it *OrganizationIterator) Iterate(ctx context.Context, uris ...string) ite
 				retry = v
 			}
 
+			logger.Info("BUELLER 2")
 			if q.Has("max_retries") {
 
 				v, err := strconv.Atoi(q.Get("max_retries"))
@@ -168,6 +173,7 @@ func (it *OrganizationIterator) Iterate(ctx context.Context, uris ...string) ite
 				max_retries = v
 			}
 
+			logger.Info("BUELLER 3")
 			if q.Has("retry_after") {
 
 				v, err := strconv.Atoi(q.Get("retry_after"))

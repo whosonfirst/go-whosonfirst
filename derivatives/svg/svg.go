@@ -197,7 +197,7 @@ func FeatureToSVG(f []byte, opts *Options) error {
 		return err
 	}
 
-	id := fmt.Sprintf("wof-%s", wof_id)
+	id := fmt.Sprintf("wof-%d", wof_id)
 	attrs["id"] = id
 
 	pt := fmt.Sprintf("wof-%s", wof_pt)

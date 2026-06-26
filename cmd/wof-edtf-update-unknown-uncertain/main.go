@@ -66,7 +66,7 @@ func main() {
 		changed, body, err := edtf.UpdateBytes(body)
 
 		if err != nil {
-			log.Fatalf("Failed to apply EDTF updates to %d, %w", id, err)
+			log.Fatalf("Failed to apply EDTF updates to %d, %v", id, err)
 		}
 
 		if !changed {

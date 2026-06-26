@@ -4,26 +4,19 @@ import (
 	"context"
 
 	"github.com/google/go-github/v88/github"
-	"golang.org/x/oauth2"
+	"github.com/whosonfirst/go-whosonfirst/v4/github/client"
 )
 
+// This method is deprecated
 func NewClientAndContext(token string) (*github.Client, context.Context, error) {
 
-	// https://godoc.org/github.com/google/go-github/github#Client
+	ctx := context.Background()
 
-	client := github.NewClient(nil)
-	ctx := context.TODO()
+	cl, err := client.NewClient(ctx, token)
 
-	if token != "" {
-
-		ts := oauth2.StaticTokenSource(
-			&oauth2.Token{AccessToken: token},
-		)
-
-		tc := oauth2.NewClient(ctx, ts)
-
-		client = github.NewClient(tc)
+	if err != nil {
+		return nil, nil, err
 	}
 
-	return client, ctx, nil
+	return cl, ctx, nil
 }

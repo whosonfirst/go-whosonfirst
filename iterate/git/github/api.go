@@ -14,9 +14,9 @@ import (
 
 	"github.com/google/go-github/v88/github"
 	"github.com/whosonfirst/go-ioutil"
+	"github.com/whosonfirst/go-whosonfirst/v4/github/client"
 	"github.com/whosonfirst/go-whosonfirst/v4/iterate"
 	"github.com/whosonfirst/go-whosonfirst/v4/iterate/filters"
-	"golang.org/x/oauth2"
 )
 
 func init() {
@@ -115,14 +115,13 @@ func NewGitHubAPIIterator(ctx context.Context, uri string) (iterate.Iterator, er
 		it.concurrent = c
 	}
 
-	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: token},
-	)
+	cl, err := client.NewClient(ctx, token)
 
-	tc := oauth2.NewClient(ctx, ts)
-	client := github.NewClient(tc)
+	if err != nil {
+		return nil, err
+	}
 
-	it.client = client
+	it.client = cl
 
 	f, err := filters.NewQueryFiltersFromQuery(ctx, q)
 

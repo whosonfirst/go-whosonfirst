@@ -1,6 +1,7 @@
 package organizations
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"log/slog"
@@ -8,7 +9,7 @@ import (
 	"time"
 
 	"github.com/google/go-github/v88/github"
-	"github.com/whosonfirst/go-whosonfirst/v4/github/util"
+	"github.com/whosonfirst/go-whosonfirst/v4/github/client"
 )
 
 type ListOptions struct {
@@ -53,7 +54,9 @@ func CreateRepo(org_name string, opts *CreateOptions) error {
 	// https://github.com/google/go-github/blob/v17.0.0/example/newrepo/main.go
 	// https://github.com/google/go-github/blob/v17.0.0/github/repos.go#L262
 
-	client, ctx, err := util.NewClientAndContext(opts.AccessToken)
+	ctx := context.Background()
+
+	cl, err := client.NewClient(ctx, opts.AccessToken)
 
 	if err != nil {
 		return fmt.Errorf("Failed to create new client, %w", err)
@@ -65,7 +68,7 @@ func CreateRepo(org_name string, opts *CreateOptions) error {
 		Description: &opts.Description,
 	}
 
-	_, _, err = client.Repositories.Create(ctx, org_name, r)
+	_, _, err = cl.Repositories.Create(ctx, org_name, r)
 
 	if err != nil {
 		return fmt.Errorf("Failed to create repository, %w", err)
@@ -90,7 +93,9 @@ func ListRepos(org string, opts *ListOptions) ([]string, error) {
 
 func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.Repository) error) error {
 
-	client, ctx, err := util.NewClientAndContext(opts.AccessToken)
+	ctx := context.Background()
+
+	cl, err := client.NewClient(ctx, opts.AccessToken)
 
 	if err != nil {
 		return err
@@ -109,7 +114,7 @@ func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.R
 			// pass
 		}
 
-		possible, resp, err := client.Repositories.ListByOrg(ctx, org, gh_opts)
+		possible, resp, err := cl.Repositories.ListByOrg(ctx, org, gh_opts)
 
 		if err != nil {
 			return err
@@ -187,7 +192,7 @@ func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.R
 					commits_opts.Since = *opts.PushedSince
 				}
 
-				commits, _, err := client.Repositories.ListCommits(ctx, org, *r.Name, commits_opts)
+				commits, _, err := cl.Repositories.ListCommits(ctx, org, *r.Name, commits_opts)
 
 				if err != nil {
 					return fmt.Errorf("Failed to list commits for %s, %w", *r.Name, err)
@@ -203,7 +208,7 @@ func ListReposWithCallback(org string, opts *ListOptions, cb func(repo *github.R
 				// It should also be reconciled with the repositories package
 
 				list_opts := new(github.ListOptions)
-				c, _, err := client.Repositories.GetCommit(ctx, org, *r.Name, *last_commit.SHA, list_opts)
+				c, _, err := cl.Repositories.GetCommit(ctx, org, *r.Name, *last_commit.SHA, list_opts)
 
 				if len(c.Files) == 0 {
 					slog.Info("No files in last commit", "org", org, "repo", *r.Name, "sha", *last_commit.SHA)

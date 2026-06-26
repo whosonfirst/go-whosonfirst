@@ -11,6 +11,7 @@ cli:
 	@make cli-database
 	@make cli-derivatives
 	@make cli-edtf
+	@make cli-export
 	@make cli-fetch
 	@make cli-findingaids	
 	@make cli-iterate
@@ -24,6 +25,9 @@ cli-concordances:
 cli-edtf:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-edtf-find-invalid cmd/wof-edtf-find-invalid/main.go
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-edtf-update-unknown-uncertain cmd/wof-edtf-update-unknown-uncertain/main.go
+
+cli-export:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-export cmd/wof-export/main.go
 
 cli-fetch:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-fetch-records cmd/wof-fetch-records/main.go

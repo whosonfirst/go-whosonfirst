@@ -41,7 +41,7 @@ func ListCommitFiles(ctx context.Context, opts *ListCommitFilesOptions) ([]strin
 
 	files := make([]string, 0)
 
-	lookup.Range(func(k interface{}, v interface{}) bool {
+	lookup.Range(func(k any, v any) bool {
 		f := k.(string)
 		files = append(files, f)
 		return true

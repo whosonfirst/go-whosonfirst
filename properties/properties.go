@@ -22,7 +22,7 @@ func init() {
 	re_name = regexp.MustCompile(`.*_x_.*`)
 }
 
-type PropertyType interface{}
+type PropertyType any
 
 // type Property is a struct that maps to a machine-readable data file describing a Who's On First property.
 type Property struct {

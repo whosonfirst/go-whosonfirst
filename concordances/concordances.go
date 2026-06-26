@@ -48,7 +48,7 @@ func ListKeys(ctx context.Context, iterator_uri string, iterator_sources ...stri
 
 	concordances_keys := make([]string, 0)
 
-	sources.Range(func(k interface{}, v interface{}) bool {
+	sources.Range(func(k any, v any) bool {
 		concordances_keys = append(concordances_keys, k.(string))
 		return true
 	})

@@ -13,7 +13,8 @@ cli:
 	@make cli-edtf
 	@make cli-export
 	@make cli-fetch
-	@make cli-findingaids	
+	@make cli-findingaids
+	@make cli-format
 	@make cli-iterate
 	@make cli-properties
 	@make cli-spr
@@ -31,6 +32,9 @@ cli-export:
 
 cli-fetch:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-fetch-records cmd/wof-fetch-records/main.go
+
+cli-format:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-format ./cmd/wof-format/main.go
 
 cli-travel:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-travel-id cmd/wof-travel-id/main.go
@@ -81,6 +85,15 @@ cli-properties:
 
 cli-spr:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spr-as-geojson cmd/wof-spr-as-geojson/main.go
+
+wasmjs:
+	@make wasmjs-format
+
+wasmjs-format:
+	GOOS=js GOARCH=wasm \
+		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \
+		-o format/www/wasm/wof_format.wasm \
+		cmd/wof-format-wasm/main.go
 
 lambda:
 	@make lambda-findingaids-resolverd

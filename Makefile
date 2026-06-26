@@ -20,6 +20,7 @@ cli:
 	@make cli-properties
 	@make cli-spr
 	@make cli-travel
+	@make cli-validate
 
 spec:
 	@make spec-placetypes
@@ -27,6 +28,7 @@ spec:
 wasmjs:
 	@make wasmjs-format
 	@make wasmjs-placetypes
+	@make wasmjs-validate
 
 cli-concordances:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-concordances-keys cmd/wof-concordances-keys/main.go
@@ -101,6 +103,9 @@ cli-properties:
 cli-spr:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spr-as-geojson cmd/wof-spr-as-geojson/main.go
 
+cli-validate:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-validate cmd/wof-validate/main.go	
+
 
 # SPECS
 
@@ -123,6 +128,12 @@ wasmjs-placetypes:
 		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \
 		-o www/wasm/wof_placetypes.wasm \
 		cmd/wof-placetypes-wasm/main.go
+
+wasmjs-validate:
+	GOOS=js GOARCH=wasm \
+		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \
+		-o validate/www/wasm/wof_validate.wasm \
+		cmd/wof-validate-wasm/main.go
 
 # LAMBDA
 

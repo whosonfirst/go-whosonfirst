@@ -3,9 +3,11 @@ module github.com/whosonfirst/go-whosonfirst/v4
 go 1.25.0
 
 require (
+	github.com/NYTimes/gziphandler v1.1.1
 	github.com/aaronland/go-artisanal-integers v0.9.1
 	github.com/aaronland/go-aws/v3 v3.5.3
 	github.com/aaronland/go-brooklynintegers-api v1.2.10
+	github.com/aaronland/go-http-maps/v2 v2.5.1
 	github.com/aaronland/go-http/v3 v3.3.0
 	github.com/aaronland/go-http/v4 v4.0.4
 	github.com/aaronland/go-json-query v0.1.6
@@ -113,6 +115,7 @@ require (
 	github.com/go-git/go-billy/v5 v5.8.0 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/golang-jwt/jwt/v5 v5.3.1 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
 	github.com/google/go-github/v74 v74.0.0 // indirect

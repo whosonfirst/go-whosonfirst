@@ -118,6 +118,10 @@ Replace with `github.com/whosonfirst/go-whosonfirst/v4/sources`.
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial`.
 
+### [whosonfirst/go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial-www)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/www`.
+
 ### [whosonfirst/go-whosonfirst-spr](https://github.com/whosonfirst/go-whosonfirst-spr)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spr`.
@@ -125,6 +129,10 @@ Replace with `github.com/whosonfirst/go-whosonfirst/v4/spr`.
 ### [whosonfirst/go-whosonfirst-spr](https://github.com/whosonfirst/go-whosonfirst-spr-geojson)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spr/geojson`.
+
+### [whosonfirst/go-whosonfirst-spr](https://github.com/whosonfirst/go-whosonfirst-sqlite-spr)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/spr/sqlite`.
 
 ### [whosonfirst/go-whosonfirst-travel](https://github.com/whosonfirst/go-whosonfirst-travel)
 

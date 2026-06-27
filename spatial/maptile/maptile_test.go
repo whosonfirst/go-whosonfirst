@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
-	
+
 	"github.com/paulmach/orb/maptile"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/query"

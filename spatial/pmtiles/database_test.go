@@ -6,14 +6,13 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 
-	"time"
-	
+	_ "log/slog"
+
 	"github.com/paulmach/orb"
 	"github.com/paulmach/orb/geojson"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
@@ -22,8 +21,6 @@ import (
 
 func TestDatabase(t *testing.T) {
 
-     slog.Info("TEST DB")
-     
 	rel_path := "fixtures/sf.pmtiles"
 	abs_path, err := filepath.Abs(rel_path)
 
@@ -55,8 +52,6 @@ func TestDatabase(t *testing.T) {
 
 func TestPointInPolygon(t *testing.T) {
 
-     slog.Info("TEST PIP")
-
 	rel_path := "fixtures/sf.pmtiles"
 	abs_path, err := filepath.Abs(rel_path)
 
@@ -81,7 +76,6 @@ func TestPointInPolygon(t *testing.T) {
 
 	defer db.Disconnect(ctx)
 
-     
 	lat := 37.759415
 	lon := -122.414647
 
@@ -101,13 +95,7 @@ func TestPointInPolygon(t *testing.T) {
 		t.Fatalf("Failed to create SPR filter from inputs, %v", err)
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, 5 * time.Second)
-	defer cancel()
-	
 	rsp, err := db.PointInPolygon(ctx, &pt, f)
-
-	slog.Info("PIP RSP", "error", err)
-     	t.Skip()
 
 	if err != nil {
 		t.Fatalf("Failed to perform point in polygon query, %v", err)
@@ -133,9 +121,6 @@ func TestPointInPolygon(t *testing.T) {
 
 func TestIntersects(t *testing.T) {
 
-     slog.Info("TEST INTER")
-     t.Skip()
-     
 	rel_path := "fixtures/sf.pmtiles"
 	abs_path, err := filepath.Abs(rel_path)
 

@@ -290,7 +290,7 @@ func NewSPRFilterFromInputs(inputs *SPRInputs) (spatial.Filter, error) {
 	if len(inputs.Geometries) != 0 {
 
 		geoms := inputs.Geometries[0]
-		
+
 		switch geoms {
 		case "all":
 			// pass

@@ -1,6 +1,19 @@
 GOMOD=$(shell test -f "go.work" && echo "readonly" || echo "vendor")
 LDFLAGS=-s -w
 
+CWD=$(shell pwd)
+
+PMTILES_DATABASE=pmtiles://?tiles=file://$(CWD)/spatial/pmtiles/fixtures&database=sf&zoom=13&enable-cache=true&layer=whosonfirst
+INITIAL_VIEW=-122.384292,37.621131,13
+
+pip:
+	go run -tags sqlite,pmtiles,sqlite3,modernc -mod $(GOMOD) \
+		cmd/wof-spatial-pip/main.go \
+		-spatial-database-uri "$(PMTILES_DATABASE)" \
+		-latitude 37.784827 \
+		-longitude -122.727802 \
+		-verbose
+
 TAGS=null
 
 vuln:

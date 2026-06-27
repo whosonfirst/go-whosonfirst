@@ -118,6 +118,10 @@ Replace with `github.com/whosonfirst/go-whosonfirst/v4/sources`.
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial`.
 
+### [whosonfirst/go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial-grpc)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc`.
+
 ### [whosonfirst/go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial-www)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/www`.

@@ -1,10 +1,26 @@
 GOMOD=$(shell test -f "go.work" && echo "readonly" || echo "vendor")
 LDFLAGS=-s -w
 
+CWD=$(shell pwd)
+
+PMTILES_DATABASE=pmtiles://?tiles=file://$(CWD)/spatial/pmtiles/fixtures&database=sf&zoom=13&enable-cache=true&layer=whosonfirst
+INITIAL_VIEW=-122.384292,37.621131,13
+
+pip:
+	go run -tags sqlite,pmtiles,sqlite3,modernc -mod $(GOMOD) \
+		cmd/wof-spatial-pip/main.go \
+		-spatial-database-uri "$(PMTILES_DATABASE)" \
+		-latitude 37.784827 \
+		-longitude -122.727802 \
+		-verbose
+
 TAGS=null
 
 vuln:
 	govulncheck -show verbose ./...
+
+test:
+	go test -tags sqlite,pmtiles,sqlite3 -v ./...
 
 cli:
 	@make cli-concordances
@@ -20,6 +36,7 @@ cli:
 	@make cli-placetypes
 	@make cli-properties
 	@make cli-spr
+	@make cli-spatial
 	@make cli-travel
 	@make cli-validate
 
@@ -106,6 +123,35 @@ cli-properties:
 
 cli-spr:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spr-as-geojson cmd/wof-spr-as-geojson/main.go
+
+cli-spatial-sqlite:
+	@make cli-spatial-sqlite-sqlite3
+
+cli-spatial-sqlite-sqlite3:
+	@make cli-spatial TAGS=sqlite,sqlite3
+
+cli-spatial-sqlite-modernc:
+	@make cli-spatial TAGS=sqlite,modernc
+
+cli-spatial-pmtiles:
+	@make cli-spatial-pmtiles-sqlite3
+
+cli-spatial-pmtiles-sqlite3:
+	@make cli-spatial TAGS=sqlite,sqlite3 
+
+cli-spatial-pmtiles-modernc:
+	@make cli-spatial TAGS=sqlite,modernc 
+
+cli-spatial-all:
+	@make cli-spatial TAGS=sqlite,pmtiles,sqlite3,modernc
+
+cli-spatial:
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-grpc-client cmd/wof-spatial-grpc-client/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-grpc-server cmd/wof-spatial-grpc-server/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-http-server cmd/wof-spatial-http-server/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-intersects cmd/wof-spatial-intersects/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-pip cmd/wof-spatial-pip/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-update-hierarchies cmd/wof-spatial-update-hierarchies/main.go
 
 cli-validate:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-validate cmd/wof-validate/main.go	

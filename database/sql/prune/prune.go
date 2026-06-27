@@ -92,7 +92,7 @@ func PruneTablesWithIterator(ctx context.Context, iterator_uri string, iterator_
 		err = tx.Commit()
 
 		if err != nil {
-			fmt.Errorf("Failed to commit transaction to pruning %d, because %w", id, err)
+			return fmt.Errorf("Failed to commit transaction to pruning %d, because %w", id, err)
 		}
 
 		return nil

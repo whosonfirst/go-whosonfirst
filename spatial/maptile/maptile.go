@@ -58,7 +58,6 @@ func PointInPolygonCandidateFeaturesFromTile(ctx context.Context, db database.Sp
 				continue
 			}
 
-			slog.Info("POO")
 			return nil, fmt.Errorf("Failed to read data for WOF ID %d, %w", id, err)
 		}
 

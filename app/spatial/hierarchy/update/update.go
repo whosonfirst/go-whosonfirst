@@ -18,7 +18,7 @@ func Run(ctx context.Context) error {
 	fs, err := DefaultFlagSet(ctx)
 
 	if err != nil {
-		fmt.Errorf("Failed to create application flag set, %w", err)
+		return fmt.Errorf("Failed to create application flag set, %w", err)
 	}
 
 	return RunWithFlagSet(ctx, fs)

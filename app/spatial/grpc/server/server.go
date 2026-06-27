@@ -7,9 +7,9 @@ import (
 	"log/slog"
 	"net"
 
+	app "github.com/whosonfirst/go-whosonfirst/v4/spatial/application"
 	grpc_server "github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/server"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/spatial"
-	app "github.com/whosonfirst/go-whosonfirst/v4/spatial/application"
 	"google.golang.org/grpc"
 )
 

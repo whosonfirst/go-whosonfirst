@@ -26,7 +26,23 @@ Documentation for individual packages which have been merged in to this one have
 
 ## Tests
 
-Tests are also incomplete at this time.
+Tests are also incomplete at this time. Because of build tags (see below) the easiest way to run test it to use the handy `tests` Makefile tagret which will assign any necessary default tags. For example:
+
+```
+$> make test
+... time passes, tests happen
+```
+
+## Build tags
+
+Build tags are still in flux.
+
+| Tag | Description |
+| --- | ---  |
+| `sqlite` | Enable the use of one or more `database/sql` SQLite-backed drivers. |
+| `sqlite3` | Enable the use of the `mattn/go-sqlite` driver. |
+| `modernc` | Enable the use of the `modernc.org/sqlite` driver. |
+| `pmtiles` | Enable the use of a `protomaps/go-pmtiles`-backed driver. |
 
 ## Packages that have merged/superseded in to this package
 
@@ -118,11 +134,19 @@ Replace with `github.com/whosonfirst/go-whosonfirst/v4/sources`.
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial`.
 
-### [whosonfirst/go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial-grpc)
+### [whosonfirst/go-whosonfirst-spatial-grpc](https://github.com/whosonfirst/go-whosonfirst-spatial-grpc)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc`.
 
-### [whosonfirst/go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial-www)
+### [whosonfirst/go-whosonfirst-spatial-pmtiles](https://github.com/whosonfirst/go-whosonfirst-spatial-pmtiles)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/pmtiles`.
+
+### [whosonfirst/go-whosonfirst-spatial-sqlite](https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite`.
+
+### [whosonfirst/go-whosonfirst-spatial-www](https://github.com/whosonfirst/go-whosonfirst-spatial-www)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/www`.
 
@@ -130,11 +154,11 @@ Replace with `github.com/whosonfirst/go-whosonfirst/v4/spatial/www`.
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spr`.
 
-### [whosonfirst/go-whosonfirst-spr](https://github.com/whosonfirst/go-whosonfirst-spr-geojson)
+### [whosonfirst/go-whosonfirst-spr-geojson](https://github.com/whosonfirst/go-whosonfirst-spr-geojson)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spr/geojson`.
 
-### [whosonfirst/go-whosonfirst-spr](https://github.com/whosonfirst/go-whosonfirst-sqlite-spr)
+### [whosonfirst/go-whosonfirst-sqlite-spr](https://github.com/whosonfirst/go-whosonfirst-sqlite-spr)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/spr/sqlite`.
 

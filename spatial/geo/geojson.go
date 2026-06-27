@@ -53,7 +53,7 @@ func BoundingBoxToFeature(str_bbox string, is_latlon bool) (*geojson.Feature, er
 	min := orb.Point{min_x, min_y}
 	max := orb.Point{max_x, max_y}
 
-	b := orb.Bound{min, max}
+	b := orb.Bound{Min: min, Max: max}
 	poly := b.ToPolygon()
 
 	bbox := [4]float64{

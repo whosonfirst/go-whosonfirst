@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"github.com/whosonfirst/go-whosonfirst/v4/flags"
+	app "github.com/whosonfirst/go-whosonfirst/v4/spatial/application"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/request"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/spatial"
-	app "github.com/whosonfirst/go-whosonfirst/v4/spatial/application"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/query"
 	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )

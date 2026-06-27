@@ -24,7 +24,7 @@ func IndexDatabaseWithIterator(ctx context.Context, db SpatialDatabase, iterator
 	for rec, err := range iter.Iterate(ctx, iterator_sources...) {
 
 		if err != nil {
-			fmt.Errorf("Failed to iterate URIs, %w", err)
+			return fmt.Errorf("Failed to iterate URIs, %w", err)
 		}
 
 		defer rec.Body.Close()

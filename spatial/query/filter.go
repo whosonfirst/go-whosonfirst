@@ -11,7 +11,12 @@ import (
 func NewSPRFilterFromSpatialQuery(req *SpatialQuery) (spatial.Filter, error) {
 
 	q := url.Values{}
-	q.Set("geometries", req.Geometries)
+
+	if len(req.Geometries) > 0 {
+		// If zero-length this will assign an empty string to a list
+		// resulting in a non-zero-length list...
+		q.Set("geometries", req.Geometries)
+	}
 
 	q.Set("inception_date", req.InceptionDate)
 	q.Set("cessation_date", req.CessationDate)

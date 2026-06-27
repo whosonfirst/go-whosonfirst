@@ -9,8 +9,6 @@ import (
 	"os"
 	"strings"
 
-	_ "modernc.org/sqlite"
-	
 	database_sql "github.com/sfomuseum/go-database/sql"
 )
 

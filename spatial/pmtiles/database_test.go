@@ -1,3 +1,5 @@
+//go:build pmtiles
+
 package pmtiles
 
 import (

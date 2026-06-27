@@ -1,3 +1,5 @@
+//go:build sqlite
+
 package sqlite
 
 // Implement the whosonfirst/go-whosonfirst-spatial.SpatialIndex interface.
@@ -19,9 +21,9 @@ import (
 	"github.com/paulmach/orb/planar"
 	database_sql "github.com/sfomuseum/go-database/sql"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial"
-	"github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite/wkttoorb"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/filter"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/geo"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite/wkttoorb"
 	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 	sqlite_spr "github.com/whosonfirst/go-whosonfirst/v4/spr/sqlite"
 	"github.com/whosonfirst/go-whosonfirst/v4/uri"

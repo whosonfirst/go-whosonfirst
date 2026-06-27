@@ -1,3 +1,5 @@
+//go:build sqlite
+
 package sqlite
 
 // Implement the whosonfirst/go-reader/v2.Reader interface.

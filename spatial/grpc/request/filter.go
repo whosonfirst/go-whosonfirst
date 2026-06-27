@@ -2,8 +2,8 @@ package request
 
 import (
 	wof_spatial "github.com/whosonfirst/go-whosonfirst/v4/spatial"
-	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/spatial"
 	wof_filter "github.com/whosonfirst/go-whosonfirst/v4/spatial/filter"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/spatial"
 )
 
 func SPRFilterFromPointInPolygonRequest(req *spatial.PointInPolygonRequest) (wof_spatial.Filter, error) {

@@ -1,4 +1,4 @@
-//go:build mattn
+//go:build sqlite && sqlite3
 
 package sqlite
 

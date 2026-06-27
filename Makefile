@@ -20,6 +20,7 @@ cli:
 	@make cli-placetypes
 	@make cli-properties
 	@make cli-spr
+	@make cli-spatial
 	@make cli-travel
 	@make cli-validate
 
@@ -106,6 +107,35 @@ cli-properties:
 
 cli-spr:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spr-as-geojson cmd/wof-spr-as-geojson/main.go
+
+cli-spatial-sqlite:
+	@make cli-spatial-sqlite-sqlite3
+
+cli-spatial-sqlite-sqlite3:
+	@make cli-spatial TAGS=sqlite,sqlite3
+
+cli-spatial-sqlite-modernc:
+	@make cli-spatial TAGS=sqlite,modernc
+
+cli-spatial-pmtiles:
+	@make cli-spatial-pmtiles-sqlite3
+
+cli-spatial-pmtiles-sqlite3:
+	@make cli-spatial TAGS=sqlite,sqlite3 
+
+cli-spatial-pmtiles-modernc:
+	@make cli-spatial TAGS=sqlite,modernc 
+
+cli-spatial-all:
+	@make cli-spatial TAGS=sqlite,pmtiles,sqlite3,modernc
+
+cli-spatial:
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-grpc-client cmd/wof-spatial-grpc-client/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-grpc-server cmd/wof-spatial-grpc-server/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-http-server cmd/wof-spatial-http-server/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-intersects cmd/wof-spatial-intersects/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-pip cmd/wof-spatial-pip/main.go
+	go build -tags=$(TAGS) -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-spatial-update-hierarchies cmd/wof-spatial-update-hierarchies/main.go
 
 cli-validate:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-validate cmd/wof-validate/main.go	

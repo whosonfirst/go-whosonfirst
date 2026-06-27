@@ -1,3 +1,5 @@
+//go:build pmtiles
+
 package pmtiles
 
 import (
@@ -13,12 +15,11 @@ import (
 	_ "github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite"
 	_ "gocloud.dev/blob/fileblob"
 	_ "gocloud.dev/docstore/memdocstore"
-	_ "modernc.org/sqlite"
 
 	"github.com/protomaps/go-pmtiles/pmtiles"
 	"github.com/whosonfirst/go-reader/v2"
-	"github.com/whosonfirst/go-whosonfirst/v4/spatial/pmtiles/cache"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/pmtiles/cache"
 	"github.com/whosonfirst/go-whosonfirst/v4/spr"
 )
 

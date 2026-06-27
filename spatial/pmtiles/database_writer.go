@@ -1,3 +1,5 @@
+//go:build pmtiles
+
 package pmtiles
 
 // Implement the whosonfirst/go-writer/v3.Writer interface.

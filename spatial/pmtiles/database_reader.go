@@ -1,3 +1,5 @@
+//go:build pmtiles
+
 package pmtiles
 
 // Implement the whosonfirst/go-reader/v2.Reader interface.

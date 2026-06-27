@@ -1,3 +1,5 @@
+//go:build pmtiles
+
 package pmtiles
 
 // Simple package to manage atomic counters in a map (dictionary) until something

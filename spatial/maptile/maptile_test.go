@@ -2,12 +2,11 @@ package maptile
 
 import (
 	"context"
-	_ "fmt"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"testing"
-
+	
 	"github.com/paulmach/orb/maptile"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/query"

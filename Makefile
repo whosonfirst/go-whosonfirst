@@ -6,6 +6,9 @@ TAGS=null
 vuln:
 	govulncheck -show verbose ./...
 
+test:
+	go test -tags sqlite,pmtiles,sqlite3 -v ./...
+
 cli:
 	@make cli-concordances
 	@make cli-database

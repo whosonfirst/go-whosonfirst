@@ -26,7 +26,7 @@ func PointInPolygonCandidateFeaturesFromTile(ctx context.Context, db database.Sp
 	tile_geom := tile_bounds.ToPolygon()
 
 	q.Geometry = geojson.NewGeometry(tile_geom)
-
+	
 	intersects_fn, err := query.NewSpatialFunction(ctx, "intersects://")
 
 	if err != nil {
@@ -58,7 +58,6 @@ func PointInPolygonCandidateFeaturesFromTile(ctx context.Context, db database.Sp
 				continue
 			}
 
-			slog.Info("POO")
 			return nil, fmt.Errorf("Failed to read data for WOF ID %d, %w", id, err)
 		}
 

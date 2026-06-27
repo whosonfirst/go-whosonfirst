@@ -39,7 +39,7 @@ func (db *PMTilesSpatialDatabase) RemoveFeature(context.Context, string) error {
 }
 
 func (db *PMTilesSpatialDatabase) PointInPolygon(ctx context.Context, coord *orb.Point, filters ...spatial.Filter) (spr.StandardPlacesResults, error) {
-
+     
 	spatial_db, err := db.spatialDatabaseFromCoord(ctx, coord)
 
 	if err != nil {
@@ -51,6 +51,8 @@ func (db *PMTilesSpatialDatabase) PointInPolygon(ctx context.Context, coord *orb
 		go atomic.AddInt64(&db.count_pip, 1)
 	}()
 
+	slog.Info("WTF", "coord", coord)
+     return nil, fmt.Errorf("WTAF 3")
 	return spatial_db.PointInPolygon(ctx, coord, filters...)
 }
 
@@ -327,8 +329,13 @@ func (db *PMTilesSpatialDatabase) Disconnect(ctx context.Context) error {
 
 func (db *PMTilesSpatialDatabase) spatialDatabaseFromTile(ctx context.Context, coord *orb.Point) (database.SpatialDatabase, error) {
 
+     slog.Info("FROM TILE")
+
+     
 	path := db.tilePathFromCoord(ctx, coord)
 
+	slog.Info("PATH", "p", path)
+	
 	logger := slog.Default()
 	logger = logger.With("path", path)
 
@@ -340,6 +347,8 @@ func (db *PMTilesSpatialDatabase) spatialDatabaseFromTile(ctx context.Context, c
 
 	t := db.mapTileFromCoord(ctx, coord)
 
+	slog.Info("T", "t", t)
+     
 	features, err := db.featuresForTile(ctx, t)
 
 	if err != nil {
@@ -347,6 +356,9 @@ func (db *PMTilesSpatialDatabase) spatialDatabaseFromTile(ctx context.Context, c
 		return nil, fmt.Errorf("Failed to derive features for tile %s, %w", path, err)
 	}
 
+	slog.Info("F", "f", features)
+     return nil, fmt.Errorf("NO TILE")
+     
 	logger = logger.With("spatial database uri", db.spatial_database_uri)
 	logger = logger.With("count features", len(features))
 
@@ -480,7 +492,7 @@ func (db *PMTilesSpatialDatabase) tilePathFromCoord(ctx context.Context, coord *
 }
 
 func (db *PMTilesSpatialDatabase) spatialDatabaseNameFromCoord(ctx context.Context, coord *orb.Point) string {
-
+     
 	t := db.mapTileFromCoord(ctx, coord)
 	return fmt.Sprintf("%s-%d-%d-%d.db", db.database, t.Z, t.X, t.Y)
 }
@@ -489,11 +501,15 @@ func (db *PMTilesSpatialDatabase) spatialDatabaseFromCoord(ctx context.Context, 
 
 	db_name := db.spatialDatabaseNameFromCoord(ctx, coord)
 
+	slog.Info("NAME", "db_name", db_name)
+	
 	db.spatial_databases_cache_mutex.Lock()
 	defer db.spatial_databases_cache_mutex.Unlock()
 
 	v, exists := db.spatial_databases_cache[db_name]
 
+	slog.Info("CACHE", "v", v, "exists", exists)
+	
 	if exists {
 		db.spatial_databases_counter.Increment(db_name, 1)
 		return v, nil
@@ -505,6 +521,9 @@ func (db *PMTilesSpatialDatabase) spatialDatabaseFromCoord(ctx context.Context, 
 		return nil, fmt.Errorf("Failed to create spatial database, %w", err)
 	}
 
+	slog.Info("DB", "db", spatial_db)
+	return nil, fmt.Errorf("NOPE")
+	
 	db.spatial_databases_counter.Increment(db_name, 1)
 	db.spatial_databases_cache[db_name] = spatial_db
 
@@ -598,6 +617,8 @@ func (db *PMTilesSpatialDatabase) featuresFromTilesForGeom(ctx context.Context, 
 
 func (db *PMTilesSpatialDatabase) featuresForTile(ctx context.Context, t maptile.Tile) ([]*geojson.Feature, error) {
 
+     slog.Info("FEATURES")
+     
 	path := fmt.Sprintf("/%s/%d/%d/%d.mvt", db.database, t.Z, t.X, t.Y)
 
 	// It's tempting to cache body (or the resultant FeatureCollection) here. Ancedotally
@@ -608,8 +629,14 @@ func (db *PMTilesSpatialDatabase) featuresForTile(ctx context.Context, t maptile
 	server_ctx, server_cancel := context.WithTimeout(ctx, 3*time.Second)
 	defer server_cancel()
 
+	slog.Info("GET", "p", path)
+
+     
 	status_code, _, body := db.server.Get(server_ctx, path)
 
+	slog.Info("CODE", "code", status_code)
+     return nil, fmt.Errorf("NO FEATURES")
+     
 	var features []*geojson.Feature
 
 	switch status_code {

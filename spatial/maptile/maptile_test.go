@@ -2,7 +2,6 @@ package maptile
 
 import (
 	"context"
-	_ "fmt"
 	"path/filepath"
 	"strconv"
 	"strings"

@@ -19,8 +19,14 @@ func NewSPRFilterFromQuery(query url.Values) (spatial.Filter, error) {
 	}
 
 	inputs.Placetypes = query["placetype"]
-	inputs.Geometries = query["geometries"]
-	inputs.AlternateGeometries = query["alternate_geometry"]
+
+	if query.Has("geometries") && len(query["geometries"]) > 0 {
+		inputs.Geometries = query["geometries"]
+	}
+
+	if query.Has("alternate_geometry") && len(query["alternate_geometry"]) > 0 {
+		inputs.AlternateGeometries = query["alternate_geometry"]
+	}
 
 	inputs.InceptionDate = query.Get("inception_date")
 	inputs.CessationDate = query.Get("cessation_date")

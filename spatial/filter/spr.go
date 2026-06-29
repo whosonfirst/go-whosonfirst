@@ -2,7 +2,6 @@ package filter
 
 import (
 	"fmt"
-	_ "log"
 	"strconv"
 	"strings"
 
@@ -316,7 +315,7 @@ func NewSPRFilterFromInputs(inputs *SPRInputs) (spatial.Filter, error) {
 			f.AlternateGeometry = af
 
 		default:
-			fmt.Errorf("Invalid geometries flag")
+			return nil, fmt.Errorf("Invalid geometries flag, '%v'", geoms)
 		}
 
 	}

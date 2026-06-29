@@ -179,6 +179,6 @@ func TestSortByPlacetypeAndName(t *testing.T) {
 			t.Fatalf("Unexpected sort result at offset %d. Expected '%s' but got '%s'", idx, expected[idx], s.Id())
 		}
 
-		fmt.Sprintf("%d %s %s\n", idx, s.Name(), expected[idx])
+		fmt.Printf("%d %s %s\n", idx, s.Name(), expected[idx])
 	}
 }

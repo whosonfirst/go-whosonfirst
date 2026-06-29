@@ -9,9 +9,9 @@ import (
 	"os"
 
 	"github.com/paulmach/orb/geojson"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/geo"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/request"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/spatial"
-	"github.com/whosonfirst/go-whosonfirst/v4/spatial/geo"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/query"
 	"google.golang.org/grpc"
 )

@@ -33,6 +33,7 @@ cli:
 	@make cli-format
 	@make cli-iterate
 	@make cli-names
+	@make cli-parquet
 	@make cli-placetypes
 	@make cli-properties
 	@make cli-spr
@@ -109,6 +110,9 @@ cli-findingaids:
 
 cli-names:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-names-parse cmd/wof-names-parse/main.go
+
+cli-parquet:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-parquet-write cmd/wof-parquet-write/main.go
 
 cli-placetypes:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes-ancestors cmd/wof-placetypes-ancestors/main.go

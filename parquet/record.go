@@ -5,13 +5,15 @@ import (
 	"fmt"
 	"io"
 
+	_ "github.com/whosonfirst/go-whosonfirst/v4/geojson"
+
 	"github.com/paulmach/orb/encoding/wkb"
 	"github.com/paulmach/orb/geojson"
 )
 
 type Record struct {
-	Id         int64  `parquet:"id,type=INT64"`
-	ParentId   int64  `parquet:"parent_id,type="INT64"`
+	Id         int64  `parquet:"id,type=int64"`
+	ParentId   int64  `parquet:"parent_id,type="int64"`
 	Placetype  string `parquet:"placetype,type=dict,zstd"`
 	Country    string `parquet:"country,type=dict,zstd"`
 	Geometry   []byte `parquet:"geometry,geometry"`

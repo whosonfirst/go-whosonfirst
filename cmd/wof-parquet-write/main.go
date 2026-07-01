@@ -15,8 +15,8 @@ func main() {
 	var iterator_uri string
 
 	fs := flagset.NewFlagSet("parquet")
-	fs.StringVar(&writer_uri, "writer-uri", "", "...")
-	fs.StringVar(&iterator_uri, "iterator-uri", "repo://", "...")
+	fs.StringVar(&writer_uri, "writer-uri", "", "The path to a file where Parquet data should be written. If \"-\" then data will be written to STDOUT.")
+	fs.StringVar(&iterator_uri, "iterator-uri", "repo://", "A registered whosonfirst/go-whosonfirst/v4/iterate.Iterator URI.")
 
 	flagset.Parse(fs)
 
@@ -43,6 +43,8 @@ func main() {
 		}
 
 		_, err = wr.WriteFromReader(rec.Body)
+
+		rec.Body.Close()
 
 		if err != nil {
 			log.Fatalf("Failed to write row %s, %v", rec.Path, err)

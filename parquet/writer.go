@@ -2,7 +2,6 @@ package parquet
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"os"
@@ -10,8 +9,6 @@ import (
 	"sync"
 
 	parquet_go "github.com/parquet-go/parquet-go"
-	"github.com/paulmach/orb/encoding/wkb"
-	"github.com/paulmach/orb/geojson"
 )
 
 // nopWriteCloser is an io.WriteCloser that does nothing on Close().
@@ -84,43 +81,10 @@ func NewWriterWithIoWriteCloser(ctx context.Context, wr io.WriteCloser) (*Parque
 
 func (pw *ParquetWriter) WriteFromReader(r io.Reader) (int, error) {
 
-	body, err := io.ReadAll(r)
+	record, err := RecordFromGeoJSONReader(r)
 
 	if err != nil {
 		return 0, err
-	}
-
-	f, err := geojson.UnmarshalFeature(body)
-
-	if err != nil {
-		return 0, fmt.Errorf("Failed to unmarshal feature, %w", err)
-	}
-
-	geom, err := wkb.Marshal(f.Geometry, wkb.DefaultByteOrder)
-
-	id_fl64 := f.Properties.MustFloat64("wof:id", -1)
-
-	if id_fl64 == -1 {
-		return 0, fmt.Errorf("Failed to determine wof:id")
-	}
-
-	pid_fl64 := f.Properties.MustFloat64("wof:parent_id", -1)
-
-	id := int64(id_fl64)
-	pid := int64(pid_fl64)
-
-	pt := f.Properties.MustString("wof:placetype", "custom")
-	co := f.Properties.MustString("wof:country", "XX")
-
-	props, err := json.Marshal(f.Properties)
-
-	record := &Record{
-		Id:         id,
-		ParentId:   pid,
-		Placetype:  pt,
-		Country:    co,
-		Geometry:   geom,
-		Properties: props,
 	}
 
 	return pw.Write([]*Record{record})

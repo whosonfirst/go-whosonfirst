@@ -1,5 +1,14 @@
 package parquet
 
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+
+	"github.com/paulmach/orb/encoding/wkb"
+	"github.com/paulmach/orb/geojson"
+)
+
 type Record struct {
 	Id         int64  `parquet:"id,type=INT64"`
 	ParentId   int64  `parquet:"parent_id,type="INT64"`
@@ -7,6 +16,64 @@ type Record struct {
 	Country    string `parquet:"country,type=dict,zstd"`
 	Geometry   []byte `parquet:"geometry,geometry"`
 	Properties []byte `parquet:"properties,json"`
+}
+
+func RecordFromGeoJSONReader(r io.Reader) (*Record, error) {
+
+	body, err := io.ReadAll(r)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return RecordFromGeoJSONBytes(body)
+}
+
+func RecordFromGeoJSONBytes(body []byte) (*Record, error) {
+
+	f, err := geojson.UnmarshalFeature(body)
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed to unmarshal feature, %w", err)
+	}
+
+	return RecordFromGeoJSONFeature(f)
+}
+
+func RecordFromGeoJSONFeature(f *geojson.Feature) (*Record, error) {
+
+	geom, err := wkb.Marshal(f.Geometry, wkb.DefaultByteOrder)
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed to marshal geometry, %w", err)
+	}
+
+	id_fl64 := f.Properties.MustFloat64("wof:id", -1)
+
+	if id_fl64 == -1 {
+		return nil, fmt.Errorf("Failed to determine wof:id")
+	}
+
+	pid_fl64 := f.Properties.MustFloat64("wof:parent_id", -1)
+
+	id := int64(id_fl64)
+	pid := int64(pid_fl64)
+
+	pt := f.Properties.MustString("wof:placetype", "custom")
+	co := f.Properties.MustString("wof:country", "XX")
+
+	props, err := json.Marshal(f.Properties)
+
+	record := &Record{
+		Id:         id,
+		ParentId:   pid,
+		Placetype:  pt,
+		Country:    co,
+		Geometry:   geom,
+		Properties: props,
+	}
+
+	return record, nil
 }
 
 /*

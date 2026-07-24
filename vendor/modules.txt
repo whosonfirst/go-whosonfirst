@@ -727,7 +727,7 @@ github.com/mattn/go-isatty
 # github.com/mattn/go-runewidth v0.0.16
 ## explicit; go 1.9
 github.com/mattn/go-runewidth
-# github.com/mattn/go-sqlite3 v1.14.47
+# github.com/mattn/go-sqlite3 v1.14.48
 ## explicit; go 1.21
 github.com/mattn/go-sqlite3
 # github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db
@@ -921,9 +921,9 @@ github.com/sfomuseum/go-flags/multi
 # github.com/sfomuseum/go-geojsonld v1.0.0
 ## explicit; go 1.13
 github.com/sfomuseum/go-geojsonld
-# github.com/sfomuseum/go-sfomuseum-mapshaper v0.0.4
-## explicit; go 1.22
-github.com/sfomuseum/go-sfomuseum-mapshaper
+# github.com/sfomuseum/go-sfomuseum v0.2.0
+## explicit; go 1.26.5
+github.com/sfomuseum/go-sfomuseum/mapshaper
 # github.com/sfomuseum/go-timings v1.4.0
 ## explicit; go 1.22
 github.com/sfomuseum/go-timings

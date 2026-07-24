@@ -6,7 +6,7 @@ Go package for common Who's On First functionality and interfaces.
 
 This package is work in progress and aims to merge a whole bunch of disparate `go-whosonfirst-*` packages in to one.
 
-The original design for the Who's On First (WOF) Go packages was to have a lot of small "composable" packages but over time this has made it difficult to reason about all of the (common) functionality available for working with WOF records. It also makes it a chore to apply updates.
+The original design for the Who's On First (WOF) Go packages was to have a lot of small "composable" packages but over time this has made it difficult to reason about all of the (common) functionality available for working with WOF records. It also makes it a chore to apply security updates.
 
 Since these packages were first started Go has gotten better at excluding unused code in imports so while package itself have many dependencies only those used in any given program should be imported in your tools.
 

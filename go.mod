@@ -34,7 +34,7 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/jtacoma/uritemplates v1.0.0
 	github.com/lib/pq v1.12.0
-	github.com/mattn/go-sqlite3 v1.14.47
+	github.com/mattn/go-sqlite3 v1.14.48
 	github.com/mitchellh/copystructure v1.2.0
 	github.com/mitchellh/go-wordwrap v1.0.1
 	github.com/opensearch-project/opensearch-go/v4 v4.6.0
@@ -50,7 +50,7 @@ require (
 	github.com/sfomuseum/go-edtf v1.3.0
 	github.com/sfomuseum/go-flags v0.12.1
 	github.com/sfomuseum/go-geojsonld v1.0.0
-	github.com/sfomuseum/go-sfomuseum-mapshaper v0.0.4
+	github.com/sfomuseum/go-sfomuseum v0.2.0
 	github.com/sfomuseum/go-timings v1.4.0
 	github.com/sfomuseum/iso8601duration v1.1.0
 	github.com/srwiley/oksvg v0.0.0-20221011165216-be6e8873101c

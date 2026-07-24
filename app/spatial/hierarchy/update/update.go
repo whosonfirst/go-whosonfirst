@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/sfomuseum/go-sfomuseum-mapshaper"
+	"github.com/sfomuseum/go-sfomuseum/mapshaper"
 	"github.com/whosonfirst/go-whosonfirst/v4/export"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/database"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/hierarchy"

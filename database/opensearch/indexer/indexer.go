@@ -22,7 +22,7 @@ type Indexer struct {
 type BulkIndexerOptions struct {
 	Workers       int
 	FlushInterval time.Duration
-	Verbose       bool
+	Verbose       bool	// Deprecated. Remove in v5
 }
 
 func NewIndexer(ctx context.Context, opensearch_client *opensearchapi.Client, opensearch_index string) (*Indexer, error) {
@@ -65,11 +65,7 @@ func NewBulkIndexerWithOptions(ctx context.Context, opensearch_client *opensearc
 		},
 		// OnFlushStart func(context.Context) context.Context // Called when the flush starts.
 		OnFlushEnd: func(context.Context) {
-			if opts.Verbose {
-				slog.Info("Bulk indexer flush complete")
-			} else {
-				slog.Debug("Bulk indexer flush complete")
-			}
+			slog.Debug("Bulk indexer flush complete")
 		},
 	}
 

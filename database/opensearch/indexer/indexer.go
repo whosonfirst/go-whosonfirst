@@ -131,12 +131,7 @@ func (idx *Indexer) IndexDocumentWithReader(ctx context.Context, doc_id string, 
 		DocumentID: doc_id,
 		Body:       r,
 		OnSuccess: func(ctx context.Context, item opensearchutil.BulkIndexerItem, res opensearchapi.BulkRespItem) {
-
-			if idx.bulk_indexer_verbose {
-				slog.Info("Index complete", "doc_id", doc_id)
-			} else {
-				slog.Debug("Index complete", "doc_id", doc_id)
-			}
+			slog.Debug("Index complete", "doc_id", doc_id)
 		},
 
 		OnFailure: func(ctx context.Context, item opensearchutil.BulkIndexerItem, res opensearchapi.BulkRespItem, err error) {

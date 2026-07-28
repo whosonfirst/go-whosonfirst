@@ -10,22 +10,26 @@ import (
 // It tries a horizontal centerline slice first; if that fails or falls into a 
 // bottleneck, it falls back to the true polygon centroid.
 func FindInnerPoint(geom orb.Geometry) (orb.Point, bool) {
+	
 	if geom == nil {
 		return orb.Point{}, false
 	}
 
 	switch g := geom.(type) {
 	case orb.Polygon:
+		
 		cloned := g.Clone()
 		unwrapPolygon(cloned)
 		return findMapshaperStylePoint(cloned), true
 
 	case orb.MultiPolygon:
+		
 		cloned := g.Clone()
 		unwrapMultiPolygon(cloned)
 		
 		// Isolate the dominant landmass (ignores small islands like the Farallons or Arctic rocks)
 		largestPoly := findLargestPolygon(cloned)
+		
 		if len(largestPoly) == 0 {
 			return orb.Point{}, false
 		}
@@ -40,6 +44,7 @@ func FindInnerPoint(geom orb.Geometry) (orb.Point, bool) {
 
 // findMapshaperStylePoint mirrors Mapshaper's decision matrix for inner anchor generation.
 func findMapshaperStylePoint(poly orb.Polygon) orb.Point {
+	
 	bound := poly.Bound()
 	
 	// Fallback 1: Calculate the true planar centroid of the polygon
@@ -56,6 +61,7 @@ func findMapshaperStylePoint(poly orb.Polygon) orb.Point {
 	targetY := bound.Min.Y() + (bound.Max.Y()-bound.Min.Y())/2
 	
 	var xIntersections []float64
+	
 	for _, ring := range poly {
 		xIntersections = append(xIntersections, intersectHorizontalRing(ring, targetY)...)
 	}

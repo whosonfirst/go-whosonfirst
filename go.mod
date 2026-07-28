@@ -50,7 +50,6 @@ require (
 	github.com/sfomuseum/go-edtf v1.3.0
 	github.com/sfomuseum/go-flags v0.12.1
 	github.com/sfomuseum/go-geojsonld v1.0.0
-	github.com/sfomuseum/go-sfomuseum v0.2.0
 	github.com/sfomuseum/go-timings v1.4.0
 	github.com/sfomuseum/iso8601duration v1.1.0
 	github.com/srwiley/oksvg v0.0.0-20221011165216-be6e8873101c

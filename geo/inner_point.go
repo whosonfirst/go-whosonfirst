@@ -6,6 +6,9 @@ import (
 	"github.com/paulmach/orb"
 )
 
+// Note: This code was written with the assistance of robots. It has been reviewed and seems fine.
+// At least until it is not.
+
 // FindInnerPoint implements Mapshaper's inner point algorithm.
 // It tries a horizontal centerline slice first; if that fails or falls into a 
 // bottleneck, it falls back to the true polygon centroid.

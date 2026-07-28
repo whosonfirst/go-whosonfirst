@@ -22,7 +22,7 @@ type Indexer struct {
 type BulkIndexerOptions struct {
 	Workers       int
 	FlushInterval time.Duration
-	Verbose       bool	// Deprecated. Remove in v5
+	Verbose       bool // Deprecated. Remove in v5
 }
 
 func NewIndexer(ctx context.Context, opensearch_client *opensearchapi.Client, opensearch_index string) (*Indexer, error) {

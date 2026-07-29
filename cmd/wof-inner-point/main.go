@@ -2,21 +2,19 @@ package main
 
 import (
 	"encoding/json"
-	"log"
 	"flag"
+	"log"
 	"os"
-	
+
 	"github.com/paulmach/orb/geojson"
 	"github.com/whosonfirst/go-whosonfirst/v4/geo"
 )
 
 func main() {
 
-
 	flag.Parse()
 
 	for _, path := range flag.Args() {
-
 
 		body, err := os.ReadFile(path)
 
@@ -40,9 +38,9 @@ func main() {
 		pt_f.Properties = map[string]any{
 			"hello": "world",
 		}
-		
+
 		enc := json.NewEncoder(os.Stdout)
 		enc.Encode(pt_f)
 	}
-	
+
 }

@@ -2,7 +2,7 @@ package geo
 
 import (
 	"math"
-	
+
 	"github.com/paulmach/orb"
 )
 
@@ -10,33 +10,33 @@ import (
 // At least until it is not.
 
 // FindInnerPoint implements Mapshaper's inner point algorithm.
-// It tries a horizontal centerline slice first; if that fails or falls into a 
+// It tries a horizontal centerline slice first; if that fails or falls into a
 // bottleneck, it falls back to the true polygon centroid.
 func FindInnerPoint(geom orb.Geometry) (orb.Point, bool) {
-	
+
 	if geom == nil {
 		return orb.Point{}, false
 	}
 
 	switch g := geom.(type) {
 	case orb.Polygon:
-		
+
 		cloned := g.Clone()
 		unwrapPolygon(cloned)
 		return findMapshaperStylePoint(cloned), true
 
 	case orb.MultiPolygon:
-		
+
 		cloned := g.Clone()
 		unwrapMultiPolygon(cloned)
-		
+
 		// Isolate the dominant landmass (ignores small islands like the Farallons or Arctic rocks)
 		largestPoly := findLargestPolygon(cloned)
-		
+
 		if len(largestPoly) == 0 {
 			return orb.Point{}, false
 		}
-		
+
 		return wrapPoint(findMapshaperStylePoint(largestPoly)), true
 
 	default:
@@ -47,12 +47,12 @@ func FindInnerPoint(geom orb.Geometry) (orb.Point, bool) {
 
 // findMapshaperStylePoint mirrors Mapshaper's decision matrix for inner anchor generation.
 func findMapshaperStylePoint(poly orb.Polygon) orb.Point {
-	
+
 	bound := poly.Bound()
-	
+
 	// Fallback 1: Calculate the true planar centroid of the polygon
 	centroid := calculateCentroid(poly)
-	
+
 	// Mapshaper check: If the true centroid is safely inside the polygon shell,
 	// use it. This correctly places the point in Downtown SF and Central Russia.
 	if pointInPolygon(centroid, poly) {
@@ -62,9 +62,9 @@ func findMapshaperStylePoint(poly orb.Polygon) orb.Point {
 	// Fallback 2: Mapshaper's scanline fallback
 	// Calculate the strict horizontal midpoint of the bounding box
 	targetY := bound.Min.Y() + (bound.Max.Y()-bound.Min.Y())/2
-	
+
 	var xIntersections []float64
-	
+
 	for _, ring := range poly {
 		xIntersections = append(xIntersections, intersectHorizontalRing(ring, targetY)...)
 	}
@@ -113,7 +113,7 @@ func calculateCentroid(poly orb.Polygon) orb.Point {
 
 	shell := poly[0]
 	n := len(shell)
-	
+
 	cx, cy := 0.0, 0.0
 	area := 0.0
 
@@ -183,7 +183,9 @@ func intersectHorizontalRing(ring orb.Ring, y float64) []float64 {
 }
 
 func unwrapMultiPolygon(mp orb.MultiPolygon) {
-	if len(mp) == 0 || len(mp[0]) == 0 || len(mp[0][0]) == 0 { return }
+	if len(mp) == 0 || len(mp[0]) == 0 || len(mp[0][0]) == 0 {
+		return
+	}
 	refLng := mp[0][0][0].X()
 	for _, poly := range mp {
 		for _, ring := range poly {
@@ -195,7 +197,9 @@ func unwrapMultiPolygon(mp orb.MultiPolygon) {
 }
 
 func unwrapPolygon(poly orb.Polygon) {
-	if len(poly) == 0 || len(poly[0]) == 0 { return }
+	if len(poly) == 0 || len(poly[0]) == 0 {
+		return
+	}
 	refLng := poly[0][0].X()
 	for _, ring := range poly {
 		for i := range ring {
@@ -206,14 +210,22 @@ func unwrapPolygon(poly orb.Polygon) {
 
 func unwrapLongitude(lng, refLng float64) float64 {
 	diff := lng - refLng
-	if diff < -180 { return lng + 360 } else if diff > 180 { return lng - 360 }
+	if diff < -180 {
+		return lng + 360
+	} else if diff > 180 {
+		return lng - 360
+	}
 	return lng
 }
 
 func wrapPoint(pt orb.Point) orb.Point {
 	lng := pt.X()
-	for lng > 180 { lng -= 360 }
-	for lng < -180 { lng += 360 }
+	for lng > 180 {
+		lng -= 360
+	}
+	for lng < -180 {
+		lng += 360
+	}
 	return orb.Point{lng, pt.Y()}
 }
 
@@ -231,7 +243,9 @@ func findLargestPolygon(mp orb.MultiPolygon) orb.Polygon {
 }
 
 func calculatePolygonArea(poly orb.Polygon) float64 {
-	if len(poly) == 0 { return 0 }
+	if len(poly) == 0 {
+		return 0
+	}
 	area := math.Abs(calculateRingArea(poly[0]))
 	for i := 1; i < len(poly); i++ {
 		area -= math.Abs(calculateRingArea(poly[i]))
@@ -241,7 +255,9 @@ func calculatePolygonArea(poly orb.Polygon) float64 {
 
 func calculateRingArea(ring orb.Ring) float64 {
 	n := len(ring)
-	if n < 3 { return 0 }
+	if n < 3 {
+		return 0
+	}
 	area := 0.0
 	for i := 0; i < n; i++ {
 		j := (i + 1) % n

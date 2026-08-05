@@ -117,7 +117,7 @@ func calculateCentroid(poly orb.Polygon) orb.Point {
 	cx, cy := 0.0, 0.0
 	area := 0.0
 
-	for i := 0; i < n; i++ {
+	for i := range n {
 		j := (i + 1) % n
 		factor := (shell[i].X() * shell[j].Y()) - (shell[j].X() * shell[i].Y())
 		area += factor
@@ -167,7 +167,7 @@ func intersectHorizontalRing(ring orb.Ring, y float64) []float64 {
 	if n < 3 {
 		return intersections
 	}
-	for i := 0; i < n; i++ {
+	for i := range n {
 		p1 := ring[i]
 		p2 := ring[(i+1)%n]
 		if p1.Y() == p2.Y() {
@@ -259,7 +259,7 @@ func calculateRingArea(ring orb.Ring) float64 {
 		return 0
 	}
 	area := 0.0
-	for i := 0; i < n; i++ {
+	for i := range n {
 		j := (i + 1) % n
 		area += ring[i].X() * ring[j].Y()
 		area -= ring[j].X() * ring[i].Y()

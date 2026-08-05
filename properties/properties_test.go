@@ -1,7 +1,6 @@
 package properties
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
@@ -101,7 +100,7 @@ func TestWriteProperties(t *testing.T) {
 		t.Fatalf("Property reported as 'name' property")
 	}
 
-	dir, err := ioutil.TempDir("", "properties")
+	dir, err := os.MkdirTemp("", "properties")
 
 	if err != nil {
 		t.Fatalf("Failed to create temp dir, %v", err)

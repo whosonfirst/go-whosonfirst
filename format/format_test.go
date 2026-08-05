@@ -1,7 +1,6 @@
 package format
 
 import (
-	"io/ioutil"
 	"os"
 	"path"
 	"strings"
@@ -14,12 +13,12 @@ import (
 const fixturesPath = "fixtures"
 
 func testFile(t *testing.T, inputPath string, expectedOutputPath string) {
-	inputBytes, err := ioutil.ReadFile(inputPath)
+	inputBytes, err := os.ReadFile(inputPath)
 	if err != nil {
 		t.Error(err)
 	}
 
-	expectedBytes, err := ioutil.ReadFile(expectedOutputPath)
+	expectedBytes, err := os.ReadFile(expectedOutputPath)
 	if err != nil {
 		t.Error(err)
 	}

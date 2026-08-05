@@ -6,7 +6,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -52,13 +51,13 @@ func NewCSVProducer(ctx context.Context, uri string) (Producer, error) {
 
 	path_repo := q.Get("path-repo")
 
-	catalog_writer, err := ioutil.TempFile("", "catalog")
+	catalog_writer, err := os.CreateTemp("", "catalog")
 
 	if err != nil {
 		return nil, fmt.Errorf("Failed to create catalog writer, %w", err)
 	}
 
-	sources_writer, err := ioutil.TempFile("", "sources")
+	sources_writer, err := os.CreateTemp("", "sources")
 
 	if err != nil {
 		return nil, fmt.Errorf("Failed to create catalog writer, %w", err)

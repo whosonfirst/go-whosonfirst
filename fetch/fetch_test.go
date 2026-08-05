@@ -3,7 +3,7 @@ package fetch
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
+
 	"log/slog"
 	"os"
 	"path/filepath"
@@ -22,7 +22,7 @@ func TestFetch(t *testing.T) {
 
 	ctx := context.Background()
 
-	tmpdir, err := ioutil.TempDir("", "fetch")
+	tmpdir, err := os.MkdirTemp("", "fetch")
 
 	if err != nil {
 		t.Fatal(err)

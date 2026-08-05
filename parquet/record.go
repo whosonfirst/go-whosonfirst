@@ -20,6 +20,39 @@ type Record struct {
 	Properties []byte `parquet:"properties,json"`
 }
 
+func (r *Record) AsGeoJSON() (*geojson.Feature, error) {
+
+	geom, err := wkb.Unmarshal(r.Geometry)
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed to unmarshal geometry, %w", err)
+	}
+
+	var props map[string]any
+
+	err = json.Unmarshal(r.Properties, &props)
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed to unmarshal properties, %w", err)
+	}
+
+	f := geojson.NewFeature(geom)
+	f.Properties = props
+
+	return f, nil
+}
+
+func (r *Record) AsGeoJSONBytes() ([]byte, error) {
+
+	f, err := r.AsGeoJSON()
+
+	if err != nil {
+		return nil, err
+	}
+
+	return json.Marshal(f)
+}
+
 func RecordFromGeoJSONReader(r io.Reader) (*Record, error) {
 
 	body, err := io.ReadAll(r)

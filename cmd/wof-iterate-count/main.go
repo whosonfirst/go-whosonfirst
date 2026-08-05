@@ -4,6 +4,9 @@ import (
 	"context"
 	"log"
 
+	_ "github.com/whosonfirst/go-whosonfirst/v4/iterate/git"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/iterate/parquet"
+
 	"github.com/whosonfirst/go-whosonfirst/v4/app/iterate/count"
 )
 

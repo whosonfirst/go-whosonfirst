@@ -22,7 +22,8 @@ func init() {
 	iterate.RegisterIterator(ctx, "parquet", NewParquetIterator)
 }
 
-// ParquetIterator implements the `Iterator` interface for crawling records in a Parquet repository.
+// ParquetIterator implements the `Iterator` interface for crawling records in Parquet files produced
+// by the `whosonfirst/go-whosonfirst/v4/parquet.ParquetWriter` methods.
 type ParquetIterator struct {
 	iterate.Iterator
 	// The count of documents that have been processed so far.

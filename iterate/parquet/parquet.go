@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"io"
 	"iter"
 	"log/slog"
 	"net/http"
@@ -34,9 +33,7 @@ type ParquetIterator struct {
 
 // NewParquetIterator() returns a new `ParquetIterator` instance configured by 'uri' in the form of:
 //
-//	parquet://?{PARAMETERS}
-//
-// Where {PARAMETERS} may be:
+//	parquet://
 func NewParquetIterator(ctx context.Context, uri string) (iterate.Iterator, error) {
 
 	it := &ParquetIterator{
@@ -47,6 +44,7 @@ func NewParquetIterator(ctx context.Context, uri string) (iterate.Iterator, erro
 	return it, nil
 }
 
+// Iterate will return an `iter.Seq2[*Record, error]` for each record encountered in 'uris'.
 func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq2[*iterate.Record, error] {
 
 	return func(yield func(rec *iterate.Record, err error) bool) {
@@ -59,9 +57,13 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 			logger := slog.Default()
 			logger = logger.With("uri", uri)
 
+			logger.Debug("Read records from URI")
+
 			u, err := url.Parse(uri)
 
 			if err != nil {
+
+				logger.Error("Failed to parse URI", "error", err)
 
 				if !yield(nil, fmt.Errorf("Failed to parse URI '%s', %w", uri, err)) {
 					return
@@ -70,7 +72,7 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 				continue
 			}
 
-			var r io.ReaderAt
+			var r ReadCloserAt
 			var sz int64
 
 			switch u.Scheme {
@@ -80,6 +82,8 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 
 				if err != nil {
 
+					logger.Error("Failed to retrieve URI", "error", err)
+
 					if !yield(nil, fmt.Errorf("Failed to retrieve %s, %w", uri, err)) {
 						return
 					}
@@ -87,13 +91,17 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 					continue
 				}
 
-				r = rsp.Body
+				r = NewCachedReaderAt(rsp.Body)
+				sz = rsp.ContentLength
 
 			default:
 
 				f, err := os.Open(uri)
 
 				if err != nil {
+
+					logger.Error("Failed to open URI for reading", "error", err)
+
 					if !yield(nil, fmt.Errorf("Failed to open %s for reading, %w", uri, err)) {
 						return
 					}
@@ -101,16 +109,35 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 					continue
 				}
 
+				info, err := f.Stat()
+
+				if err != nil {
+
+					logger.Error("Failed to stat URI", "error", err)
+					f.Close()
+
+					if !yield(nil, fmt.Errorf("Failed to stat %s, %w", uri, err)) {
+						return
+					}
+
+					continue
+				}
+
 				r = f
+				sz = info.Size()
 			}
 
 			rows, err := parquet_go.Read[*parquet_wof.Record](r, sz)
 
 			if err != nil {
+
+				logger.Error("Failed to create Parquet reader", "error", err)
+				r.Close()
+
 				if !yield(nil, fmt.Errorf("Failed to create Parquet reader for %s, %w", uri, err)) {
 					return
 				}
-				// close r here...
+
 				continue
 			}
 
@@ -122,10 +149,14 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 				body, err := p_rec.AsGeoJSONBytes()
 
 				if err != nil {
+
+					logger.Error("Failed to derive GeoJSON from record", "record", i, "error", err)
+					r.Close()
+
 					if !yield(nil, fmt.Errorf("Failed to derive geojson from record for %s, %w", path, i, err)) {
 						return
 					}
-					// close r here...
+
 					continue
 				}
 
@@ -133,10 +164,14 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 				rsc, err := ioutil.NewReadSeekCloser(br)
 
 				if err != nil {
+
+					logger.Error("Failed to create ReadSeekCloser for record", "record", i, "error", err)
+					r.Close()
+
 					if !yield(nil, fmt.Errorf("Failed to create ReadSeekCloser for %s, %w", path, i, err)) {
 						return
 					}
-					// close r here...
+
 					continue
 				}
 
@@ -146,11 +181,13 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 				}
 
 				if !yield(rec, nil) {
+					r.Close()
 					return
 				}
 			}
 
-			// close r here...
+			r.Close()
+			logger.Debug("Finished processing URI", "count seen (total)", it.Seen())
 		}
 	}
 }

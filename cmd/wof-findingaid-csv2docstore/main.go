@@ -9,7 +9,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
+
 	"log"
 	"os"
 	"strconv"
@@ -282,7 +282,7 @@ func processSources(ctx context.Context, r io.Reader) (map[int64]string, error) 
 
 func writeTempFile(r io.Reader) (string, error) {
 
-	wr, err := ioutil.TempFile("", "docstore")
+	wr, err := os.CreateTemp("", "docstore")
 
 	if err != nil {
 		return "", fmt.Errorf("Failed to create temp file, %w", err)

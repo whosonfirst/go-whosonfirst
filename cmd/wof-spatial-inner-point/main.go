@@ -7,8 +7,8 @@ import (
 	"os"
 
 	_ "github.com/whosonfirst/go-whosonfirst/v4/spatial/pmtiles"
-	_ "github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite"	
-	
+	_ "github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite"
+
 	"github.com/paulmach/orb/geojson"
 	"github.com/whosonfirst/go-whosonfirst/v4/spatial/geo"
 )

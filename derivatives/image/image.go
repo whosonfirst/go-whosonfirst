@@ -4,7 +4,7 @@ import (
 	"image"
 	"image/png"
 	"io"
-	"io/ioutil"
+
 	"os"
 
 	"github.com/srwiley/oksvg"
@@ -52,7 +52,7 @@ func FeatureToPNG(f []byte, opts *Options) error {
 
 func FeatureToImage(f []byte, opts *Options) (image.Image, error) {
 
-	tmpfile, err := ioutil.TempFile("", "svg")
+	tmpfile, err := os.CreateTemp("", "svg")
 
 	if err != nil {
 		return nil, err

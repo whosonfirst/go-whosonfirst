@@ -7,7 +7,7 @@ import (
 	"log/slog"
 	gohttp "net/http"
 	"path/filepath"
-	
+
 	"github.com/NYTimes/gziphandler"
 	"github.com/aaronland/go-http-maps/v2"
 	"github.com/aaronland/go-http/v3/handlers"

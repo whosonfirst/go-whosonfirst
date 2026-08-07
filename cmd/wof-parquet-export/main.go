@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"os"
 	"path/filepath"
+	"sort"
 
 	_ "github.com/whosonfirst/go-whosonfirst/v4/iterate/git"
 
@@ -79,6 +80,7 @@ func main() {
 		}
 
 		repos = list_repos
+		sort.Strings(repos)
 	}
 
 	for _, repo := range repos {

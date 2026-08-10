@@ -14,6 +14,7 @@ import (
 	parquet_go "github.com/parquet-go/parquet-go"
 	"github.com/whosonfirst/go-ioutil"
 	"github.com/whosonfirst/go-whosonfirst/v4/iterate"
+	"github.com/whosonfirst/go-whosonfirst/v4/iterate/filters"
 	parquet_wof "github.com/whosonfirst/go-whosonfirst/v4/parquet"
 )
 
@@ -30,14 +31,29 @@ type ParquetIterator struct {
 	seen int64
 	// Boolean value indicating whether records are still being iterated.
 	iterating *atomic.Bool
+	// filters is a `filters.Filters` instance used to include or exclude specific records from being crawled.
+	filters filters.Filters
 }
 
 // NewParquetIterator() returns a new `ParquetIterator` instance configured by 'uri' in the form of:
 //
 //	parquet://
+//
+// Where {PARAMETERS} may be:
+// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
 func NewParquetIterator(ctx context.Context, uri string) (iterate.Iterator, error) {
 
+	f, err := filters.NewQueryFiltersFromURI(ctx, uri)
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed to create filters from query, %w", err)
+	}
+
 	it := &ParquetIterator{
+		filters:   f,
 		seen:      int64(0),
 		iterating: new(atomic.Bool),
 	}
@@ -174,6 +190,26 @@ func (it *ParquetIterator) Iterate(ctx context.Context, uris ...string) iter.Seq
 					}
 
 					continue
+				}
+
+				if it.filters != nil {
+
+					ok, err := iterate.ApplyFilters(ctx, rsc, it.filters)
+
+					if err != nil {
+						rsc.Close()
+						if !yield(nil, fmt.Errorf("Failed to apply filters for '%s', %w", path, err)) {
+							return
+						}
+
+						continue
+					}
+
+					if !ok {
+						rsc.Close()
+						continue
+					}
+
 				}
 
 				rec := &iterate.Record{

@@ -71,8 +71,8 @@ github.com/aaronland/go-http/v3 v3.3.0 h1:59XqOTaG+VTGmRShr/+QtqqGgdTylMopesoMWF
 github.com/aaronland/go-http/v3 v3.3.0/go.mod h1:eTQ2Cdc/7KFQ4UNfzyOnILS7TI3VNsOoc0+uYfNU8O0=
 github.com/aaronland/go-http/v4 v4.0.4 h1:oWoBqp0JycnAyLqKNFcHDh3DletYq761vfF2NBwknVw=
 github.com/aaronland/go-http/v4 v4.0.4/go.mod h1:TgXvSUijLOFxBbjTV+s3V5NAgyj0YYgYXp6B1slGohQ=
-github.com/aaronland/go-json-query v0.2.0 h1:b9A9daIImHA9lCk3jwt5+/xq383tH/LOIc9giqxp7go=
-github.com/aaronland/go-json-query v0.2.0/go.mod h1:lSg911oEIxJp8SQYbpOAVmfzwuaH8tCGoJY5BYHq0wU=
+github.com/aaronland/go-json-query v0.2.1 h1:pRuET5z4u8NXPZZM1Rq4mDQa+4LNqFB0uy0JF2Tr1Yg=
+github.com/aaronland/go-json-query v0.2.1/go.mod h1:lSg911oEIxJp8SQYbpOAVmfzwuaH8tCGoJY5BYHq0wU=
 github.com/aaronland/go-pagination v0.2.0/go.mod h1:zrYVkUTBoe6yJ23l6OyTyfSpTyg6s/cNxZxNztXNQpQ=
 github.com/aaronland/go-pagination v0.3.0 h1:5YHm2ylZtWj40m+hyncrt4vaZxjZ5v6szi2F4OqkqO4=
 github.com/aaronland/go-pagination v0.3.0/go.mod h1:zrYVkUTBoe6yJ23l6OyTyfSpTyg6s/cNxZxNztXNQpQ=

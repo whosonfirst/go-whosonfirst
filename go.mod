@@ -10,7 +10,7 @@ require (
 	github.com/aaronland/go-http-maps/v2 v2.5.1
 	github.com/aaronland/go-http/v3 v3.3.0
 	github.com/aaronland/go-http/v4 v4.0.4
-	github.com/aaronland/go-json-query v0.2.0
+	github.com/aaronland/go-json-query v0.2.1
 	github.com/aaronland/go-pagination v0.3.0
 	github.com/aaronland/go-pagination-sql v0.2.0
 	github.com/aaronland/go-roster v1.0.0
@@ -69,7 +69,6 @@ require (
 	github.com/whosonfirst/go-writer/v3 v3.1.1
 	github.com/whosonfirst/warning v0.1.1
 	gocloud.dev v0.46.0
-	golang.org/x/text v0.39.0
 	google.golang.org/grpc v1.82.1
 	google.golang.org/protobuf v1.36.11
 	modernc.org/sqlite v1.55.0
@@ -217,6 +216,7 @@ require (
 	golang.org/x/sync v0.22.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/term v0.44.0 // indirect
+	golang.org/x/text v0.39.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/api v0.272.0 // indirect

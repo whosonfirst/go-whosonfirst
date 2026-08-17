@@ -32,8 +32,8 @@ func main() {
 	fs.StringVar(&iterator_uri, "iterator-uri", "git:///tmp", "A registered whosonfirst/go-whosonfirst/v4/iterate.Iterator URI.")
 	fs.StringVar(&writer_root, "writer-root", "/usr/local/data/whosonfirst-parquet", "The path on the local filesystem where Parquet files should be written to.")
 	fs.StringVar(&org, "org", "whosonfirst-data", "The organization to use when cloning repos.")
-	fs.Var(&prefixes, "prefix", "Zero or more repository prefixe to filter by (if -repo flag is empty). Default is [whosonfirst-data-admin].")
-	fs.Var(&exclude, "exclude", "Zero or more repository prefixe to exclude by (if -repo flag is empty). Default is [].")
+	fs.Var(&prefixes, "prefix", "Zero or more repository prefixe to filter by (if -repo flag is empty). Default is [whosonfirst-data-admin-].")
+	fs.Var(&exclude, "exclude", "Zero or more repository prefixe to exclude by (if -repo flag is empty). Default is [whosonfirst-data-admin-alt].")
 	fs.Var(&repos, "repo", "Zero or more repos to clone and create Parquet exports for. If empty then repos will be limited to those starting in whosonfirst-data-admin.")
 	fs.BoolVar(&verbose, "verbose", false, "Enable verbose (debug) logging.")
 
@@ -64,6 +64,12 @@ func main() {
 		if len(prefixes) == 0 {
 			prefixes = []string{
 				"whosonfirst-data-admin",
+			}
+		}
+
+		if len(exclude) == 0 {
+			exclude = []string{
+				"whosonfirst-data-admin-alt",
 			}
 		}
 

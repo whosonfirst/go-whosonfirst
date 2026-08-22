@@ -5,3 +5,4 @@ bin
 *.wasm
 *.parquet
 *.db
+.DS_Store

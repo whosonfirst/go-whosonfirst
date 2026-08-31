@@ -19,7 +19,7 @@ import (
 //
 // Matches pqGetHomeDirectory() from PostgreSQL.
 // https://github.com/postgres/postgres/blob/2b117bb/src/interfaces/libpq/fe-connect.c#L8214
-func Home(subdir bool) string {
+func Home() string {
 	if runtime.GOOS == "windows" {
 		// pq uses SHGetFolderPath(), which is deprecated but x/sys/windows has
 		// KnownFolderPath(). We don't really want to pull that in though, so
@@ -40,12 +40,7 @@ func Home(subdir bool) string {
 		}
 		home = u.HomeDir
 	}
-	// libpq reads some files from ~/ and some from ~/.postgresql – on Windows
-	// it always uses %APPDATA%/postgresql.
-	if subdir {
-		home = filepath.Join(home, ".postgresql")
-	}
-	return home
+	return filepath.Join(home, ".postgresql")
 }
 
 // ErrNotExists reports if err is a "path doesn't exist" type error.
@@ -67,7 +62,7 @@ var WarnFD io.Writer = os.Stderr
 func Pgpass(passfile string) string {
 	// Get passfile from the options.
 	if passfile == "" {
-		home := Home(false)
+		home := Home()
 		if home == "" {
 			return ""
 		}

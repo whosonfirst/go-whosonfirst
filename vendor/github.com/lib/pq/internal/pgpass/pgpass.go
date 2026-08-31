@@ -9,8 +9,9 @@ import (
 	"github.com/lib/pq/internal/pqutil"
 )
 
-func PasswordFromPgpass(passfile, user, password, host, port, dbname string) string {
-	if password != "" { // Do not process .pgpass if a password was supplied.
+func PasswordFromPgpass(passfile, user, password, host, port, dbname string, passwordSet bool) string {
+	// Do not process .pgpass if a password was supplied.
+	if passwordSet {
 		return password
 	}
 

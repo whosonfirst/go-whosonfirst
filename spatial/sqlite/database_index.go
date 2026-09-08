@@ -175,6 +175,13 @@ func (db *SQLiteSpatialDatabase) PointInPolygonWithIterator(ctx context.Context,
 		seen := new(sync.Map)
 		wg := new(sync.WaitGroup)
 
+		// This could be made more elegant by dispatching all the events
+		// in wg.Go below to a separate channel and yielding in the order
+		// those events arrive. It's probably less error-prone than mu.Lock
+		// and mu.Unlock -ing all over the place but it will do for the time
+		// being.
+		mu := new(sync.RWMutex)
+
 		working := new(atomic.Bool)
 		working.Store(true)
 
@@ -200,9 +207,15 @@ func (db *SQLiteSpatialDatabase) PointInPolygonWithIterator(ctx context.Context,
 
 					if working.Load() {
 
+						mu.Lock()
+
 						if !yield(nil, err) {
+							mu.Unlock()
 							working.Swap(false)
+							return
 						}
+
+						mu.Unlock()
 					}
 
 					return
@@ -215,7 +228,13 @@ func (db *SQLiteSpatialDatabase) PointInPolygonWithIterator(ctx context.Context,
 				seen.Store(sp.Id, r)
 
 				if working.Load() {
-					yield(r, nil)
+					mu.Lock()
+					if !yield(r, nil) {
+						mu.Unlock()
+						return
+					}
+
+					mu.Unlock()
 				}
 			})
 		}

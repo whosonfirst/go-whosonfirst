@@ -42,7 +42,7 @@ func main() {
 			log.Fatalf("Iterator yielded an error, %v", err)
 		}
 
-		_, err = wr.WriteFromReader(rec.Body)
+		_, err = parquet.WriteFromReader(wr, rec.Body)
 
 		rec.Body.Close()
 

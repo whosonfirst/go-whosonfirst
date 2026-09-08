@@ -927,7 +927,7 @@ github.com/sfomuseum/go-flags/multi
 # github.com/sfomuseum/go-geojsonld v1.0.0
 ## explicit; go 1.13
 github.com/sfomuseum/go-geojsonld
-# github.com/sfomuseum/go-parquet v0.2.0
+# github.com/sfomuseum/go-parquet v0.3.1
 ## explicit; go 1.27.0
 github.com/sfomuseum/go-parquet
 # github.com/sfomuseum/go-timings v1.4.0

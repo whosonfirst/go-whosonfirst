@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	_ "github.com/mattn/go-sqlite3"
-	// _ "github.com/whosonfirst/go-whosonfirst-iterate-git/v3"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/iterate/parquet"
 	_ "gocloud.dev/docstore/awsdynamodb/v2"
 	_ "gocloud.dev/docstore/memdocstore"
+	_ "modernc.org/sqlite"
 
 	"github.com/jtacoma/uritemplates"
 	"github.com/whosonfirst/go-whosonfirst/v4/findingaid/producer"

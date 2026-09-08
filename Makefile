@@ -114,6 +114,7 @@ cli-names:
 cli-parquet:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-parquet-write cmd/wof-parquet-write/main.go
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-parquet-export cmd/wof-parquet-export/main.go
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-parquet-find cmd/wof-parquet-find/main.go
 
 cli-placetypes:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-placetypes-ancestors cmd/wof-placetypes-ancestors/main.go

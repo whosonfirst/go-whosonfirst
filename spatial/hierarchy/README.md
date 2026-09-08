@@ -19,14 +19,14 @@ _Note: For the sake of brevity all error-handling has been removed from these ex
 
 ### Basic
 
-This example demonstrates how to use the `hierarchy.PointInPolygonHierarchyResolver` package with a set of "core" Who's On First documents using a [SQLite-backed spatial database](https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite).
+This example demonstrates how to use the `hierarchy.PointInPolygonHierarchyResolver` package with a set of "core" Who's On First documents using a [SQLite-backed spatial database](https://github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite).
 
 ```
 import (
        "context"
 
        _ "github.com/mattn/go-sqlite3"
-       _ "github.com/whosonfirst/go-whosonfirst-spatial-sqlite"
+       _ "github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite"
        
        "github.com/sfomuseum/go-sfomuseum-mapshaper"
        "github.com/whosonfirst/go-whosonfirst-spatial/database"
@@ -39,18 +39,6 @@ func main() {
 
 	ctx := context.Background()
 	
-	// The Mapshaper "client" (and its associated "server") is not required by a point-in-polygon
-	// hierarchy resolver but is included in this example for the sake of thoroughness. If present
-	// it will be used to derive the centroid for a GeoJSON Feature using the Mapshape "inner point"
-	// command. Both the "client" and "server" components are part of the [sfomuseum/go-sfomuseum-mapshaper](#)
-	// package but setting up and running the "server" component is out of scope for this document.
-	// Basically Mapshaper's "inner point" functonality can't be ported to Go fast enough.
-	//
-	// If the mapshaper client is `nil` then there are a variety of other heuristics that will be
-	// used, based on the content of the input GeoJSON Feature, to derive a candidate centroid to
-	// be used for point-in-polygon operations.
-        mapshaper_cl, _ := mapshaper.NewClient(ctx, "http://localhost:8080")
-
 	// Create a new spatial database instance. For the sake of this example it
 	// is assumed that the database has already been populated with records.
         spatial_db, _ := database.NewSpatialDatabase(ctx, "sql://sqlite3?dsn=example.db")
@@ -58,7 +46,6 @@ func main() {
 	// Create configuration options for hierarchy resolver
 	resolver_opts := &hierarchy.PointInPolygonHierarchyResolverOptions{
 		Database:             spatial_db,
-	        Mapshaper:            mapshaper_cl,
         }
 
 	// Create the hierarchy resolver itself
@@ -121,7 +108,6 @@ func main() {
 
 	resolver_opts := &hierarchy.PointInPolygonHierarchyResolverOptions{
 		Database:             spatial_db,
-	        Mapshaper:            mapshaper_cl,
         }
 
         resolver, _ := hierarchy.NewPointInPolygonHierarchyResolver(ctx, resolver_opts)
@@ -161,7 +147,7 @@ import (
 
        _ "github.com/mattn/go-sqlite3"
        _ "github.com/sfomuseum/go-sfomuseum-placetypes"
-       _ "github.com/whosonfirst/go-whosonfirst-spatial-sqlite"
+       _ "github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite"
        
        "github.com/sfomuseum/go-sfomuseum-mapshaper"
        "github.com/whosonfirst/go-whosonfirst-placetypes"
@@ -206,7 +192,6 @@ func main() {
 	// filtering callback function.
 	resolver_opts := &hierarchy.PointInPolygonHierarchyResolverOptions{
 		Database:             spatial_db,
-	        Mapshaper:            mapshaper_cl,
 		PlacetypesDefinition: pt_def,
                 SkipPlacetypeFilter:  true,
         }

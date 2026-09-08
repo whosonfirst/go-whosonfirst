@@ -14,21 +14,21 @@ It (this) is the "base" package that defines provider-agnostic, but WOF-specific
 
 These interfaces are then implemented in full or in part by provider-specific classes. For example, an in-memory RTree index (which is part of this package) or a SQLite database or even a Protomaps database:
 
-* https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite
-* https://github.com/whosonfirst/go-whosonfirst-spatial-pmtiles
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/pmtiles
 
-_You may have noticed the absence of an equivalent `go-whosonfirst-spatial-postgis` or even `go-whosonfirst-spatial-mysql` implementation. That's only because I've been focusing on implementations with fewer requirements, dependencies and less overhead to set up and maintain. There is no reason there couldn't be implementations for either database and some day I hope there will be._
+_You may have noticed the absence of an equivalent `go-whosonfirst/v4/spatial/postgis` or even `go-whosonfirst/v4/spatial/mysql` implementation. That's only because I've been focusing on implementations with fewer requirements, dependencies and less overhead to set up and maintain. There is no reason there couldn't be implementations for either database and some day I hope there will be._
 
 Building on that there are equivalent base packages for "server" implementations, like:
 
-* https://github.com/whosonfirst/go-whosonfirst-spatial-www
-* https://github.com/whosonfirst/go-whosonfirst-spatial-grpc
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/www
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc
 
 The idea is that all of these pieces can be _easily_ combined in to purpose-fit applications.  As a practical matter it's mostly about trying to identify and package the common pieces in to as few lines of code as possible so that they might be combined with an application-specific `import` statement. For example:
 
 ```
 import (
-         _ "github.com/whosonfirst/go-whosonfirst-spatial-MY-SPECIFIC-REQUIREMENTS"
+         _ "github.com/whosonfirst/go-whosonfirst/v4/spatial/MY-SPECIFIC-REQUIREMENTS"
 )
 ```
 
@@ -41,8 +41,8 @@ import (
 	"context"
 	"log"
 
-	_ "github.com/whosonfirst/go-whosonfirst-spatial-sqlite"
-	"github.com/whosonfirst/go-whosonfirst-spatial-www/application/server"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/www/application/server"
 )
 
 func main() {
@@ -57,8 +57,8 @@ func main() {
 ```
 Where:
 
-* The bulk of the application code is implemented by the `whosonfirst/go-whosonfirst-spatial-www` package.
-* The specific SQLite implementation of the spatial database is implemented by the `whosonfirst/go-whosonfirst-spatial-sqlite` package.
+* The bulk of the application code is implemented by the `whosonfirst/go-whosonfirst/v4/spatial/www` package.
+* The specific SQLite implementation of the spatial database is implemented by the `whosonfirst/go-whosonfirst/v4/spatial/sqlite` package.
 
 Here is a another example, implementing a point-in-polygon gRPC service using a SQLite backend:
 
@@ -69,8 +69,8 @@ import (
 	"context"
 	"log"
 
-	_ "github.com/whosonfirst/go-whosonfirst-spatial-sqlite"
-	"github.com/whosonfirst/go-whosonfirst-spatial-grpc/application/server"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite"
+	"github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/application/server"
 )
 
 func main() {
@@ -84,7 +84,7 @@ func main() {
 }
 ```
 
-The only change is that `github.com/whosonfirst/go-whosonfirst-spatial-www/application/server` is replaced by `github.com/whosonfirst/go-whosonfirst-spatial-grpc/application/server`.
+The only change is that `github.com/whosonfirst/go-whosonfirst/v4/spatial/www/application/server` is replaced by `github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc/application/server`.
 
 The overall motivation for this approach is:
 
@@ -157,27 +157,27 @@ _Where `flags.*` refers to the [whosonfirst/go-whosonfirst-flags](https://github
 
 ### SQLite
 
-* https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/sqlite
 
 ### PMTiles
 
-* https://github.com/whosonfirst/go-whosonfirst-spatial-pmtiles
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/pmtiles
 
 ### DuckDB
 
-* https://github.com/whosonfirst/go-whosonfirst-spatial-duckdb
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/duckdb
 
 ## Servers and clients
 
 ### Web (HTTP)
 
-* https://github.com/whosonfirst/go-whosonfirst-spatial-www
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/www
 
 _Remember, this package implements the guts of a web application but does not support any particular database by default. It is meant to be imported by a database-specific implementation (see above) and exposed as a `cmd/http-server` application (for example) by that package._
 
 ### gRPC
 
-* https://github.com/whosonfirst/go-whosonfirst-spatial-grpc
+* https://github.com/whosonfirst/go-whosonfirst/v4/spatial/grpc
 
 _Remember, this package implements the guts of a web application but does not support any particular database by default. It is meant to be imported by a database-specific implementation (see above) and exposed as a `cmd/grpc-server` application (for example) by that package._
 

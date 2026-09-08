@@ -135,8 +135,7 @@ func (t *PointInPolygonHierarchyResolver) PointInPolygonAndUpdate(ctx context.Co
 
 // PointInPolygon will perform a point-in-polygon (reverse geocoding) operation for 'body' using zero or more 'inputs' as query filters.
 // This is known to not work as expected if the `wof:placetype` property is "common". There needs to be a way to a) retrieve placetypes
-// using a custom WOFPlacetypeSpecification (go-whosonfirst-placetypes v0.6.0+) and b) specify an alternate property to retrieve placetypes
-// from if `wof:placetype=custom`.
+// using a custom `WOFPlacetypeSpecification` and b) specify an alternate property to retrieve placetypes from if `wof:placetype=custom`.
 func (t *PointInPolygonHierarchyResolver) PointInPolygon(ctx context.Context, inputs *filter.SPRInputs, body []byte) ([]spr.StandardPlacesResult, error) {
 
 	id_rsp := gjson.GetBytes(body, "properties.wof:id")
@@ -172,6 +171,30 @@ func (t *PointInPolygonHierarchyResolver) PointInPolygon(ctx context.Context, in
 		return nil, fmt.Errorf("Failed to create new coordinate, %w", err)
 	}
 
+	pt_def := t.PlacetypesDefinition
+	pt_prop := pt_def.Property()
+
+	pt_path := fmt.Sprintf("properties.%s", pt_prop)
+
+	pt_rsp := gjson.GetBytes(body, pt_path)
+
+	if !pt_rsp.Exists() {
+		return nil, fmt.Errorf("Missing %s property", pt_path)
+	}
+
+	pt_str := pt_rsp.String()
+
+	return t.PointInPolygonWithPoint(ctx, inputs, coord, pt_str)
+}
+
+// PointInPolygon will perform a point-in-polygon (reverse geocoding) operation for 'pt' using zero or more 'inputs' as query filters.
+// This is known to not work as expected if the `wof:placetype` property is "common". There needs to be a way to a) retrieve placetypes
+// using a custom `WOFPlacetypeSpecification` and b) specify an alternate property to retrieve placetypes from if `wof:placetype=custom`.
+func (t *PointInPolygonHierarchyResolver) PointInPolygonWithPoint(ctx context.Context, inputs *filter.SPRInputs, coord *orb.Point, pt_str string) ([]spr.StandardPlacesResult, error) {
+
+	logger := slog.Default()
+	logger = logger.With("point", coord)
+
 	if t.skip_placetype_filter {
 
 		spr_filter, err := filter.NewSPRFilterFromInputs(inputs)
@@ -201,24 +224,9 @@ func (t *PointInPolygonHierarchyResolver) PointInPolygon(ctx context.Context, in
 		return possible, nil
 	}
 
-	// Start PIP-ing the list of ancestors - stop at the first match
-
-	possible := make([]spr.StandardPlacesResult, 0)
-
 	pt_def := t.PlacetypesDefinition
 	pt_spec := pt_def.Specification()
-	pt_prop := pt_def.Property()
 	pt_uri := pt_def.URI()
-
-	pt_path := fmt.Sprintf("properties.%s", pt_prop)
-
-	pt_rsp := gjson.GetBytes(body, pt_path)
-
-	if !pt_rsp.Exists() {
-		return nil, fmt.Errorf("Missing %s property", pt_path)
-	}
-
-	pt_str := pt_rsp.String()
 
 	pt, err := pt_spec.GetPlacetypeByName(pt_str)
 
@@ -227,6 +235,10 @@ func (t *PointInPolygonHierarchyResolver) PointInPolygon(ctx context.Context, in
 	}
 
 	logger = logger.With("placetype", pt_str)
+
+	// Start PIP-ing the list of ancestors - stop at the first match
+
+	possible := make([]spr.StandardPlacesResult, 0)
 
 	ancestors := pt_spec.AncestorsForRoles(pt, t.roles)
 

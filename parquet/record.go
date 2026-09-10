@@ -3,9 +3,6 @@ package parquet
 import (
 	"encoding/json"
 	"fmt"
-	"io"
-
-	_ "github.com/whosonfirst/go-whosonfirst/v4/geojson"
 
 	"github.com/paulmach/orb/encoding/wkb"
 	"github.com/paulmach/orb/geojson"
@@ -19,27 +16,6 @@ type Record struct {
 	Country    string `parquet:"country,dict,zstd"`
 	Geometry   []byte `parquet:"geometry,geometry"`
 	Properties []byte `parquet:"properties,json,zstd"`
-}
-
-func AsFeatureCollection(records []*Record) (*geojson.FeatureCollection, error) {
-
-	features := make([]*geojson.Feature, len(records))
-
-	for i, r := range records {
-
-		f, err := r.AsGeoJSON()
-
-		if err != nil {
-			return nil, err
-		}
-
-		features[i] = f
-	}
-
-	fc := geojson.NewFeatureCollection()
-	fc.Features = features
-
-	return fc, nil
 }
 
 func (r *Record) AsGeoJSON() (*geojson.Feature, error) {
@@ -73,64 +49,6 @@ func (r *Record) AsGeoJSONBytes() ([]byte, error) {
 	}
 
 	return json.Marshal(f)
-}
-
-func RecordFromGeoJSONReader(r io.Reader) (*Record, error) {
-
-	body, err := io.ReadAll(r)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return RecordFromGeoJSONBytes(body)
-}
-
-func RecordFromGeoJSONBytes(body []byte) (*Record, error) {
-
-	f, err := geojson.UnmarshalFeature(body)
-
-	if err != nil {
-		return nil, fmt.Errorf("Failed to unmarshal feature, %w", err)
-	}
-
-	return RecordFromGeoJSONFeature(f)
-}
-
-func RecordFromGeoJSONFeature(f *geojson.Feature) (*Record, error) {
-
-	geom, err := wkb.Marshal(f.Geometry, wkb.DefaultByteOrder)
-
-	if err != nil {
-		return nil, fmt.Errorf("Failed to marshal geometry, %w", err)
-	}
-
-	id_fl64 := f.Properties.MustFloat64("wof:id", -1)
-
-	if id_fl64 == -1 {
-		return nil, fmt.Errorf("Failed to determine wof:id")
-	}
-
-	pid_fl64 := f.Properties.MustFloat64("wof:parent_id", -1)
-
-	id := int64(id_fl64)
-	pid := int64(pid_fl64)
-
-	pt := f.Properties.MustString("wof:placetype", "custom")
-	co := f.Properties.MustString("wof:country", "XX")
-
-	props, err := json.Marshal(f.Properties)
-
-	record := &Record{
-		Id:         id,
-		ParentId:   pid,
-		Placetype:  pt,
-		Country:    co,
-		Geometry:   geom,
-		Properties: props,
-	}
-
-	return record, nil
 }
 
 /*

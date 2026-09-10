@@ -27,7 +27,7 @@ func main() {
 		log.Fatalf("Failed to locate record, %v", err)
 	}
 
-	fc, err := parquet.AsFeatureCollection(records)
+	fc, err := parquet.RecordsAsFeatureCollection(records)
 
 	if err != nil {
 		log.Fatalf("Failed to cast record as GeoJSON, %v", err)

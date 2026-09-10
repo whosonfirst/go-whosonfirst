@@ -74,17 +74,35 @@ func RecordFromGeoJSONFeature(f *geojson.Feature) (*Record, error) {
 	pid := int64(pid_fl64)
 
 	pt := f.Properties.MustString("wof:placetype", "custom")
-	co := f.Properties.MustString("wof:country", "XX")
+	co := f.Properties.MustString("wof:country", "XY")
 
 	props, err := json.Marshal(f.Properties)
 
 	record := &Record{
 		Id:         id,
+		AltLabel:   "",
 		ParentId:   pid,
 		Placetype:  pt,
 		Country:    co,
 		Geometry:   geom,
 		Properties: props,
+	}
+
+	// See notes in feature/alt.IsAlt
+
+	allowed_alt_labels := []string{
+		"src:alt_label",
+		"wof:alt_label",
+	}
+
+	for _, prop := range allowed_alt_labels {
+
+		label := f.Properties.MustString(prop, "")
+
+		if label != "" {
+			record.AltLabel = label
+			break
+		}
 	}
 
 	return record, nil

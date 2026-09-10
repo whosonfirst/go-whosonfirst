@@ -20,27 +20,28 @@ func FindRecord(uri string, id int64, args ...*uri.URIArgs) (*Record, error) {
 	switch len(args) == 1 && args[0].IsAlternate {
 	case true:
 
-		// uri_args := args[0]
+		uri_args := args[0]
+		alt_geom := uri_args.AltGeom
+		alt_label, err := alt_geom.String()
+
+		if err != nil {
+			return nil, fmt.Errorf("Failed to derive label for alt geometry, %w", err)
+		}
 
 		for _, r := range records {
 
-			if r.AltLabel == "" {
-				continue
+			if r.AltLabel == alt_label {
+				possible = append(possible, r)
 			}
-
-			// TEST ALT LABEL(S) HERE
 		}
 
 	default:
 
 		for _, r := range records {
 
-			if r.AltLabel != "" {
-				continue
+			if r.AltLabel == "" {
+				possible = append(possible, r)
 			}
-
-			fmt.Println(r.Id, r.AltLabel)
-			possible = append(possible, r)
 		}
 	}
 

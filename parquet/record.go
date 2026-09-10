@@ -12,7 +12,7 @@ import (
 
 type Record struct {
 	Id         int64  `parquet:"id"`
-	AltLabel   string `parquet:"alt_label"`
+	AltLabel   string `parquet:"alt_label,dict,zstd"`
 	ParentId   int64  `parquet:"parent_id"`
 	Placetype  string `parquet:"placetype,dict,zstd"`
 	Country    string `parquet:"country,dict,zstd"`

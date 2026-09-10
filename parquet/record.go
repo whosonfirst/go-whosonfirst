@@ -13,12 +13,33 @@ import (
 
 type Record struct {
 	Id         int64  `parquet:"id"`
-	AltLabel string `parquet:alt_label"`
+	AltLabel   string `parquet:alt_label"`
 	ParentId   int64  `parquet:"parent_id"`
 	Placetype  string `parquet:"placetype,dict,zstd"`
 	Country    string `parquet:"country,dict,zstd"`
 	Geometry   []byte `parquet:"geometry,geometry"`
 	Properties []byte `parquet:"properties,json,zstd"`
+}
+
+func AsFeatureCollection(records []*Record) (*geojson.FeatureCollection, error) {
+
+	features := make([]*geojson.Feature, len(records))
+
+	for i, r := range records {
+
+		f, err := r.AsGeoJSON()
+
+		if err != nil {
+			return nil, err
+		}
+
+		features[i] = f
+	}
+
+	fc := geojson.NewFeatureCollection()
+	fc.Features = features
+
+	return fc, nil
 }
 
 func (r *Record) AsGeoJSON() (*geojson.Feature, error) {

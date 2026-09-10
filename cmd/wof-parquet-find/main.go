@@ -1,14 +1,13 @@
 package main
 
-// > ./bin/wof-parquet-find -parquet-uri /usr/local/data/whosonfirst-parquet/whosonfirst-data-admin-us.parquet -id 1477727311 | jq '.properties["wof:name"]'
-// "Appalachian National Scenic Trail"
+// go run cmd/wof-parquet-find/main.go -parquet-uri /usr/local/data/whosonfirst-parquet/whosonfirst-data-admin-us.parquet -id 85922583 | show -
 
 import (
-	"log"
-	"flag"
 	"encoding/json"
+	"flag"
+	"log"
 	"os"
-	
+
 	"github.com/whosonfirst/go-whosonfirst/v4/parquet"
 )
 
@@ -22,23 +21,23 @@ func main() {
 
 	flag.Parse()
 
-	rec, err := parquet.FindRecord(parquet_uri, id)
+	records, err := parquet.FindRecords(parquet_uri, id)
 
 	if err != nil {
 		log.Fatalf("Failed to locate record, %v", err)
 	}
 
-	f, err := rec.AsGeoJSON()
+	fc, err := parquet.AsFeatureCollection(records)
 
 	if err != nil {
 		log.Fatalf("Failed to cast record as GeoJSON, %v", err)
 	}
 
 	enc := json.NewEncoder(os.Stdout)
-	err = enc.Encode(f)
+	err = enc.Encode(fc)
 
 	if err != nil {
 		log.Fatalf("Failed to JSON-encode record, %w", err)
 	}
-	
+
 }

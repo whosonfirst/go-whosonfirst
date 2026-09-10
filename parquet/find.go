@@ -9,33 +9,50 @@ import (
 
 func FindRecord(uri string, id int64, args ...*uri.URIArgs) (*Record, error) {
 
-	switch len(args) {
-	case 1:
+	records, err := FindRecords(uri, id)
 
-		uri_args := args[0]
+	if err != nil {
+		return nil, err
+	}
 
-		switch uri_args.IsAlternate {
-		case true:
+	possible := make([]*Record, 0)
 
-			records, err := FindRecords(uri, id)
+	switch len(args) == 1 && args[0].IsAlternate {
+	case true:
 
-			if err != nil {
-				return nil, err
+		// uri_args := args[0]
+
+		for _, r := range records {
+
+			if r.AltLabel == "" {
+				continue
 			}
 
-			for range records {
-				// TEST ALT LABEL(S) HERE
-			}
-
-			return nil, fmt.Errorf("Not found")
-
-		default:
-			return sfom_parquet.FindRecordById[*Record, int64](uri, id)
+			// TEST ALT LABEL(S) HERE
 		}
 
 	default:
-		return sfom_parquet.FindRecordById[*Record, int64](uri, id)
+
+		for _, r := range records {
+
+			if r.AltLabel != "" {
+				continue
+			}
+
+			fmt.Println(r.Id, r.AltLabel)
+			possible = append(possible, r)
+		}
 	}
+
+	switch len(possible) {
+	case 1:
+		return possible[0], nil
+	case 0:
+		return nil, fmt.Errorf("Not found")
+	default:
+		return nil, fmt.Errorf("Multiple matches")
+	}
+
 }
 
 func FindRecords(uri string, id int64) ([]*Record, error) {

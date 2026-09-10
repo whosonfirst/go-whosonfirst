@@ -11,7 +11,7 @@ import (
 	"github.com/paulmach/orb/geojson"
 )
 
-func RecordsAsFeatureCollection(records []*Record) (*geojson.FeatureCollection, error) {
+func RecordsAsFeatureCollection(records ...*Record) (*geojson.FeatureCollection, error) {
 
 	features := make([]*geojson.Feature, len(records))
 

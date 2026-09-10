@@ -16,6 +16,7 @@ pip:
 
 TAGS=null
 
+# go install golang.org/x/vuln/cmd/govulncheck@latest
 vuln:
 	govulncheck -show verbose ./...
 

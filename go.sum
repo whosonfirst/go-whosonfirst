@@ -415,8 +415,8 @@ github.com/sfomuseum/go-flags v0.12.1 h1:xvg3iEz510JPr9ItPxOOF2C12JnlplodT1V/1Ty
 github.com/sfomuseum/go-flags v0.12.1/go.mod h1:cUTByyudaM9d+iHwxsEpyYHemWVOGL/bqTRPIvydiC8=
 github.com/sfomuseum/go-geojsonld v1.0.0 h1:BkHMEsmbTpDTQu1DClTT4VrNMXnLMPsSdBq8tYbMhB4=
 github.com/sfomuseum/go-geojsonld v1.0.0/go.mod h1:hluKfABMpnukBEf8qLwuWdwotdYFelMYKxO1njRmxPU=
-github.com/sfomuseum/go-parquet v0.4.1 h1:kH/2B8epa53U4C4aWqKJwT3NfvMEPaoRrhoXEDA9t6s=
-github.com/sfomuseum/go-parquet v0.4.1/go.mod h1:+FkzaYgNT/XKSlKWhAYMEAFDrEZH9GDzazA8adkjeL0=
+github.com/sfomuseum/go-parquet v0.5.0 h1:Wi9SFBJKdBQ09qJBl45x6KVp/4zQlc0MZWPP2K/TdMQ=
+github.com/sfomuseum/go-parquet v0.5.0/go.mod h1:+FkzaYgNT/XKSlKWhAYMEAFDrEZH9GDzazA8adkjeL0=
 github.com/sfomuseum/go-timings v1.4.0 h1:48TyPhrSlTVbFKI2psZiPD11GA0zXnrPJAyLmtBBmPg=
 github.com/sfomuseum/go-timings v1.4.0/go.mod h1:FcDhHe439Uy6i+WpLHrTJirtv37sf6/TxBhAngUQP7M=
 github.com/sfomuseum/iso8601duration v1.1.0 h1:kMYzbamrZp9dRxi5iFuhjl5CzHXK6s6Bzz/c75wsq8Q=

@@ -173,6 +173,22 @@ spec-placetypes:
 
 # WASM
 
+wasmjs-parquet:
+	GOOS=js GOARCH=wasm \
+		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \
+		-o parquet/www/wasm/parquet_find_record.wasm \
+		cmd/wof-parquet-find-wasm/main.go
+
+# Fails with errors:
+# internal/runtime/maps
+# /usr/local/go/src/internal/runtime/maps/group.go:298:39: undefined: abi.MapType
+# ...
+
+wasmjs-parquet-tiny:
+	tinygo build -target=wasm -tags wasmjs -no-debug \
+		-o parquet/www/wasm/parquet_find_record.wasm \
+		cmd/wof-parquet-find-wasm/main.go
+
 wasmjs-format:
 	GOOS=js GOARCH=wasm \
 		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \

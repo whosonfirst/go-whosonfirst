@@ -1,0 +1,29 @@
+.grid {
+	margin-top:1.5rem;
+	display: grid;
+	grid-template-columns:1fr 1fr;
+	gap: 50px 50px;
+}
+
+#map {
+	width:100%;
+	height: 80vh;
+	border: solid thin;
+}
+
+.panel {
+	border: solid thin;
+	height:80vh !important;
+}
+
+.panel-left {
+	padding: 1rem;
+	overflow: scroll;		
+}
+
+#geojson pre {
+	border: solid thin;
+	font-size: small;
+	padding: 1rem;
+	background-color: #ededed;
+}

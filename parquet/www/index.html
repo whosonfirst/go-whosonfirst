@@ -1,0 +1,45 @@
+<html>
+    <head>
+	<title>find record test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="referrer" content="origin">
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />	
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.5.3.8.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/leaflet-1.9.4.css" />
+	<link rel="stylesheet" type="text/css" href="/css/index.css" />		
+    </head>
+    <body>
+	<div class="row">
+	<div class="grid">
+	    <div class="panel panel-left">
+		<form class="form">
+		    <div class="mb-3">
+			<label for="parquet-uri" class="form-label">Parquet URI (required)</label>			
+			<input type="text" id="parquet-uri" name="parquet-uri" class="form-control" placeholder="" />
+			<small>For example <code id="example-parquet-uri">whosonfirst-data-admin-us.parquet</code></small>
+		    </div>
+		    <div class="mb-3">
+			<label for="wof-uri" class="form-label">Who's On First URI (required)</label>						
+			<input type="text" id="wof-uri" name="wof-uri" class="form-control" placeholder="" />
+			<small>For example <code id="example-wof-uri" >85922583</code></small>			
+		    </div>
+		    <button class="btn btn-primary" type="submit" id="find-record" disabled="disabled">Find record</button>
+		</form>
+		<div id="geojson">
+		</div>
+	    </div>
+	    <div class="panel panel-right">
+		<div id="map"></div>
+	    </div>
+	</div>
+	</div>
+    </body>
+    <script type="text/javascript" src="javascript/leaflet-1.9.4.js"></script>
+    <script type="text/javascript" src="javascript/whosonfirst.geojson.js"></script>    '
+    <script type="text/javascript" src="javascript/sfomuseum.golang.wasm.bundle.js"></script>
+    <script type="text/javascript" src="javascript/index.js"></script>
+</html>

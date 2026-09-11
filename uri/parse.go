@@ -34,12 +34,16 @@ func IsAlternateGeometry(path string) (bool, error) {
 // ParseURI will parse a Who's On First URI into its unique ID and any optional "alternate" geometry information.
 func ParseURI(path string) (int64, *URIArgs, error) {
 
+	abs_path := path
+
+	/*
 	abs_path, err := filepath.Abs(path)
 
 	if err != nil {
 		return -1, nil, fmt.Errorf("Failed to derive absolute path for %s, %w", path, err)
 	}
-
+	*/
+	
 	fname := filepath.Base(abs_path)
 
 	match := re_uri.FindStringSubmatch(fname)

@@ -1,4 +1,4 @@
-// go:build wasmjs
+//go:build wasmjs
 
 package wasm
 

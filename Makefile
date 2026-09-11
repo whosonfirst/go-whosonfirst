@@ -179,6 +179,12 @@ wasmjs-parquet:
 		-o parquet/www/wasm/parquet_find_record.wasm \
 		cmd/wof-parquet-find-wasm/main.go
 
+wasmjs-parquet-get-repo:
+	GOOS=js GOARCH=wasm \
+		go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -tags wasmjs \
+		-o findingaid/parquet/www/wasm/parquet_get_repo.wasm \
+		cmd/wof-parquet-repo-wasm/main.go
+
 # Fails with errors:
 # internal/runtime/maps
 # /usr/local/go/src/internal/runtime/maps/group.go:298:39: undefined: abi.MapType

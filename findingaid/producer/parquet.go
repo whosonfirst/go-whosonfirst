@@ -8,17 +8,13 @@ import (
 	"github.com/sfomuseum/go-parquet"
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/alt"
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
+	wof_parquet "github.com/whosonfirst/go-whosonfirst/v4/findingaid/parquet"
 	"github.com/whosonfirst/go-whosonfirst/v4/iterate"
 )
 
-type ParquetRecord struct {
-	Id   int64  `parquet:"id"`
-	Repo string `parquet:"repo"`
-}
-
 type ParquetProducer struct {
 	Producer
-	writer *parquet.ParquetWriter[*ParquetRecord]
+	writer *parquet.ParquetWriter[*wof_parquet.ParquetRecord]
 }
 
 func init() {
@@ -34,7 +30,7 @@ func NewParquetProducer(ctx context.Context, uri string) (Producer, error) {
 		return nil, fmt.Errorf("Failed to parse URI, %w", err)
 	}
 
-	wr, err := parquet.NewWriter[*ParquetRecord](ctx, u.Path)
+	wr, err := parquet.NewWriter[*wof_parquet.ParquetRecord](ctx, u.Path)
 
 	if err != nil {
 		return nil, fmt.Errorf("Failed to create parquet writer, %w", err)
@@ -83,7 +79,7 @@ func (p *ParquetProducer) PopulateWithIterator(ctx context.Context, iterator_uri
 			return fmt.Errorf("Failed to derive repo, %w", err)
 		}
 
-		fa_rec := &ParquetRecord{
+		fa_rec := &wof_parquet.ParquetRecord{
 			Id:   id,
 			Repo: repo,
 		}

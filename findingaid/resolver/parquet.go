@@ -5,17 +5,14 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/parquet-go/parquet-go"
-	sfom_parquet "github.com/sfomuseum/go-parquet"
-	"github.com/whosonfirst/go-whosonfirst/v4/findingaid/producer"
+	parquet "github.com/whosonfirst/go-whosonfirst/v4/findingaid/parquet"
 )
 
 // type ParquetResolver implements the `Resolver` interface for data stored in a Parquet database
-// produced by `github.com/whosonfirst/go-whosonfirst/v4/findingaid/producer.ParquetProducer`
+// produced by `github.com/whosonfirst/go-whosonfirst/v4/findingaid/parquet.ParquetProducer`
 type ParquetResolver struct {
 	Resolver
-	reader       sfom_parquet.ReadCloserAt
-	parquet_file *parquet.File
+	parquet_uri string
 }
 
 func init() {
@@ -33,17 +30,16 @@ func NewParquetResolver(ctx context.Context, uri string) (Resolver, error) {
 		return nil, fmt.Errorf("Failed to parse URL, %w", err)
 	}
 
-	reader, sz, err := sfom_parquet.OpenURI(u.Path)
+	parquet_uri := u.Path
 
-	pf, err := parquet.OpenFile(reader, sz)
+	q := u.Query()
 
-	if err != nil {
-		return nil, err
+	if q.Has("parquet-uri") {
+		parquet_uri = q.Get("parquet-uri")
 	}
 
 	f := &ParquetResolver{
-		reader:       reader,
-		parquet_file: pf,
+		parquet_uri: parquet_uri,
 	}
 
 	return f, nil
@@ -52,16 +48,9 @@ func NewParquetResolver(ctx context.Context, uri string) (Resolver, error) {
 // GetRepo returns the name of the repository associated with this ID in a Who's On First finding aid.
 func (r *ParquetResolver) GetRepo(ctx context.Context, id int64) (string, error) {
 
-	rec, err := sfom_parquet.FindRecordByIdWithParquetFile[*producer.ParquetRecord, int64](r.reader, r.parquet_file, id)
-
-	if err != nil {
-		return "", err
-	}
-
-	return rec.Repo, nil
+	return parquet.GetRepo(r.parquet_uri, id)
 }
 
 func (r ParquetResolver) Close() error {
-
-	return r.reader.Close()
+	return nil
 }

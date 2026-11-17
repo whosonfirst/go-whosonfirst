@@ -1,4 +1,3 @@
-// Package constants defines constants used when working with Who's On First features.
 package constants
 
 // MULTIPLE_COUNTIES is the identifier used to indicate that a place is legitimately parented by multiple counties.

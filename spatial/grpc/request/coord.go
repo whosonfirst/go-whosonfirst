@@ -1,4 +1,3 @@
-// Package request converts between coordinates and spatial gRPC request types.
 package request
 
 import (

@@ -1,4 +1,3 @@
-// Package resolver provides common methods and interfaces for retrieving repository data from a variety of storage systems.
 package resolver
 
 import (

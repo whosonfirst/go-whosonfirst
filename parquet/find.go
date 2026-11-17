@@ -1,4 +1,3 @@
-// Package parquet provides helpers for reading Who's On First records from Parquet files.
 package parquet
 
 import (

@@ -1,2 +1,3 @@
-// Package git implements the `whosonfirst/go-whosonfirst-iterate/v2` interfaces for iterating (Who's On First) documents stored in a Git repository.
+// Package git implements a record iterator for documents stored in Git
+// repositories.
 package git

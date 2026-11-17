@@ -1,2 +1,3 @@
-// Package flags defines interfaces for different classes of "flags" (or well-defined arguments) for querying or filtering Who's On First records.
+// Package flags defines filter interfaces for Who's On First dates, existential
+// values, placetypes, alternate geometries, and custom values.
 package flags

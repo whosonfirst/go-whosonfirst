@@ -1,4 +1,3 @@
-// Package geo provides geographic calculations for Who's On First records.
 package geo
 
 import (

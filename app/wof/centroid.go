@@ -1,6 +1,5 @@
 //go:build !no_centroid
 
-// Package wof assembles the subcommands for the wof command-line application.
 package wof
 
 // Experimental: Moving specific imports in to build tags so people to build trimmed-down

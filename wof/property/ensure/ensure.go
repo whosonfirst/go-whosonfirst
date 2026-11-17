@@ -1,4 +1,3 @@
-// Package ensure implements the wof property ensure subcommand.
 package ensure
 
 import (

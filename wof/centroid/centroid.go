@@ -1,4 +1,3 @@
-// Package centroid implements the wof centroid subcommand.
 package centroid
 
 import (

@@ -1,4 +1,3 @@
-// Package geometry implements the wof geometry subcommand.
 package geometry
 
 import (

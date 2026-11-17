@@ -1,2 +1,3 @@
-// Package spatial defines interfaces for spatial queries and filtering Who's On First records.
+// Package spatial defines interfaces for spatial indexes and filters, and
+// helpers for building spatial identifiers and property responses.
 package spatial

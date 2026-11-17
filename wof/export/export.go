@@ -1,4 +1,3 @@
-// Package export implements the wof export subcommand.
 package export
 
 import (

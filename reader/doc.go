@@ -1,2 +1,3 @@
-// Package reader provides common logic for whosonfirst/go-reader applications specific to Who's On First documents.
+// Package reader loads Who's On First records by ID as byte slices, streams, or
+// GeoJSON features using a go-reader backend.
 package reader

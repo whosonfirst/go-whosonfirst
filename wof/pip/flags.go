@@ -1,4 +1,3 @@
-// Package pip implements the wof pip subcommand.
 package pip
 
 import (

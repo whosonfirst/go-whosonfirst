@@ -1,4 +1,3 @@
-// Package supersede implements the wof deprecate subcommand.
 package supersede
 
 import (

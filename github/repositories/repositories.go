@@ -1,4 +1,3 @@
-// Package repositories provides helpers for working with GitHub repositories.
 package repositories
 
 import (

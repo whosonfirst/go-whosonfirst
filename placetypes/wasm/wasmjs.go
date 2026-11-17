@@ -1,6 +1,5 @@
 //go:build wasmjs
 
-// Package wasm exposes Who's On First placetypes functions to JavaScript through WebAssembly.
 package wasm
 
 import (

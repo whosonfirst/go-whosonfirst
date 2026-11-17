@@ -1,4 +1,3 @@
-// Package rebuild implements the wof hierarchy rebuild subcommand.
 package rebuild
 
 import (

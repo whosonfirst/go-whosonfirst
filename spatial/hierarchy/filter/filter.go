@@ -1,4 +1,3 @@
-// Package filter selects candidates from spatial results when resolving hierarchies.
 package filter
 
 // To do: Update to use aaronland/go-roster so these can be defined with a URI-based syntax

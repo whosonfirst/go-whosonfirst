@@ -1,4 +1,3 @@
-// Package validate checks Who's On First records for valid GeoJSON and required properties.
 package validate
 
 import (

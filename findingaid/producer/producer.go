@@ -1,4 +1,3 @@
-// Package producer provides interfaces used to populate a finding aid where "populate" means updating a data store with information mapping a Who's On First ID to its corresponding repository name.
 package producer
 
 import (

@@ -166,9 +166,6 @@ github.com/aaronland/go-brooklynintegers-api
 # github.com/aaronland/go-http-maps/v2 v2.5.1
 ## explicit; go 1.24.0
 github.com/aaronland/go-http-maps/v2
-# github.com/aaronland/go-http/v3 v3.3.0
-## explicit; go 1.25.0
-github.com/aaronland/go-http/v3/handlers
 # github.com/aaronland/go-http/v4 v4.1.0
 ## explicit; go 1.25.0
 github.com/aaronland/go-http/v4/auth

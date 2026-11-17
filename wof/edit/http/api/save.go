@@ -8,10 +8,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"uuid"
 	"sync"
 
 	"github.com/aaronland/go-http/v4/slog"
-	"github.com/google/uuid"
 	"github.com/whosonfirst/go-whosonfirst/v4/export"
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 	"github.com/whosonfirst/go-whosonfirst/v4/validate"

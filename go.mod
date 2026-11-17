@@ -8,7 +8,6 @@ require (
 	github.com/aaronland/go-aws/v3 v3.7.3
 	github.com/aaronland/go-brooklynintegers-api v1.2.10
 	github.com/aaronland/go-http-maps/v2 v2.5.1
-	github.com/aaronland/go-http/v3 v3.3.0
 	github.com/aaronland/go-http/v4 v4.1.0
 	github.com/aaronland/go-json-query v0.3.0
 	github.com/aaronland/go-pagination v0.4.0
@@ -31,7 +30,6 @@ require (
 	github.com/go-sql-driver/mysql v1.10.2
 	github.com/goccy/go-graphviz v0.2.10
 	github.com/google/go-github/v88 v88.0.0
-	github.com/google/uuid v1.6.0
 	github.com/json-iterator/go v1.1.12
 	github.com/jtacoma/uritemplates v1.0.0
 	github.com/lib/pq v1.12.3
@@ -169,6 +167,7 @@ require (
 	github.com/google/go-github/v74 v74.0.0 // indirect
 	github.com/google/go-querystring v1.2.0 // indirect
 	github.com/google/s2a-go v0.1.11 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/google/wire v0.7.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.24 // indirect
 	github.com/googleapis/gax-go/v2 v2.27.0 // indirect

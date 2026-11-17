@@ -69,8 +69,6 @@ github.com/aaronland/go-brooklynintegers-api v1.2.10 h1:1X6VOECYIEes1dKkBc/pq4R6
 github.com/aaronland/go-brooklynintegers-api v1.2.10/go.mod h1:pDa3IIC5BUZ03ga8ER6IpiDSZpvfokyBXDtEv8NpJKQ=
 github.com/aaronland/go-http-maps/v2 v2.5.1 h1:9REVmHGlUTaoshi5Mo9XBae7gElGpHCWUAIMZOUyG64=
 github.com/aaronland/go-http-maps/v2 v2.5.1/go.mod h1:2iK8mL62rgujrLUa3Thq45G5z6eY6ym8OSNKfEvRiDQ=
-github.com/aaronland/go-http/v3 v3.3.0 h1:59XqOTaG+VTGmRShr/+QtqqGgdTylMopesoMWFV1E0s=
-github.com/aaronland/go-http/v3 v3.3.0/go.mod h1:eTQ2Cdc/7KFQ4UNfzyOnILS7TI3VNsOoc0+uYfNU8O0=
 github.com/aaronland/go-http/v4 v4.1.0 h1:hvIioH3SPTt7C3xfcDuGUVsLSzZGf2hTiwUIVixwUf4=
 github.com/aaronland/go-http/v4 v4.1.0/go.mod h1:goDaryYnG3CKGw7vX0Sj38fiKRKyOhCd/p23N47y3qk=
 github.com/aaronland/go-json-query v0.3.0 h1:AMrh9bhmCRWkXs7FWiRdWxUPTUA7KtSWa6IUvcKrF8k=

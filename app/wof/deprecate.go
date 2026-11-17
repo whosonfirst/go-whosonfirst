@@ -3,5 +3,5 @@
 package wof
 
 import (
-	_ "github.com/whosonfirst/go-whosonfirst/v4/cli/deprecate"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/wof/deprecate"
 )

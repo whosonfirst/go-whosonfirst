@@ -6,5 +6,5 @@ package wof
 // binaries if they want to
 
 import (
-	_ "github.com/whosonfirst/go-whosonfirst/v4/cli/export"
+	_ "github.com/whosonfirst/go-whosonfirst/v4/wof/export"
 )

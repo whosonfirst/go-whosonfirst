@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"os"
+
+	"github.com/whosonfirst/go-whosonfirst/v4/wof"
 )
 
 func usage() {
@@ -30,7 +32,7 @@ func Run(ctx context.Context) error {
 		usage()
 	}
 
-	c, err := NewCommand(ctx, cmd)
+	c, err := wof.NewCommand(ctx, cmd)
 
 	if err != nil {
 		usage()

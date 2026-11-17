@@ -4,11 +4,11 @@ package main
 // "Appalachian National Scenic Trail"
 
 import (
-	"log"
-	"flag"
 	"encoding/json"
+	"flag"
+	"log"
 	"os"
-	
+
 	"github.com/whosonfirst/go-whosonfirst/v4/parquet"
 )
 
@@ -40,5 +40,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to JSON-encode record, %w", err)
 	}
-	
+
 }

@@ -1,3 +1,4 @@
+// Package filter selects candidates from spatial results when resolving hierarchies.
 package filter
 
 // To do: Update to use aaronland/go-roster so these can be defined with a URI-based syntax
@@ -34,7 +35,7 @@ func FirstSPRResultsFunc(ctx context.Context, r reader.Reader, body []byte, poss
 	return parent_spr, nil
 }
 
-// FirstSPRResultsFunc returns the first record in 'possible' unless there are multiple results in which can an error is returned.
+// SingleSPRResultsFunc returns the candidate in possible if there is exactly one, and an error otherwise.
 func SingleSPRResultsFunc(ctx context.Context, r reader.Reader, body []byte, possible []spr.StandardPlacesResult) (spr.StandardPlacesResult, error) {
 
 	if len(possible) != 1 {

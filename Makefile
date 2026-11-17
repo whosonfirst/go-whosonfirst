@@ -49,6 +49,9 @@ wasmjs:
 	@make wasmjs-placetypes
 	@make wasmjs-validate
 
+cli-wof:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof cmd/wof-cli/main.go
+
 cli-concordances:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-concordances-keys cmd/wof-concordances-keys/main.go
 

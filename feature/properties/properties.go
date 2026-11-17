@@ -1,2 +1,2 @@
-// package properties provides methods for deriving and interpreting Who's On First properties.
+// Package properties provides methods for deriving and interpreting Who's On First properties.
 package properties

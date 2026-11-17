@@ -1,26 +1,26 @@
-// go-whosonfirst-export is a Go package for exporting Who's On First documents in Go.
+// Package export prepares Who's On First records for storage by applying
+// defaults, validating properties, and formatting the result.
 //
-// Example
+// # Example
+//
+//	package main
 //
 //	import (
 //		"context"
-//		"os
+//		"log"
+//		"os"
 //
 //		"github.com/whosonfirst/go-whosonfirst/v4/export"
 //	)
 //
 //	func main() {
-//
 //		ctx := context.Background()
-//		ex, _ := export.NewExporter(ctx, "whosonfirst://")
-//
-//		path := "some.geojson"
-//		body, _ := os.ReadFile(path)
-//
-//		has_changed, body, _ = ex.Export(ctx, body)
-//
-//		if has_changed {
-//			os.Stdout.Write(body)
+//		body, err := os.ReadFile("some.geojson")
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+//		if _, err := export.WriteExportIfChanged(ctx, body, os.Stdout); err != nil {
+//			log.Fatal(err)
 //		}
 //	}
 package export

@@ -23,15 +23,16 @@ type RepoIterator struct {
 	iterator Iterator
 }
 
-// NewDirectoryIterator() returns a new `RepoIterator` instance configured by 'uri' in the form of:
+// NewRepoIterator returns a new `RepoIterator` instance configured by 'uri' in the form of:
 //
 //	repo://?{PARAMETERS}
 //
 // Where {PARAMETERS} may be:
-// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
-// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
-// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
-// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
+//
+//   - `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+//   - `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+//   - `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+//   - `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
 func NewRepoIterator(ctx context.Context, uri string) (Iterator, error) {
 
 	directory_it, err := NewDirectoryIterator(ctx, uri)

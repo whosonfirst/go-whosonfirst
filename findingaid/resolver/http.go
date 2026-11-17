@@ -11,7 +11,7 @@ import (
 	"strconv"
 )
 
-// type HTTPResolver implements the `Resolver` interface for data stored in a database exposed via an HTTP endpoint.
+// HTTPResolver implements the `Resolver` interface for data stored in a database exposed via an HTTP endpoint.
 type HTTPResolver struct {
 	Resolver
 	endpoint   string

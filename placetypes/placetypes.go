@@ -15,7 +15,7 @@ type WOFPlacetypeName struct {
 
 type WOFPlacetypeAltNames map[string][]string
 
-// Type WOFPlacetype defines an individual placetype encoded in a `WOFPlacetypeSpecification`
+// WOFPlacetype defines an individual placetype encoded in a `WOFPlacetypeSpecification`
 // instance. The choice of naming this "WOFPlacetype" is unfortunate because since it is easily
 // confused with the actual JSON definition files for placetypes. However, we're stuck with it
 // for now in order to preserve backwards compatibility. Womp womp...
@@ -77,12 +77,12 @@ func init() {
 	specification = s
 }
 
-// GetPlacetypesByName returns the `WOFPlacetype` instance associated with 'name'.
+// GetPlacetypeByName returns the `WOFPlacetype` instance associated with 'name'.
 func GetPlacetypeByName(name string) (*WOFPlacetype, error) {
 	return specification.GetPlacetypeByName(name)
 }
 
-// GetPlacetypesByName returns the `WOFPlacetype` instance associated with 'id'.
+// GetPlacetypeById returns the `WOFPlacetype` instance associated with 'id'.
 func GetPlacetypeById(id int64) (*WOFPlacetype, error) {
 	return specification.GetPlacetypeById(id)
 }
@@ -110,12 +110,12 @@ func Placetypes() ([]*WOFPlacetype, error) {
 	return PlacetypesForRoles(roles)
 }
 
-// Placetypes returns all the known placetypes which are descendants of "planet" whose role match any of those defined in 'roles'.
+// PlacetypesForRoles returns all the known placetypes which are descendants of "planet" whose role match any of those defined in 'roles'.
 func PlacetypesForRoles(roles []string) ([]*WOFPlacetype, error) {
 	return specification.PlacetypesForRoles(roles)
 }
 
-// IsValidPlacetypeId returns a boolean value indicating whether 'name' is a known and valid placetype name.
+// IsValidPlacetype returns a boolean value indicating whether 'name' is a known and valid placetype name.
 func IsValidPlacetype(name string) bool {
 	return specification.IsValidPlacetype(name)
 }
@@ -125,12 +125,12 @@ func IsValidPlacetypeId(id int64) bool {
 	return specification.IsValidPlacetypeId(id)
 }
 
-// Returns true is 'b' is an ancestor of 'a'.
+// IsAncestor reports whether b is an ancestor of a.
 func IsAncestor(a *WOFPlacetype, b *WOFPlacetype) bool {
 	return specification.IsAncestor(a, b)
 }
 
-// Returns true is 'b' is a descendant of 'a'.
+// IsDescendant reports whether b is a descendant of a.
 func IsDescendant(a *WOFPlacetype, b *WOFPlacetype) bool {
 	return specification.IsDescendant(a, b)
 }

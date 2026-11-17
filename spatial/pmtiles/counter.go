@@ -1,5 +1,6 @@
 //go:build pmtiles
 
+// Package pmtiles implements a spatial database backed by PMTiles.
 package pmtiles
 
 // Simple package to manage atomic counters in a map (dictionary) until something

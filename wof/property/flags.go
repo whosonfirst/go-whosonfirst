@@ -1,3 +1,4 @@
+// Package property implements commands that read or update record properties.
 package property
 
 import (

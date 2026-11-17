@@ -1,2 +1,3 @@
-// Package iterate provides interfaces for iterating through a set of Who's On First documents.
+// Package iterate provides interfaces and implementations for iterating over
+// Who's On First records and other documents from a variety of sources.
 package iterate

@@ -1,3 +1,4 @@
+// Package github iterates over records in GitHub repositories and organizations.
 package github
 
 import (
@@ -28,7 +29,7 @@ func init() {
 	}
 }
 
-// GitHubIterator implements the `Iterator` interface for crawling records in a GitHub repository using the GitHub API.
+// GitHubAPIIterator implements the `Iterator` interface for crawling records in a GitHub repository using the GitHub API.
 type GitHubAPIIterator struct {
 	iterate.Iterator
 	// The owner or organization of the GitHub repo being iterated over.
@@ -57,11 +58,12 @@ type GitHubAPIIterator struct {
 //
 // Where {ORGANIZATION} is the name of the owner (organization) of the repository being iterated over and {REPO} is the name of that repository.
 // {BRANCH} is an optional path to indicate a specific branch to use (default is "main"). {PARAMETERS} may be:
-// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
-// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
-// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
-// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
-// * `?concurrent=` A boolean value indicating whether the repository contents should be iterated over concurrently.
+//
+//   - `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+//   - `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+//   - `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+//   - `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
+//   - `?concurrent=` A boolean value indicating whether the repository contents should be iterated over concurrently.
 func NewGitHubAPIIterator(ctx context.Context, uri string) (iterate.Iterator, error) {
 
 	u, err := url.Parse(uri)

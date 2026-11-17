@@ -14,11 +14,11 @@ import (
 type SpatialAPI interface {
 	// PointInPolygon performs a point-in-polygon operation to retrieve matching records from the index.
 	PointInPolygon(context.Context, *orb.Point, ...Filter) (spr.StandardPlacesResults, error)
-	// PointInPolygon performs a point-in-polygon operation yielding matching records in an iterator.
+	// PointInPolygonWithIterator yields records whose geometries contain the query point.
 	PointInPolygonWithIterator(context.Context, *orb.Point, ...Filter) iter.Seq2[spr.StandardPlacesResult, error]
-	// Intersects performs a intersects operation (as in intersecting geometries) to retrieve matching records from the index.
+	// Intersects returns indexed records whose geometries intersect the query geometry.
 	Intersects(context.Context, orb.Geometry, ...Filter) (spr.StandardPlacesResults, error)
-	// IntersectsWithIterator performs a intersects operation (as in intersecting geometries) yielding matching records in an iterator.
+	// IntersectsWithIterator yields indexed records whose geometries intersect the query geometry.
 	IntersectsWithIterator(context.Context, orb.Geometry, ...Filter) iter.Seq2[spr.StandardPlacesResult, error]
 }
 

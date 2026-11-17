@@ -10,7 +10,7 @@ import (
 	"github.com/aaronland/go-roster"
 )
 
-// The `Exporter` interface provides a common interface to allow for customized export functionality in your code which can supplement the default export functionality with application-specific needs.
+// Exporter is the interface for customizing the export of Who's On First records.
 type Exporter interface {
 	// Export will perform all the steps necessary to "export" (as in create or update) a Who's On First feature record taking care to ensure correct formatting, default values and validation. It returns a boolean value indicating whether the feature was changed during the export process.
 	Export(context.Context, []byte) (bool, []byte, error)
@@ -18,8 +18,10 @@ type Exporter interface {
 
 var exporter_roster roster.Roster
 
+// ExporterInitializationFunc constructs an [Exporter] from a configuration URI.
 type ExporterInitializationFunc func(ctx context.Context, uri string) (Exporter, error)
 
+// RegisterExporter associates a URI scheme with a constructor used by [NewExporter].
 func RegisterExporter(ctx context.Context, scheme string, init_func ExporterInitializationFunc) error {
 
 	err := ensureExporterRoster()

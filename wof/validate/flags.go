@@ -1,3 +1,4 @@
+// Package validate implements the wof validate subcommand.
 package validate
 
 import (

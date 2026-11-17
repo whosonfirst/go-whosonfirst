@@ -1,3 +1,4 @@
+// Package flags parses command-line flags for configuring record iterators.
 package flags
 
 import (
@@ -13,7 +14,7 @@ const SEP_PIPE string = "|"
 const SEP_SPACE string = " "
 const SEP_CSV string = ","
 
-// IteratorURIDescription returns a string describing the use the of the `IteratorURIFlag` flag.
+// IteratorURIFlagDescription returns a string describing the use of the `IteratorURIFlag` flag.
 func IteratorURIFlagDescription() string {
 
 	modes := iterate.IteratorSchemes()
@@ -32,8 +33,9 @@ func IteratorURIFlagDescription() string {
 //	{ITERATOR_URI_STRING} + "#" + {PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}
 //
 // Where:
-// * `{ITERATOR_URI_STRING}` is a URI that can be passed to the `iterator.NewIterator` constructor.
-// * `{PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}` is a list of one or more paths (URIs) to be passed to the `iterator.IterateURIs` method.
+//
+//   - `{ITERATOR_URI_STRING}` is a URI that can be passed to the `iterator.NewIterator` constructor.
+//   - `{PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}` is a list of one or more paths (URIs) to be passed to the `iterator.IterateURIs` method.
 type IteratorURIFlag struct {
 	iter_uri     string
 	iter_sources []string
@@ -45,8 +47,9 @@ type IteratorURIFlag struct {
 //	{ITERATOR_URI_STRING} + "#" + {PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}
 //
 // Where:
-// * `{ITERATOR_URI_STRING}` is a URI that can be passed to the `iterator.NewIterator` constructor.
-// * `{PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}` is a list of one or more paths (URIs) to be passed to the `iterator.IterateURIs` method.
+//
+//   - `{ITERATOR_URI_STRING}` is a URI that can be passed to the `iterator.NewIterator` constructor.
+//   - `{PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}` is a list of one or more paths (URIs) to be passed to the `iterator.IterateURIs` method.
 func (fl *IteratorURIFlag) Set(value string) error {
 
 	parts := strings.Split(value, SEP_FRAGMENT)
@@ -73,7 +76,7 @@ func (fl *IteratorURIFlag) Key() string {
 	return fl.iter_uri
 }
 
-// Values returns the list of URIs defined in the `{PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}` string.
+// Value returns the list of URIs defined in the `{PIPE_SEPARATED_LIST_OF_ITERATOR_SOURCES}` string.
 func (fl *IteratorURIFlag) Value() any {
 	return fl.iter_sources
 }

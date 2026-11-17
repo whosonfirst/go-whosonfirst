@@ -1,3 +1,4 @@
+// Package utils provides helpers for working with Who's On First names.
 package utils
 
 import (

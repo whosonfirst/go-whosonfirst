@@ -19,7 +19,7 @@ func init() {
 	iterate.RegisterIterator(ctx, "reader", NewReaderIterator)
 }
 
-// GitIterator implements the `Iterator` interface for crawling records with a `whosonfirst/go-reader.Reader` instance.
+// ReaderIterator implements [iterate.Iterator] by reading records through a reader.Reader.
 type ReaderIterator struct {
 	iterate.Iterator
 	// reader is the `whosonfirst/go-reader.Reader` instance used to reade documents
@@ -37,11 +37,12 @@ type ReaderIterator struct {
 //	reader://?{PARAMETERS}
 //
 // Where {PATH} is an optional path on disk where a repository will be clone to (default is to clone repository in memory) and {PARAMETERS} may be:
-// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
-// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
-// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
-// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
-// * `?reader=` A valid `whosonfirst/go-reader` URI used to create the underlying reader instance.
+//
+//   - `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+//   - `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+//   - `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+//   - `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
+//   - `?reader=` A valid `whosonfirst/go-reader` URI used to create the underlying reader instance.
 func NewReaderIterator(ctx context.Context, uri string) (iterate.Iterator, error) {
 
 	u, err := url.Parse(uri)

@@ -11,7 +11,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/uri"
 )
 
-// type ReaderResolver implements the `Resolver` interface for data that can be resolved using a whosonfirst/go-reader.Reader instance.
+// ReaderResolver implements the `Resolver` interface for data that can be resolved using a whosonfirst/go-reader.Reader instance.
 type ReaderResolver struct {
 	Resolver
 	reader   reader.Reader

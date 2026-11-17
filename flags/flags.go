@@ -1,6 +1,7 @@
 package flags
 
-// type ExistentialFlag provides a common interface for Who's On First -style "existential" flags where 1 represents true, 0 represents false and -1 represents unknown or to be determined.
+// ExistentialFlag represents a Who's On First existential flag: 1 means true,
+// 0 means false, and -1 means unknown or to be determined.
 type ExistentialFlag interface {
 	StringFlag() string
 	Flag() int64
@@ -17,6 +18,7 @@ type ExistentialFlag interface {
 	String() string
 }
 
+// AlternateGeometryFlag identifies whether to match alternate geometries and which sources to allow.
 type AlternateGeometryFlag interface {
 	// Return a boolean value indicating whether the flag matches any record in a set of AlternateGeometryFlag instances.
 	MatchesAny(...AlternateGeometryFlag) bool
@@ -27,7 +29,7 @@ type AlternateGeometryFlag interface {
 	String() string
 }
 
-// type DateFlags provides a common interface for querying Who's On First records using date ranges.
+// DateFlag provides a common interface for querying Who's On First records using date ranges.
 type DateFlag interface {
 	// Return a boolean value indicating whether the flag matches any record in a set of DateFlag instances.
 	MatchesAll(...DateFlag) bool
@@ -40,7 +42,7 @@ type DateFlag interface {
 	String() string
 }
 
-// type PlaceFlag provides a common interface for querying Who's On First records using well-defined placetypes.
+// PlacetypeFlag provides a common interface for querying Who's On First records using well-defined placetypes.
 type PlacetypeFlag interface {
 	// Return a boolean value indicating whether the flag matches any record in a set of PlacetypeFlag instances.
 	MatchesAny(...PlacetypeFlag) bool
@@ -50,7 +52,7 @@ type PlacetypeFlag interface {
 	String() string
 }
 
-// type CustomFlag provides a common interface for querying Who's On First records with non-standard (custom) flag types.
+// CustomFlag provides a common interface for querying Who's On First records with non-standard (custom) flag types.
 type CustomFlag interface {
 	// Return a boolean value indicating whether the flag matches any record in a set of CustomFlag instances.
 	MatchesAny(...CustomFlag) bool

@@ -1,3 +1,4 @@
+// Package format formats Who's On First GeoJSON documents for storage.
 package format
 
 import (
@@ -12,7 +13,7 @@ import (
 // two space indent
 const indent = "  "
 
-// FormatFeature transforms a byte array `b` into a correctly formatted WOF file
+// FormatBytes formats a Who's On First GeoJSON document.
 func FormatBytes(b []byte) ([]byte, error) {
 
 	f, err := geojson.UnmarshalFeature(b)

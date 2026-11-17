@@ -1,3 +1,4 @@
+// Package derivatives defines errors shared by the Who's On First derivative generators.
 package derivatives
 
 import (

@@ -1,3 +1,4 @@
+// Package properties reads and represents machine-readable Who's On First property definitions.
 package properties
 
 import (
@@ -24,7 +25,7 @@ func init() {
 
 type PropertyType any
 
-// type Property is a struct that maps to a machine-readable data file describing a Who's On First property.
+// Property is a struct that maps to a machine-readable data file describing a Who's On First property.
 type Property struct {
 	// The unique ID of this property
 	Id int64 `json:"id"`
@@ -48,7 +49,7 @@ func (p *Property) Filename() string {
 	return fmt.Sprintf("%s.json", p.Name)
 }
 
-// Filename() returns the relative path (inclusive of filename) for the serialized representation of this property.
+// RelPath returns the relative path (inclusive of filename) for the serialized representation of this property.
 func (p *Property) RelPath() string {
 	return filepath.Join(p.Prefix, p.Filename())
 }
@@ -148,7 +149,7 @@ func NewPropertyFromKey(k string) (*Property, error) {
 	return &p, nil
 }
 
-// NewPropertyFromFiles() reads and parses the contents of 'path' and returns a new `Property` instance.
+// NewPropertyFromFile reads and parses the contents of 'path' and returns a new `Property` instance.
 func NewPropertyFromFile(path string) (*Property, error) {
 
 	abs_path, err := filepath.Abs(path)
@@ -168,7 +169,7 @@ func NewPropertyFromFile(path string) (*Property, error) {
 	return NewPropertyFromReader(fh)
 }
 
-// NewPropertyFromFiles() reads and parses the contents of 'fh' and returns a new `Property` instance.
+// NewPropertyFromReader reads and parses the contents of 'fh' and returns a new `Property` instance.
 func NewPropertyFromReader(fh io.Reader) (*Property, error) {
 
 	body, err := io.ReadAll(fh)

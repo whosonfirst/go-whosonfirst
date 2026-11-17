@@ -30,7 +30,7 @@ func EnsureProperties(ctx context.Context, body []byte, to_ensure map[string]any
 	return AssignProperties(ctx, body, to_assign)
 }
 
-// EnsureProperties writes all the properties in 'to_assign' to 'body'.
+// AssignProperties writes all the properties in 'to_assign' to 'body'.
 func AssignProperties(ctx context.Context, body []byte, to_assign map[string]any) ([]byte, error) {
 
 	var err error
@@ -47,7 +47,7 @@ func AssignProperties(ctx context.Context, body []byte, to_assign map[string]any
 	return body, nil
 }
 
-// EnsureProperties writes all the properties in 'to_assign' to 'body' if they are absent or contain a new value.
+// AssignPropertiesIfChanged writes all the properties in 'to_assign' to 'body' if they are absent or contain a new value.
 func AssignPropertiesIfChanged(ctx context.Context, body []byte, to_assign map[string]any) (bool, []byte, error) {
 
 	var err error

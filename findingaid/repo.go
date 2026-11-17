@@ -1,3 +1,4 @@
+// Package findingaid represents repository information used by a Who's On First finding aid.
 package findingaid
 
 import (
@@ -13,7 +14,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
-// type FindingAidRepo is an internal representation of a WOF-style repository guaranteed to have a unique ID.
+// FindingAidRepo is an internal representation of a WOF-style repository guaranteed to have a unique ID.
 type FindingAidRepo struct {
 	Id   int64
 	Name string

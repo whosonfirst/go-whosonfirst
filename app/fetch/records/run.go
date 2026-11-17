@@ -1,4 +1,4 @@
-// fetch is a command line tool to retrieve one or more Who's on First records and, optionally, their ancestors.
+// Package records runs the command that retrieves Who's On First records and optionally their ancestors.
 package records
 
 import (

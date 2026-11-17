@@ -112,7 +112,7 @@ type Traveler struct {
 	Step     int64
 }
 
-// Create a new Traveler instance.
+// NewTraveler constructs a [Traveler] with the supplied options.
 func NewTraveler(opts *TravelOptions) (*Traveler, error) {
 
 	travelog := make(map[int64]int)
@@ -129,7 +129,7 @@ func NewTraveler(opts *TravelOptions) (*Traveler, error) {
 	return &t, nil
 }
 
-// Travel the relationships for 'f' (a GeoJSON feature).
+// TravelFeature follows the configured relationships for the GeoJSON feature f.
 func (t *Traveler) TravelFeature(ctx context.Context, f []byte) error {
 
 	select {
@@ -225,7 +225,7 @@ func (t *Traveler) TravelFeature(ctx context.Context, f []byte) error {
 	return nil
 }
 
-// Travel the relationships for a Who's On First ID.
+// TravelID loads the record for id and follows its configured relationships.
 // The ID must be able to be read by the Traveler's `reader.Reader` instance defined in the `TravelOptions`.
 func (t *Traveler) TravelID(ctx context.Context, id int64) error {
 

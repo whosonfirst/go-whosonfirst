@@ -22,5 +22,5 @@ import (
 	"context"
 )
 
-// type PrepareDocumentFunc is a common method signature updating a Who's On First document for indexing in OpenSearch.
+// PrepareDocumentFunc is a common method signature updating a Who's On First document for indexing in OpenSearch.
 type PrepareDocumentFunc func(context.Context, []byte) ([]byte, error)

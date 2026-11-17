@@ -7,7 +7,7 @@ import (
 	"net/url"
 )
 
-// type MultiResolver implements the `Resolver` interface for resolving data using one or more `Resolver` instances.
+// MultiResolver implements the `Resolver` interface for resolving data using one or more `Resolver` instances.
 type MultiResolver struct {
 	Resolver
 	resolvers []Resolver

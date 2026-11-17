@@ -1,3 +1,4 @@
+// Package emit implements the wof emit subcommand.
 package emit
 
 import (

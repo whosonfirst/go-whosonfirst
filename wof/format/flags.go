@@ -1,3 +1,4 @@
+// Package format implements the wof format subcommand.
 package format
 
 import (

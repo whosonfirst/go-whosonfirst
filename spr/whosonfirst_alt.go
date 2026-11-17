@@ -12,7 +12,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/uri"
 )
 
-// WOFStandardPlacesResult is a struct that implements the `StandardPlacesResult` for
+// WOFAltStandardPlacesResult is a struct that implements the `StandardPlacesResult` for
 // Who's On First GeoJSON Feature alternate geometry records.
 type WOFAltStandardPlacesResult struct {
 	StandardPlacesResult `json:",omitempty"`

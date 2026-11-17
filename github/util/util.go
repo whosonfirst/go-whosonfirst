@@ -1,3 +1,4 @@
+// Package util provides a legacy helper for constructing a GitHub API client.
 package util
 
 import (
@@ -7,7 +8,9 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/github/client"
 )
 
-// This method is deprecated
+// NewClientAndContext constructs a GitHub client and returns it with a background context.
+//
+// Deprecated: Use [client.NewClient] with a caller-provided context.
 func NewClientAndContext(token string) (*github.Client, context.Context, error) {
 
 	ctx := context.Background()

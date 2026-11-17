@@ -1,3 +1,4 @@
+// Package wof registers and constructs subcommands for the wof tool.
 package wof
 
 import (
@@ -10,6 +11,7 @@ import (
 
 var command_roster roster.Roster
 
+// Command runs a wof subcommand with the supplied command-line arguments.
 type Command interface {
 	Run(context.Context, []string) error
 }
@@ -47,10 +49,7 @@ func ensureCommandRoster() error {
 	return nil
 }
 
-// NewCommand returns a new `Command` instance configured by 'cmd'. The value of 'uri' is parsed
-// as a `url.URL` and its scheme is used as the key for a corresponding `CommandInitializationFunc`
-// function used to instantiate the new `Command`. It is assumed that the scheme (and initialization
-// function) have been registered by the `RegisterCommand` method.
+// NewCommand constructs the command registered under cmd with [RegisterCommand].
 func NewCommand(ctx context.Context, cmd string) (Command, error) {
 
 	i, err := command_roster.Driver(ctx, cmd)

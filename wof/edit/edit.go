@@ -1,3 +1,4 @@
+// Package edit implements the wof edit subcommand.
 package edit
 
 import (

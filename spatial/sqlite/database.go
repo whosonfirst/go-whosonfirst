@@ -1,5 +1,6 @@
 //go:build sqlite
 
+// Package sqlite implements a SQLite-backed spatial database for Who's On First records.
 package sqlite
 
 // https://www.sqlite.org/rtree.html

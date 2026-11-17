@@ -1,3 +1,4 @@
+// Package writer provides record-writing helpers for wof subcommands.
 package writer
 
 import (
@@ -31,7 +32,7 @@ func Write(ctx context.Context, uri string, body []byte) error {
 	return WriteReader(ctx, uri, br)
 }
 
-// Write writes the data in 'r' to 'uri'.
+// WriteReader writes the data in 'r' to 'uri'.
 func WriteReader(ctx context.Context, uri string, r io.Reader) error {
 
 	if uri == STDOUT {

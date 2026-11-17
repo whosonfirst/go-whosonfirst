@@ -1,3 +1,4 @@
+// Package api provides HTTP API handlers for the wof editor.
 package api
 
 import (

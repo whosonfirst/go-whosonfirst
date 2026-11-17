@@ -1,2 +1,2 @@
-// package concordances provides methods for working with Who's On First concordances.
+// Package concordances provides methods for working with Who's On First concordances.
 package concordances

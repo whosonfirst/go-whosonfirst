@@ -1,3 +1,4 @@
+// Package organizations provides helpers for working with GitHub organizations.
 package organizations
 
 import (

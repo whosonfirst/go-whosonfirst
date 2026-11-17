@@ -44,7 +44,7 @@ func DefaultOptions() (*Options, error) {
 	return &o, nil
 }
 
-// type Fetcher is a struct for retrieving Who's On First documents.
+// Fetcher is a struct for retrieving Who's On First documents.
 type Fetcher struct {
 	reader     reader.Reader
 	writer     writer.Writer

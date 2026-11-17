@@ -1,3 +1,4 @@
+// Package image generates raster images from Who's On First data.
 package image
 
 import (

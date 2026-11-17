@@ -8,7 +8,7 @@ import (
 	"github.com/tidwall/sjson"
 )
 
-// ...
+// Flatten merges the fields of the input JSON object's immediate child objects into a single JSON object.
 func Flatten(ctx context.Context, body []byte) ([]byte, error) {
 
 	var flattened []byte

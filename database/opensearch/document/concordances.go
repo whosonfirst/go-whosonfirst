@@ -57,8 +57,9 @@ func AppendConcordancesMachineTags(ctx context.Context, body []byte) ([]byte, er
 
 // AppendConcordancesStats appends statistics about the `wof:concordances` properties in a Who's On First document.
 // Specifically:
-// * An array containing the set of source prefixes for concordances
-// * The total number of concordances in a record.
+//
+//   - An array containing the set of source prefixes for concordances
+//   - The total number of concordances in a record.
 func AppendConcordancesStats(ctx context.Context, body []byte) ([]byte, error) {
 
 	root := gjson.ParseBytes(body)

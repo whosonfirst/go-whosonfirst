@@ -31,11 +31,12 @@ type FSIterator struct {
 //	fs://?{PARAMETERS}
 //
 // Where {PARAMETERS} may be:
-// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
-// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
-// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
-// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
-// * `?processes=` An optional number assigning the maximum number of database rows that will be processed simultaneously. (Default is defined by `runtime.NumCPU()`.)
+//
+//   - `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+//   - `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+//   - `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+//   - `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
+//   - `?processes=` An optional number assigning the maximum number of database rows that will be processed simultaneously. (Default is defined by `runtime.NumCPU()`.)
 func NewFSIterator(ctx context.Context, uri string, iterator_fs fs.FS) (Iterator, error) {
 
 	f, err := filters.NewQueryFiltersFromURI(ctx, uri)

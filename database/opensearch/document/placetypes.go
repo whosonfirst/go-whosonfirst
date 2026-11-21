@@ -13,8 +13,9 @@ import (
 
 // AppendPlacetypeDetails appends addition properties related to the `wof:placetype` and `wof:placetype_alt` properties in a Who's On First record.
 // Specifically:
-// * The unique placetype ID for a placetype
-// * The set of string names (including "alternate" placetypes) associated with a placetype
+//
+//   - The unique placetype ID for a placetype
+//   - The set of string names (including "alternate" placetypes) associated with a placetype
 func AppendPlacetypeDetails(ctx context.Context, body []byte) ([]byte, error) {
 
 	root := gjson.ParseBytes(body)

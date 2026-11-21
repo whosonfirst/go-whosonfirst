@@ -22,7 +22,7 @@ func init() {
 	iterate.RegisterIterator(ctx, "githuborg", NewOrganizationIterator)
 }
 
-// type OrganizationIterator implements the `iterator.Iterator` interface for iterating multiple repositories in a GitHub organization.
+// OrganizationIterator implements the `iterator.Iterator` interface for iterating multiple repositories in a GitHub organization.
 type OrganizationIterator struct {
 	iterate.Iterator
 	target string

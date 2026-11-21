@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 
@@ -16,6 +17,14 @@ func main() {
 	fs := flagset.NewFlagSet("opensearch")
 
 	client.AppendClientFlags(fs)
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Retrieves OpenSearch index statistics.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
+
 	flagset.Parse(fs)
 
 	ctx := context.Background()

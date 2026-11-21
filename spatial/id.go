@@ -6,7 +6,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/feature/properties"
 )
 
-// SpatialIdWithFeatures generates a unique identifiers derived from the feature data in 'body'.
+// SpatialIdWithFeature derives a unique identifier from the feature data in body.
 func SpatialIdWithFeature(body []byte, extra ...any) (string, error) {
 
 	id, err := properties.Id(body)

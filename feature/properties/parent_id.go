@@ -5,7 +5,7 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-// https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/wof#parent_id
+// ParentId returns the value of the wof:parent_id property. It returns an error if the property is missing or the value is less than -4.
 func ParentId(body []byte) (int64, error) {
 
 	rsp := gjson.GetBytes(body, "properties.wof:parent_id")

@@ -75,7 +75,7 @@ func NewCacheManager(ctx context.Context, uri string) (CacheManager, error) {
 	return init_func(ctx, uri)
 }
 
-// Schemes returns the list of schemes that have been registered.
+// CacheManagerSchemes returns the list of schemes that have been registered.
 func CacheManagerSchemes() []string {
 
 	ctx := context.Background()

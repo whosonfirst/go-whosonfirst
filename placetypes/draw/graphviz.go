@@ -17,7 +17,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/placetypes"
 )
 
-// DrawPlacetypesGraphToWriter will derive a Graphviz "dot" representation of 'spec' and render it as an image
+// DrawPlacetypesGraphToFile will derive a Graphviz "dot" representation of 'spec' and render it as an image
 // written to 'path'. Valid image formats (derived from 'path' 's file extension) are: jpeg (jpg) and png.
 func DrawPlacetypesGraphToFile(spec *placetypes.WOFPlacetypeSpecification, path string) error {
 

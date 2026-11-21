@@ -18,12 +18,13 @@ import (
 	"github.com/dominikbraun/graph/draw"
 )
 
+// FS contains the embedded default placetype specification.
 //go:embed placetypes.json
 var FS embed.FS
 
-// This needs to be renamed to "Specification" either at a /v1 or a v2 release. Either
-// way it will be a breaking change. Doing it v2 (even if there is no explicit v1 release)
-// might be "cleaner"...
+// TODO: Rename WOFPlacetypeSpecification to Specification in a release that allows breaking changes.
+
+// WOFPlacetypeSpecification holds placetype definitions and their hierarchical relationships.
 type WOFPlacetypeSpecification struct {
 	catalog                map[string]WOFPlacetype
 	mu                     *sync.RWMutex
@@ -32,6 +33,7 @@ type WOFPlacetypeSpecification struct {
 	indexing_channel       chan bool
 }
 
+// DefaultWOFPlacetypeSpecification loads the embedded placetype specification and starts indexing its relationships.
 func DefaultWOFPlacetypeSpecification() (*WOFPlacetypeSpecification, error) {
 
 	r, err := FS.Open("placetypes.json")
@@ -98,7 +100,7 @@ func (spec *WOFPlacetypeSpecification) Placetypes() ([]*WOFPlacetype, error) {
 	return spec.PlacetypesForRoles(roles)
 }
 
-// Placetypes returns all the known placetypes which are descendants of "planet" whose role match any of those defined in 'roles'.
+// PlacetypesForRoles returns all the known placetypes which are descendants of "planet" whose role match any of those defined in 'roles'.
 func (spec *WOFPlacetypeSpecification) PlacetypesForRoles(roles []string) ([]*WOFPlacetype, error) {
 
 	/*
@@ -123,7 +125,7 @@ func (spec *WOFPlacetypeSpecification) PlacetypesForRoles(roles []string) ([]*WO
 	return pt_list, nil
 }
 
-// GetPlacetypesByName returns the `WOFPlacetype` instance associated with 'name'.
+// GetPlacetypeByName returns the `WOFPlacetype` instance associated with 'name'.
 func (spec *WOFPlacetypeSpecification) GetPlacetypeByName(name string) (*WOFPlacetype, error) {
 
 	for str_id, pt := range spec.catalog {
@@ -146,7 +148,7 @@ func (spec *WOFPlacetypeSpecification) GetPlacetypeByName(name string) (*WOFPlac
 	return nil, fmt.Errorf("Invalid placetype")
 }
 
-// GetPlacetypesByName returns the `WOFPlacetype` instance associated with 'id'.
+// GetPlacetypeById returns the `WOFPlacetype` instance associated with 'id'.
 func (spec *WOFPlacetypeSpecification) GetPlacetypeById(id int64) (*WOFPlacetype, error) {
 
 	for str_id, pt := range spec.catalog {
@@ -235,7 +237,7 @@ func (spec *WOFPlacetypeSpecification) Catalog() map[string]WOFPlacetype {
 	return spec.catalog
 }
 
-// IsValidPlacetypeId returns a boolean value indicating whether 'name' is a known and valid placetype name.
+// IsValidPlacetype returns a boolean value indicating whether 'name' is a known and valid placetype name.
 func (spec *WOFPlacetypeSpecification) IsValidPlacetype(name string) bool {
 
 	for _, pt := range spec.catalog {
@@ -269,7 +271,7 @@ func (spec *WOFPlacetypeSpecification) IsValidPlacetypeId(id int64) bool {
 	return false
 }
 
-// Returns true is 'b' is an ancestor of 'a'.
+// IsAncestor reports whether b is an ancestor of a.
 func (spec *WOFPlacetypeSpecification) IsAncestor(a *WOFPlacetype, b *WOFPlacetype) bool {
 
 	roles := AllRoles()
@@ -300,7 +302,7 @@ func (spec *WOFPlacetypeSpecification) IsAncestor(a *WOFPlacetype, b *WOFPlacety
 	return is_ancestor
 }
 
-// Returns true is 'b' is a descendant of 'a'.
+// IsDescendant reports whether b is a descendant of a.
 func (spec *WOFPlacetypeSpecification) IsDescendant(a *WOFPlacetype, b *WOFPlacetype) bool {
 
 	spec.ensureIndexingRelationshipsComplete()

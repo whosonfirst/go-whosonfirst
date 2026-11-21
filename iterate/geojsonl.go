@@ -33,15 +33,16 @@ type GeoJSONLIterator struct {
 	iterating *atomic.Bool
 }
 
-// NewGeojsonLIterator() returns a new `GeojsonLIterator` instance configured by 'uri' in the form of:
+// NewGeoJSONLIterator constructs a [GeoJSONLIterator] from a URI of the form:
 //
 //	geojsonl://?{PARAMETERS}
 //
 // Where {PARAMETERS} may be:
-// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
-// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
-// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
-// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
+//
+//   - `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+//   - `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+//   - `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+//   - `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
 func NewGeoJSONLIterator(ctx context.Context, uri string) (Iterator, error) {
 
 	f, err := filters.NewQueryFiltersFromURI(ctx, uri)

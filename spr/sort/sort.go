@@ -1,4 +1,3 @@
-// Package sort provides interfaces for sorting `spr.StandardPlacesResults` instances
 package sort
 
 import (

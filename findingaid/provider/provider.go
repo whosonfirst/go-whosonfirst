@@ -1,4 +1,3 @@
-// package provider interfaces used to generate a list of iterator `whosonfirst/go-whosonfirst/v4/iterate` URIs for crawling by a `producer.Producer` instance.
 package provider
 
 import (

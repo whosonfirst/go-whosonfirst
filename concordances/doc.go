@@ -1,2 +1,3 @@
-// package concordances provides methods for working with Who's On First concordances.
+// Package concordances lists the distinct keys in the wof:concordances
+// properties of iterated Who's On First records.
 package concordances

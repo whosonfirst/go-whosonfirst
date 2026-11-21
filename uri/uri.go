@@ -31,7 +31,7 @@ type AltGeom struct {
 	Strict bool `json:"strict"`
 }
 
-// Return the string value for an alternate geometry.
+// String returns the label for an alternate geometry.
 func (a *AltGeom) String() (string, error) {
 
 	source := a.Source
@@ -66,7 +66,7 @@ func (a *AltGeom) String() (string, error) {
 	return alt_str, nil
 }
 
-// Return a `URIArgs` struct whose IsAlternate flag is false.
+// NewDefaultURIArgs returns URI arguments for a primary geometry.
 func NewDefaultURIArgs() *URIArgs {
 
 	alt_geom := &AltGeom{}
@@ -79,7 +79,7 @@ func NewDefaultURIArgs() *URIArgs {
 	return &u
 }
 
-// Return a `URIArgs` struct representing an alternate geometry using the arguments defined in `source`, `function` and `extras`.
+// NewAlternateURIArgs returns URI arguments for an alternate geometry using source, function, and extras.
 func NewAlternateURIArgs(source string, function string, extras ...string) *URIArgs {
 
 	alt_geom := &AltGeom{
@@ -96,8 +96,7 @@ func NewAlternateURIArgs(source string, function string, extras ...string) *URIA
 	return &u
 }
 
-// Return a `URIArgs` struct representing an alternate geometry derive from 'label' (which is expected to
-// be the value of a valid "src:alt_label" or "src:geom_alt" property.
+// NewAlternateURIArgsFromAltLabel parses label into URI arguments for an alternate geometry.
 func NewAlternateURIArgsFromAltLabel(label string) (*URIArgs, error) {
 
 	parts := strings.Split(label, "-")

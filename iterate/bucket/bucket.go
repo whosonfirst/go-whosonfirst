@@ -77,11 +77,12 @@ func RegisterSchemes(ctx context.Context) error {
 //	bucket-{SCHEME}://?{PARAMETERS}
 //
 // Where {SCHEME} is a registered `gocloud.dev/blob` driver and {PARAMETERS} may be:
-// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
-// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
-// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
-// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
-// * `?processes=` An optional number assigning the maximum number of database rows that will be processed simultaneously. (Default is defined by `runtime.NumCPU()`.)
+//
+//   - `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+//   - `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+//   - `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+//   - `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
+//   - `?processes=` An optional number assigning the maximum number of database rows that will be processed simultaneously. (Default is defined by `runtime.NumCPU()`.)
 func NewBucketIterator(ctx context.Context, uri string) (iterate.Iterator, error) {
 
 	u, err := url.Parse(uri)

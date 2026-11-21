@@ -8,7 +8,7 @@ import (
 
 var _ ReadCloserAt = (*cachedReaderAt)(nil)
 
-// Create a wrapper interface that bundles all required behaviors
+// ReadCloserAt combines random-access reading with closing the underlying resource.
 type ReadCloserAt interface {
 	io.ReaderAt
 	io.Closer
@@ -27,6 +27,7 @@ type cachedReaderAt struct {
 	mu     sync.Mutex
 }
 
+// NewCachedReaderAt wraps src in a [ReadCloserAt] that reads and caches bytes on demand to support random access. Closing the wrapper closes src.
 func NewCachedReaderAt(src io.ReadCloser) ReadCloserAt {
 	return &cachedReaderAt{
 		src: src,

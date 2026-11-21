@@ -1,2 +1,3 @@
-// Package reader implements the `go-whosonfirst-iterate/emitter` interfaces using `whosonfirst/go-reader.Reader` instances.
+// Package reader implements a record iterator that reads documents through a
+// configured go-reader backend.
 package reader

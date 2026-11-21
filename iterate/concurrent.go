@@ -1,6 +1,3 @@
-// Package iterator provides methods and utilities for iterating over a collection of records
-// (presumed but not required to be Who's On First records) from a variety of sources and dispatching
-// processing to user-defined callback functions.
 package iterate
 
 import (
@@ -58,17 +55,19 @@ type concurrentIterator struct {
 
 // NewConcurrentIterator() returns a new `Iterator` instance derived from 'iterator_uri' and 'it'. The former is expected
 // to be a valid `whosonfirst/go-whosonfirst-iterate/v3.Iterator` URI defined by the following parameters:
-// * `?_max_procs=` Explicitly set the number maximum processes to use for iterating documents simultaneously. (Default is the value of `runtime.NumCPU()`.)
-// * `?_exclude=` A valid regular expresion used to test and exclude (if matching) the paths of documents as they are iterated through.
-// * `?_exclude_alt_files= A boolean value indicating whether Who's On First style "alternate geometry" file paths should be excluded. (Default is false.)
-// * `?_include=` A valid regular expresion used to test and include (if matching) the paths of documents as they are iterated through.
-// * `?_dedupe=` A boolean value to track and skip records (specifically their relative URI) that have already been processed.
-// * `?_retry=` A boolean value indicating whether failed iterators should be retried. (Default is false.)
-// * `?_max_attempts=` The number of times to retry a failed iterator. (Default is 1.)
-// * `?_retry_after=` The number of seconds to wait before retrying a failed iterator. (Default is 10.)
-// * `?_with_stats=` Boolean flag indicating whether stats should be logged. Default is true.
-// * `?_stats_interval=` The number of seconds between stats logging events. Default is 60.
-// * `?_stas_level=` The (slog/log) level at which stats are logged. Default is INFO.
+//
+//   - `?_max_procs=` Explicitly set the number maximum processes to use for iterating documents simultaneously. (Default is the value of `runtime.NumCPU()`.)
+//   - `?_exclude=` A valid regular expresion used to test and exclude (if matching) the paths of documents as they are iterated through.
+//   - `?_exclude_alt_files= A boolean value indicating whether Who's On First style "alternate geometry" file paths should be excluded. (Default is false.)
+//   - `?_include=` A valid regular expresion used to test and include (if matching) the paths of documents as they are iterated through.
+//   - `?_dedupe=` A boolean value to track and skip records (specifically their relative URI) that have already been processed.
+//   - `?_retry=` A boolean value indicating whether failed iterators should be retried. (Default is false.)
+//   - `?_max_attempts=` The number of times to retry a failed iterator. (Default is 1.)
+//   - `?_retry_after=` The number of seconds to wait before retrying a failed iterator. (Default is 10.)
+//   - `?_with_stats=` Boolean flag indicating whether stats should be logged. Default is true.
+//   - `?_stats_interval=` The number of seconds between stats logging events. Default is 60.
+//   - `?_stas_level=` The (slog/log) level at which stats are logged. Default is INFO.
+//
 // These parameters will be used to wrap and perform additional checks when iterating through documents using 'it'.
 func NewConcurrentIterator(ctx context.Context, iterator_uri string, it Iterator) (Iterator, error) {
 

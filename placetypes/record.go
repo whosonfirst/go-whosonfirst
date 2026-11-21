@@ -1,6 +1,6 @@
 package placetypes
 
-// Type WOFPlacetypeRecord is a struct that maps to the JSON record files
+// WOFPlacetypeRecord is a struct that maps to the JSON record files
 // for individual placetypes in the `whosonfirst-placetypes` repo. Note that as of
 // this writing it does not account for BCP-47 name: properties.
 //

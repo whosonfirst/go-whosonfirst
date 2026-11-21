@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 
@@ -20,6 +21,14 @@ func main() {
 	fs.StringVar(&os_index, "opensearch-index", "", "...")
 
 	client.AppendClientFlags(fs)
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Deletes an OpenSearch index.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
+
 	flagset.Parse(fs)
 
 	ctx := context.Background()

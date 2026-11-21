@@ -3,8 +3,10 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"net/url"
+	"os"
 
 	"github.com/aaronland/go-aws/v3/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -30,6 +32,13 @@ func main() {
 	dynamodb_uri := flag.String("dynamodb-uri", "", "A valid aaronland/go-aws-session DSN")
 	billing_mode := flag.String("billing-mode", "PAY_PER_REQUEST", "...")
 	refresh := flag.Bool("refresh", false, "...")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Creates the DynamoDB tables used by the Who's On First finding aid.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

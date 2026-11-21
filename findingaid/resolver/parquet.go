@@ -10,7 +10,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/findingaid/producer"
 )
 
-// type ParquetResolver implements the `Resolver` interface for data stored in a Parquet database
+// ParquetResolver implements [Resolver] for a finding aid stored in Parquet.
 // produced by `github.com/whosonfirst/go-whosonfirst/v4/findingaid/producer.ParquetProducer`
 type ParquetResolver struct {
 	Resolver

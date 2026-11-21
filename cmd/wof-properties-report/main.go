@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io"
 	"io/fs"
 	"log"
@@ -21,6 +22,13 @@ func main() {
 
 	flag.StringVar(&root, "properties", "", "The path to your whosonfirst-properties/properties directory")
 	flag.StringVar(&report, "report", "", "The path to write your whosonfirst-properties report. Default is STDOUT.")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Generates a CSV report of Who's On First property definitions.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

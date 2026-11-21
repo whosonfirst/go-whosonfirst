@@ -12,11 +12,12 @@ import (
 
 // AppendNameStats appends statistics about the `name:*` properties in a Who's On First record.
 // Specifically:
-// * The unique set of language translations
-// * The total number of names
-// * The total number of languages
-// * The total number of "preferred" names
-// * The total number of "variant" names
+//
+//   - The unique set of language translations
+//   - The total number of names
+//   - The total number of languages
+//   - The total number of "preferred" names
+//   - The total number of "variant" names
 func AppendNameStats(ctx context.Context, body []byte) ([]byte, error) {
 
 	root := gjson.ParseBytes(body)

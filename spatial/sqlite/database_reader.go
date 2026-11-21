@@ -80,7 +80,7 @@ func (r *SQLiteSpatialDatabase) Exists(ctx context.Context, str_uri string) (boo
 	return true, nil
 }
 
-// ReadURI implements the whosonfirst/go-reader interface so that the database itself can be used as a
+// ReaderURI implements the whosonfirst/go-reader interface so that the database itself can be used as a
 // reader.Reader instance
 func (r *SQLiteSpatialDatabase) ReaderURI(ctx context.Context, str_uri string) string {
 	return str_uri

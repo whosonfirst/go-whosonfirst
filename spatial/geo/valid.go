@@ -1,31 +1,31 @@
 package geo
 
-// Returns a boolean value indicating where 'lat' is greater than or equal to -90
+// IsValidMinLatitude reports whether lat is at least -90.
 func IsValidMinLatitude(lat float64) bool {
 	return lat >= -90.00
 }
 
-// Returns a boolean value indicating where 'lat' is less than or equal to 90
+// IsValidMaxLatitude reports whether lat is at most 90.
 func IsValidMaxLatitude(lat float64) bool {
 	return lat <= 90.00
 }
 
-// Returns a boolean value indicating where 'lat' is greater than or equal to -90 and less than or equal to 90
+// IsValidLatitude reports whether lat is between -90 and 90, inclusive.
 func IsValidLatitude(lat float64) bool {
 	return IsValidMinLatitude(lat) && IsValidMaxLatitude(lat)
 }
 
-// Returns a boolean value indicating where 'lon' is greater than or equal to -180
+// IsValidMinLongitude reports whether lon is at least -180.
 func IsValidMinLongitude(lon float64) bool {
 	return lon >= -180.00
 }
 
-// Returns a boolean value indicating where 'lon' is less than or equal to 180
+// IsValidMaxLongitude reports whether lon is at most 180.
 func IsValidMaxLongitude(lon float64) bool {
 	return lon <= 180.00
 }
 
-// Returns a boolean value indicating where 'lat' is greater than or equal to -180 and less than or equal to 180
+// IsValidLongitude reports whether lon is between -180 and 180, inclusive.
 func IsValidLongitude(lon float64) bool {
 	return IsValidMinLongitude(lon) && IsValidMaxLongitude(lon)
 }

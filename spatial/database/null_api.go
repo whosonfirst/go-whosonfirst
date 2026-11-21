@@ -16,7 +16,7 @@ func (db *NullSpatialDatabase) PointInPolygon(context.Context, *orb.Point, ...sp
 	return NewNullResults(), nil
 }
 
-// PointInPolygon performs a point-in-polygon operation yielding matching records in an iterator.
+// PointInPolygonWithIterator returns an empty sequence of point-in-polygon results.
 func (db *NullSpatialDatabase) PointInPolygonWithIterator(context.Context, *orb.Point, ...spatial.Filter) iter.Seq2[spr.StandardPlacesResult, error] {
 	return func(yield func(spr.StandardPlacesResult, error) bool) {}
 }

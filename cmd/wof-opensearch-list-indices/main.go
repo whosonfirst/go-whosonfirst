@@ -20,6 +20,14 @@ func main() {
 	fs.BoolVar(&raw, "raw", false, "Display raw response JSON.")
 
 	client.AppendClientFlags(fs)
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Lists OpenSearch indexes.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
+
 	flagset.Parse(fs)
 
 	ctx := context.Background()

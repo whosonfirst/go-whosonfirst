@@ -9,6 +9,7 @@ import (
 	"github.com/tidwall/sjson"
 )
 
+// UpdateBytes replaces legacy open and unknown EDTF property values. It reports whether any values changed and returns the resulting document.
 func UpdateBytes(body []byte) (bool, []byte, error) {
 
 	props := gjson.GetBytes(body, "properties")

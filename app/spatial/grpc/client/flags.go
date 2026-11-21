@@ -2,6 +2,8 @@ package client
 
 import (
 	"flag"
+	"fmt"
+	"os"
 
 	"github.com/sfomuseum/go-flags/flagset"
 	"github.com/sfomuseum/go-flags/multi"
@@ -64,6 +66,13 @@ func DefaultFlagSet() (*flag.FlagSet, error) {
 	fs.Var(&is_superseding, "is-superseding", "One or more existential flags (-1, 0, 1) to filter results by.")
 
 	fs.Var(&sort_uris, "sort-uri", "Zero or more whosonfirst/go-whosonfirst-spr/sort URIs.")
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Runs the command-line client for the spatial gRPC service.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
 
 	return fs, nil
 }

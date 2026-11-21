@@ -42,7 +42,7 @@ type IndexerOptions struct {
 	Workers int
 }
 
-// NewSQLiteInder returns a `Indexer` configured with 'opts'.
+// NewIndexer returns an [Indexer] configured with 'opts'.
 func NewIndexer(opts *IndexerOptions) (*Indexer, error) {
 
 	if opts.Workers == 0 {
@@ -149,7 +149,7 @@ func (idx *Indexer) IndexURIs(ctx context.Context, iterator_uri string, uris ...
 	return nil
 }
 
-// IndexIterateRecord will index 'rec' in the underlying database.
+// IndexIteratorRecord will index 'rec' in the underlying database.
 func (idx *Indexer) IndexIteratorRecord(ctx context.Context, rec *iterate.Record) error {
 
 	logger := slog.Default()

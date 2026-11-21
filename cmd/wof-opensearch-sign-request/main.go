@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -22,6 +23,13 @@ func main() {
 	flag.StringVar(&method, "method", "GET", "")
 	flag.StringVar(&uri, "uri", "", "")
 	flag.StringVar(&credentials_uri, "credentials-uri", "", "")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Signs an OpenSearch HTTP request using AWS credentials.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

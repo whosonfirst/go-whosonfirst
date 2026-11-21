@@ -10,10 +10,10 @@ import (
 	"github.com/whosonfirst/go-whosonfirst/v4/uri"
 )
 
-// type BelongsToTravelFunc defines custom callback function to be invoked for records matching a "wof:belongs_to" condition.
+// BelongsToTravelFunc defines custom callback function to be invoked for records matching a "wof:belongs_to" condition.
 type BelongsToTravelFunc func(context.Context, []byte, int64) error
 
-// type BelongsToTraveler defines a struct
+// BelongsToTraveler iterates over records and invokes Callback for those matching its belongs-to criteria.
 type BelongsToTraveler struct {
 	// Callback is a `BelongsToTravelFunc` function to be invoked for records matching a "wof:belongs_to" condition.
 	Callback BelongsToTravelFunc

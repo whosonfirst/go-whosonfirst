@@ -92,7 +92,7 @@ func ParseURI(path string) (int64, *URIArgs, error) {
 	return wofid, args, nil
 }
 
-// ISWOFFile returns a boolean value indicating whether a path is a valid Who's On First URI.
+// IsWOFFile returns a boolean value indicating whether a path is a valid Who's On First URI.
 func IsWOFFile(path string) (bool, error) {
 
 	_, _, err := ParseURI(path)
@@ -110,7 +110,7 @@ func IsWOFFile(path string) (bool, error) {
 	return true, nil
 }
 
-// ISAltFile returns a boolean value indicating whether a path is a valid Who's On First URI for an "alternate" geometry.
+// IsAltFile returns a boolean value indicating whether a path is a valid Who's On First URI for an "alternate" geometry.
 func IsAltFile(path string) (bool, error) {
 
 	_, uri_args, err := ParseURI(path)
@@ -151,7 +151,7 @@ func IdFromPath(path string) (int64, error) {
 	return id, nil
 }
 
-// RepoFromPath parses a path and if it is a valid whosonfirst-data Who's On First URI returns a GitHub repository name.
+// WhosOnFirstDataRepoFromPath parses a path and if it is a valid whosonfirst-data Who's On First URI returns a GitHub repository name.
 func WhosOnFirstDataRepoFromPath(path string) (string, error) {
 
 	abs_path, err := filepath.Abs(path)

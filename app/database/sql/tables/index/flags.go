@@ -3,6 +3,7 @@ package index
 import (
 	"flag"
 	"fmt"
+	"os"
 	"runtime"
 	"strings"
 
@@ -80,5 +81,13 @@ func DefaultFlagSet() *flag.FlagSet {
 	fs.IntVar(&procs, "processes", (runtime.NumCPU() * 2), "The number of concurrent processes to index data with")
 
 	fs.BoolVar(&verbose, "verbose", false, "Enable verbose (debug) logging")
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Indexes Who's On First records in SQL tables.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
+
 	return fs
 }

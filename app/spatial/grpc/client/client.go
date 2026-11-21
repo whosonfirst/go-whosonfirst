@@ -2,7 +2,7 @@ package client
 
 import (
 	"context"
-	"encoding/json"
+	"encoding/json/v2"
 	"flag"
 	"fmt"
 	"io"
@@ -103,8 +103,7 @@ func RunWithOptions(ctx context.Context, opts *RunOptions) error {
 
 	wr := io.MultiWriter(writers...)
 
-	enc := json.NewEncoder(wr)
-	err = enc.Encode(stream)
+	err = json.MarshalWrite(wr, stream)
 
 	if err != nil {
 		return fmt.Errorf("Failed to encode stream, %v", err)

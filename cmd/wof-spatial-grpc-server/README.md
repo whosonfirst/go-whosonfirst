@@ -1,7 +1,12 @@
 # grpc-server
 
 ```
-$> ./bin/grpc-server -h
+$> wof-spatial-grpc-server -h
+Configures and runs the spatial gRPC service.
+Usage:
+	 wof-spatial-grpc-server [options]
+Valid options are:
+
   -custom-placetypes string
     	A JSON-encoded string containing custom placetypes defined using the syntax described in the whosonfirst/go-whosonfirst-placetypes repository.
   -enable-custom-placetypes
@@ -15,9 +20,9 @@ $> ./bin/grpc-server -h
   -port int
     	The port to listen for requests on (default 8082)
   -properties-reader-uri string
-    	A valid whosonfirst/go-reader.Reader URI. Available options are: [fs:// null:// repo:// sqlite:// stdin://]. If the value is {spatial-database-uri} then the value of the '-spatial-database-uri' implements the reader.Reader interface and will be used.
+    	A valid whosonfirst/go-reader.Reader URI. Available options are: [cwd:// fs:// http:// https:// multi:// null:// pmtiles:// repo:// sql:// sqlite:// stdin://]. If the value is {spatial-database-uri} then the value of the '-spatial-database-uri' implements the reader.Reader interface and will be used.
   -spatial-database-uri string
-    	A valid whosonfirst/go-whosonfirst-spatial/data.SpatialDatabase URI. options are: [rtree:// sqlite://] (default "rtree://")
+    	A valid whosonfirst/go-whosonfirst/v4/spatial/data.SpatialDatabase URI. options are: [null:// pmtiles:// rtree:// sqlite://] (default "rtree://")
 ```	
 
 ## Example

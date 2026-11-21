@@ -25,7 +25,7 @@ type findingaid struct {
 	template *uritemplates.UriTemplate
 }
 
-// type FindingAidReader implements the `whosonfirst/go-reader` interface for use with Who's On First finding aids.
+// FindingAidReader implements the `whosonfirst/go-reader` interface for use with Who's On First finding aids.
 type FindingAidReader struct {
 	wof_reader.Reader
 	findingaids []*findingaid

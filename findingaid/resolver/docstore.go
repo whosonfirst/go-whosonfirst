@@ -25,7 +25,7 @@ import (
 	"gocloud.dev/gcerrors"
 )
 
-// type DocstoreResolver implements the `Resolver` interface for data stored in a gocloud.dev/docstore compatible collection.
+// DocstoreResolver implements the `Resolver` interface for data stored in a gocloud.dev/docstore compatible collection.
 type DocstoreResolver struct {
 	Resolver
 	// A Docstore `sql.DB` instance containing Who's On First finding aid data.

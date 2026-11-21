@@ -187,7 +187,7 @@ func (t *PointInPolygonHierarchyResolver) PointInPolygon(ctx context.Context, in
 	return t.PointInPolygonWithPoint(ctx, inputs, coord, pt_str)
 }
 
-// PointInPolygon will perform a point-in-polygon (reverse geocoding) operation for 'pt' using zero or more 'inputs' as query filters.
+// PointInPolygonWithPoint will perform a point-in-polygon (reverse geocoding) operation for 'pt' using zero or more 'inputs' as query filters.
 // This is known to not work as expected if the `wof:placetype` property is "common". There needs to be a way to a) retrieve placetypes
 // using a custom `WOFPlacetypeSpecification` and b) specify an alternate property to retrieve placetypes from if `wof:placetype=custom`.
 func (t *PointInPolygonHierarchyResolver) PointInPolygonWithPoint(ctx context.Context, inputs *filter.SPRInputs, coord *orb.Point, pt_str string) ([]spr.StandardPlacesResult, error) {

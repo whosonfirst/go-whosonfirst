@@ -10,6 +10,7 @@ import (
 // To do: Replace Options{ ValidateFoo, ValidateBar } with Options{ Validators []Validator }
 // where Validator is an interface whose signature is something like Validate(context.Context, []byte) error
 
+// Options selects which Who's On First properties to validate.
 type Options struct {
 	ValidateId        bool
 	ValidateName      bool
@@ -20,6 +21,7 @@ type Options struct {
 	ValidateIsCurrent bool
 }
 
+// DefaultValidateOptions enables validation of identifiers, names, placetypes, repositories, name tags, and EDTF dates.
 func DefaultValidateOptions() *Options {
 
 	return &Options{
@@ -32,6 +34,7 @@ func DefaultValidateOptions() *Options {
 	}
 }
 
+// EnsureValidGeoJSON reads all of r and returns the original bytes if they parse as GeoJSON.
 func EnsureValidGeoJSON(r io.Reader) ([]byte, error) {
 
 	body, err := io.ReadAll(r)
@@ -57,12 +60,14 @@ func EnsureValidGeoJSON(r io.Reader) ([]byte, error) {
 	return body, nil
 }
 
+// Validate checks the record using [DefaultValidateOptions].
 func Validate(body []byte) error {
 
 	opts := DefaultValidateOptions()
 	return ValidateWithOptions(body, opts)
 }
 
+// ValidateAlt checks the identifier and repository properties of an alternate geometry record.
 func ValidateAlt(body []byte) error {
 
 	opts := DefaultValidateOptions()
@@ -75,6 +80,7 @@ func ValidateAlt(body []byte) error {
 	return ValidateWithOptions(body, opts)
 }
 
+// ValidateWithOptions checks the properties enabled in options and returns the first validation error.
 func ValidateWithOptions(body []byte, options *Options) error {
 
 	if options.ValidateId {

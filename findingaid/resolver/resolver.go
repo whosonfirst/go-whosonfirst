@@ -1,4 +1,3 @@
-// package resolver providers common methods and interfaces for retrieving repository data from a variety of storage systems.
 package resolver
 
 import (
@@ -11,7 +10,7 @@ import (
 	"github.com/aaronland/go-roster"
 )
 
-// type Resolver defines a storage-independent interface for retrieving a repository name given an ID.
+// Resolver defines a storage-independent interface for retrieving a repository name given an ID.
 type Resolver interface {
 	// GetRepo returns the repository name matching an ID.
 	GetRepo(context.Context, int64) (string, error)
@@ -19,7 +18,7 @@ type Resolver interface {
 	Close() error
 }
 
-// type ResolverInitializeFunc defines an initialization function for a storage-specific implementation of the Resolver interface.
+// ResolverInitializeFunc defines an initialization function for a storage-specific implementation of the Resolver interface.
 type ResolverInitializeFunc func(ctx context.Context, uri string) (Resolver, error)
 
 var resolvers roster.Roster

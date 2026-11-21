@@ -24,6 +24,14 @@ import (
 func main() {
 
 	docstore_uri := flag.String("docstore-uri", "", "...")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Loads archived finding aid CSV data into a Go Cloud document store.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
 
 	archives := flag.Args()

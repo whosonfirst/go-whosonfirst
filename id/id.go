@@ -22,7 +22,7 @@ func NewID() (int64, error) {
 	return pr.NewID(ctx)
 }
 
-// type Provider is an interface for providing uniquer identifiers.
+// Provider generates unique identifiers.
 type Provider interface {
 	// NewID returns a new unique 64-bit integers.
 	NewID(context.Context) (int64, error)
@@ -34,7 +34,7 @@ type WOFProvider struct {
 	uid_provider uid.Provider
 }
 
-// NweProvider returns a new `WOFProvider` instance configured with default
+// NewProvider returns a new `WOFProvider` instance configured with default
 // settings.
 func NewProvider(ctx context.Context) (Provider, error) {
 	uri := "proxy://?provider=whosonfirst://"

@@ -41,16 +41,17 @@ type SQLIterator struct {
 	iterating *atomic.Bool
 }
 
-// NewGitIterator() returns a new `GitIterator` instance configured by 'uri' in the form of:
+// NewSQLIterator constructs a [SQLIterator] from a URI of the form:
 //
 //	sql://{ENGINE}?{PARAMETERS}
 //
 // Where {ENGINE} is a registered `database/sql` driver and {PARAMETERS} may be:
-// * `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
-// * `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
-// * `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
-// * `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
-// * `?processes=` An optional number assigning the maximum number of database rows that will be processed simultaneously. (Default is defined by `runtime.NumCPU()`.)
+//
+//   - `?include=` Zero or more `aaronland/go-json-query` query strings containing rules that must match for a document to be considered for further processing.
+//   - `?exclude=` Zero or more `aaronland/go-json-query`	query strings containing rules that if matched will prevent a document from being considered for further processing.
+//   - `?include_mode=` A valid `aaronland/go-json-query` query mode string for testing inclusion rules.
+//   - `?exclude_mode=` A valid `aaronland/go-json-query` query mode string for testing exclusion rules.
+//   - `?processes=` An optional number assigning the maximum number of database rows that will be processed simultaneously. (Default is defined by `runtime.NumCPU()`.)
 func NewSQLIterator(ctx context.Context, uri string) (iterate.Iterator, error) {
 
 	u, err := url.Parse(uri)

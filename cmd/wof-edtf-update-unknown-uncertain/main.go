@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"os"
 
 	"github.com/tidwall/gjson"
 	"github.com/whosonfirst/go-whosonfirst/v4/edtf"
@@ -22,6 +23,13 @@ func main() {
 	iterator_uri := flag.String("iterator-uri", "repo://", iterator_desc)
 
 	writer_uri := flag.String("writer-uri", "null://", "A valid whosonfirst/go-writer URI.")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Updates legacy open and unknown Extended Date/Time Format values and writes changed records to a configured writer.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

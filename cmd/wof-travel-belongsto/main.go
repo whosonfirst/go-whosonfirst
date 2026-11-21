@@ -208,6 +208,13 @@ func main() {
 	csv_header := flag.Bool("csv-header", false, "...")
 	sort_rs := flag.Bool("sort", false, "...")
 
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Finds records with matching wof:belongsto values and reports the results.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
 
 	ctx := context.Background()

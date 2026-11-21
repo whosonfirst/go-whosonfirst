@@ -2,7 +2,7 @@ package pip
 
 import (
 	"context"
-	"encoding/json"
+	"encoding/json/v2"
 	"flag"
 	"fmt"
 	"log/slog"

@@ -9,7 +9,7 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// type SQLiteResolver implements the `Resolver` interface for data stored in a SQLite database..
+// SQLiteResolver implements [Resolver] for a SQLite finding aid.
 type SQLiteResolver struct {
 	Resolver
 	// A SQLite `sql.DB` instance containing Who's On First finding aid data.

@@ -23,6 +23,7 @@ test:
 	go test -tags sqlite,pmtiles,sqlite3 -v ./...
 
 cli:
+	@make cli-wof
 	@make cli-concordances
 	@make cli-database
 	@make cli-derivatives
@@ -48,6 +49,9 @@ wasmjs:
 	@make wasmjs-format
 	@make wasmjs-placetypes
 	@make wasmjs-validate
+
+cli-wof:
+	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof cmd/wof/main.go
 
 cli-concordances:
 	go build -mod $(GOMOD) -ldflags="$(LDFLAGS)" -o bin/wof-concordances-keys cmd/wof-concordances-keys/main.go

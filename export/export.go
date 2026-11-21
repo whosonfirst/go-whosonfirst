@@ -73,7 +73,7 @@ func Export(ctx context.Context, feature []byte) (bool, []byte, error) {
 	return true, new_feature, nil
 }
 
-// Export will perform all the steps necessary to "export" (as in create or update) 'feature' taking care to ensure correct formatting, default values and validation writing data to 'wr' if the feature has been updated. It returns a boolean value indicating whether the feature was changed during the export process.
+// WriteExportIfChanged calls [Export] and writes the resulting bytes to wr only if the feature changed. It reports whether the feature changed, even if writing fails.
 func WriteExportIfChanged(ctx context.Context, feature []byte, wr io.Writer) (bool, error) {
 
 	has_changed, body, err := Export(ctx, feature)

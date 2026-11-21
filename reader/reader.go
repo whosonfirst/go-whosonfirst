@@ -48,7 +48,7 @@ func LoadBytes(ctx context.Context, r go_reader.Reader, id int64) ([]byte, error
 	return body, nil
 }
 
-// LoadBytes will return an `paulmach/orb/geojson.Feature` instance from 'r' for the relative path associated with 'id'.
+// LoadFeature reads the record for id and decodes it as a GeoJSON feature.
 func LoadFeature(ctx context.Context, r go_reader.Reader, id int64) (*geojson.Feature, error) {
 
 	body, err := LoadBytes(ctx, r, id)

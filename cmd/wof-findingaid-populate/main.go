@@ -3,8 +3,10 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"log/slog"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -31,6 +33,13 @@ func main() {
 	atomic := flag.Bool("atomic", false, "Produce atomic findingaids for each item in a source list. If true then -producer URI must be a valid URI template containing a '{source}' variable to expand with findingaid name.")
 
 	flag.BoolVar(&verbose, "verbose", false, "Enable verbose (debug) logging.")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Scans record sources and sends ID-to-repository mappings to a finding aid producer.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

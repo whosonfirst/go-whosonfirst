@@ -10,7 +10,7 @@ import (
 	"github.com/aaronland/go-roster"
 )
 
-// type Definition provides an interface for working with "core" and custom placetype specifications
+// Definition provides an interface for working with "core" and custom placetype specifications
 // and for creating them using a URI-based syntax
 type Definition interface {
 	// Specification returns the `WOFPlacetypeSpecification` instance associated with the definition

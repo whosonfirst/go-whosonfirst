@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"os"
 
 	"github.com/sfomuseum/go-flags/flagset"
 	"github.com/whosonfirst/go-whosonfirst/v4/iterate"
@@ -17,6 +19,13 @@ func main() {
 	fs := flagset.NewFlagSet("parquet")
 	fs.StringVar(&writer_uri, "writer-uri", "", "The path to a file where Parquet data should be written. If \"-\" then data will be written to STDOUT.")
 	fs.StringVar(&iterator_uri, "iterator-uri", "repo://", "A registered whosonfirst/go-whosonfirst/v4/iterate.Iterator URI.")
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Converts records from a configured iterator to Parquet rows and writes them to a configured destination.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
 
 	flagset.Parse(fs)
 

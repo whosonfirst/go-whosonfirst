@@ -4,11 +4,12 @@ package main
 // "Appalachian National Scenic Trail"
 
 import (
-	"log"
-	"flag"
 	"encoding/json"
+	"flag"
+	"fmt"
+	"log"
 	"os"
-	
+
 	"github.com/whosonfirst/go-whosonfirst/v4/parquet"
 )
 
@@ -19,6 +20,13 @@ func main() {
 
 	flag.StringVar(&parquet_uri, "parquet-uri", "The URI of the Parquet file to search for a record in.", "")
 	flag.Int64Var(&id, "id", -1, "The Who's On First ID to search for.")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Finds a Who's On First record by ID in a Parquet file.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 
@@ -40,5 +48,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to JSON-encode record, %w", err)
 	}
-	
+
 }

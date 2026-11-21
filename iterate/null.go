@@ -39,7 +39,7 @@ func (it *NullIterator) Seen() int64 {
 	return int64(0)
 }
 
-// IsIterating() returns a boolean value indicating whether 'it' is still processing documents.
+// IsIterator reports whether the iterator is processing records. For a [NullIterator] it always returns false.
 func (it *NullIterator) IsIterator() bool {
 	return false
 }

@@ -24,6 +24,13 @@ func main() {
 	include_path := flag.Bool("include-path", true, "Include path of relevant Who's On First record in output.")
 	include_key := flag.Bool("include-key", true, "Include edtf: property of relevant Who's On First record in output.")
 
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Scans Who's On First records for invalid Extended Date/Time Format properties.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
 
 	uris := flag.Args()

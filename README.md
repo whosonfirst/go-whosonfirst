@@ -22,14 +22,24 @@ Version "4" aims to introduce the least amount of change as possible to existing
 
 For example the `whosonfirst/go-whosonfirst/v4/iterate` and `whosonfirst/go-whosonfirst/v4/github` packages may be refactored into non-WOF-specific packages. This remains "tomorrow's problem" for the time being.
 
-## Package and directory guide
+## Command line tools
 
-Paths below are relative to the repository root. For importable packages, prefix the path with `github.com/whosonfirst/go-whosonfirst/v4/`.
+Consult documentation in [cmd/](cmd/). The "kitchen-sink" Who's On First command line application is [cmd/wof](cmd/wof). The easiest way to build tools is with the handy `cli` Makefile command. For example:
 
-| Directory | Packages and purpose |
+```
+$> make cli
+go build -mod vendor -ldflags="-s -w" -o bin/wof cmd/wof/main.go
+go build -mod vendor -ldflags="-s -w" -o bin/wof-concordances-keys cmd/wof-concordances-keys/main.go
+go build -mod vendor -ldflags="-s -w" -tags null -o bin/wof-sql-create cmd/wof-sql-create/main.go
+go build -mod vendor -ldflags="-s -w" -tags null -o bin/wof-sql-index cmd/wof-sql-index/main.go
+... and so on
+```
+
+## Packages
+
+| Directory | Description |
 | --- | --- |
-| [`app`](app/) | Command implementations: `app/wof` assembles the `wof` CLI; `app/database/sql/tables` subpackages create, index, and prune SQL tables. `app/derivatives/server`, `app/export`, `app/fetch/records`, and `app/findingaid/resolve` serve derivatives, export records, fetch records, and resolve IDs, respectively. `app/iterate` subpackages count, emit, and write records; `app/spatial` subpackages run point-in-polygon and intersection queries, rebuild hierarchies, and run gRPC and web services. |
-| [`cmd`](cmd/) | Executable `main` packages for the `wof` CLI, standalone record-processing and database tools, spatial and derivative services, and browser-facing WebAssembly entry points. |
+| [`app`](app/) | Application code for command line tools in `cmd`. |
 | [`concordances`](concordances/) | Lists distinct keys in `wof:concordances`, which links Who's On First records to identifiers from other datasets. |
 | [`database`](database/) | `database/sql` opens SQL databases; its `tables`, `indexer`, `prune`, `spr`, and `writer` subpackages define tables, index and remove records, query standard places results, and write records. Under `database/opensearch`, `client`, `document`, `indexer`, `schema/v2`, and `writer` configure clients, transform and index records, define mappings, and write documents. |
 | [`derivatives`](derivatives/) | Registers record providers for generating derivative representations. `derivatives/http` parses requests and `derivatives/http/api` serves responses; `derivatives/image` and `derivatives/svg` render raster images and SVG. |
@@ -59,9 +69,7 @@ Paths below are relative to the repository root. For importable packages, prefix
 | [`travel`](travel/) | Follows record links such as parents, hierarchy entries, and supersession links. `travel/traveler` provides handlers for individual relationship types. |
 | [`uri`](uri/) | Parses and constructs record paths and URIs for primary records and alternate geometries. |
 | [`validate`](validate/) | Checks record properties and GeoJSON syntax. `validate/wasm` exposes validation to JavaScript. |
-| [`vendor`](vendor/) | Local copies of third-party Go dependencies; not part of the Who's On First package API. |
-| [`wof`](wof/) | Registers and constructs `wof` subcommands. Its subpackages inspect records (`show`, `open`, `repos`, `uri`), edit records (`edit`, `property`, `deprecate`, `supersede`, `hierarchy/rebuild`), work with geometry (`centroid`, `geometry`, `pip`), and process records (`emit`, `export`, `format`, `index`, `validate`). The editor has HTTP and static assets; `reader`, `writer`, `uris`, and `internal/update` share record I/O, URI expansion, and update logic. |
-| `work` | Local working datasets and generated files, such as Parquet exports; not a Go package. |
+| [`wof`](wof/) | Registers and constructs subcommands for `cmd/wof-cli` tool. |
 | [`writer`](writer/) | Writes GeoJSON features or bytes through a `go-writer` backend, optionally applying a custom exporter. |
 
 ## Tests

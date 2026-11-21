@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -18,6 +19,13 @@ func main() {
 
 	iterator_uri := flag.String("iterator-uri", "directory://", "")
 	iterator_source := flag.String("iterator-source", "/usr/local/whosonfirst/whosonfirst-placetypes/placetypes", "")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Compiles individual placetype definitions into a single specification.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

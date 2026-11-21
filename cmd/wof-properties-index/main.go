@@ -8,6 +8,7 @@ import ()
 import (
 	"context"
 	"flag"
+	"fmt"
 	"io"
 	"log/slog"
 	"os"
@@ -39,6 +40,13 @@ func main() {
 
 	var exclude multi.MultiRegexp
 	flag.Var(&exclude, "exclude", "One or more valid regular expressions to use for excluding property names you don't want to index")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Scans Who's On First records and creates missing property definition files.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

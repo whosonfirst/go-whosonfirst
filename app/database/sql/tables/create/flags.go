@@ -2,6 +2,8 @@ package create
 
 import (
 	"flag"
+	"fmt"
+	"os"
 
 	"github.com/sfomuseum/go-flags/flagset"
 )
@@ -51,5 +53,13 @@ func DefaultFlagSet() *flag.FlagSet {
 	fs.BoolVar(&spelunker_tables, "spelunker-tables", false, "If true then index the necessary tables for use with the whosonfirst/go-whosonfirst-spelunker packages")
 
 	fs.BoolVar(&verbose, "verbose", false, "Enable verbose (debug) logging")
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Creates SQL tables for Who's On First records.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
+
 	return fs
 }

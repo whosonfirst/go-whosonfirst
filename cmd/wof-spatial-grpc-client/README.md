@@ -1,7 +1,12 @@
 # grpc-client
 
 ```
-$> ./bin/grpc-client -h
+$> wof-spatial-grpc-client -h
+Runs the command-line client for the spatial gRPC service.
+Usage:
+	 wof-spatial-grpc-client [options]
+Valid options are:
+
   -alternate-geometry value
     	One or more alternate geometry labels (wof:alt_label) values to filter results by.
   -cessation string

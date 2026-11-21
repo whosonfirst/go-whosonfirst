@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"flag"
+	"fmt"
 	"log"
 	"os"
 
@@ -14,6 +15,13 @@ import (
 )
 
 func main() {
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Computes a point within a GeoJSON geometry and prints it as a GeoJSON feature.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

@@ -3,6 +3,7 @@ package server
 import (
 	"flag"
 	"fmt"
+	"os"
 
 	"github.com/sfomuseum/go-flags/flagset"
 	"github.com/whosonfirst/go-reader/v2"
@@ -51,6 +52,13 @@ func DefaultFlagSet() (*flag.FlagSet, error) {
 	desc_iter := iter_flags.IteratorURIFlagDescription()
 	desc_iter = fmt.Sprintf("Zero or more URIs denoting data sources to use for indexing the spatial database at startup. %s", desc_iter)
 	fs.Var(&iterator_uris, "iterator-uri", desc_iter)
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Configures and runs the spatial gRPC service.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
 
 	return fs, nil
 }

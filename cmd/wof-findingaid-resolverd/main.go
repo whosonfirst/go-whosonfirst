@@ -19,9 +19,11 @@ $> ./bin/read -reader-uri 'findingaid://http/localhost:8080?template=https://raw
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"log/slog"
 	"net/http"
+	"os"
 
 	"github.com/aaronland/go-http/v4/response"
 	"github.com/aaronland/go-http/v4/server"
@@ -80,6 +82,13 @@ func main() {
 
 	server_uri := fs.String("server-uri", "http://localhost:8080", "A valid aaronland/go-http-server URI")
 	resolver_uri := fs.String("resolver-uri", "", "A registered whosonfirst/go-whosonfirst-findingaid/v2/resolver.Resolver URI.")
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Exposes a Who's On First finding aid resolver over HTTP.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
 
 	flagset.Parse(fs)
 

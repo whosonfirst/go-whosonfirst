@@ -3,6 +3,7 @@ package server
 import (
 	"flag"
 	"fmt"
+	"os"
 	"sort"
 
 	"github.com/aaronland/go-http-maps/v2"
@@ -113,6 +114,13 @@ func DefaultFlagSet() (*flag.FlagSet, error) {
 	fs.StringVar(&leaflet_style, "leaflet_style", "", "A custom Leaflet style definition for geometries. This may either be a JSON-encoded string or a path on disk.")
 	fs.StringVar(&leaflet_point_style, "leaflet_point_style", "", "A custom Leaflet style definition for points. This may either be a JSON-encoded string or a path on disk.")
 	fs.StringVar(&initial_view, "initial-view", "", "A comma-separated string indicating the map's initial view. Valid options are: 'LON,LAT', 'LON,LAT,ZOOM' or 'MINX,MINY,MAXX,MAXY'.")
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Configures and runs the spatial web server.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
 
 	return fs, nil
 }

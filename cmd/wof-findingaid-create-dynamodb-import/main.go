@@ -25,6 +25,13 @@ const catalog_csv string = "catalog.csv"
 
 func main() {
 
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Converts finding aid archives into data for DynamoDB import.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
 
 	writers := []io.Writer{

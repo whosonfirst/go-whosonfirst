@@ -36,6 +36,13 @@ func main() {
 
 	from_stdin := flag.Bool("stdin", false, "Read IDs to travel from STDIN")
 
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Follows selected record relationships from Who's On First IDs.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
 
 	to_travel := flag.Args()

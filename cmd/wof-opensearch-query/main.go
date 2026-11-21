@@ -26,6 +26,14 @@ func main() {
 	fs.StringVar(&os_query_id, "opensearch-query-id", "", "Convenience flag to auto-generate a ids/values ID query.")
 
 	client.AppendClientFlags(fs)
+
+	fs.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Submits a search query to OpenSearch and prints the response.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		fs.PrintDefaults()
+	}
+
 	flagset.Parse(fs)
 
 	ctx := context.Background()

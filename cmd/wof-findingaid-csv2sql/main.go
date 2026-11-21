@@ -21,6 +21,14 @@ import (
 func main() {
 
 	database_uri := flag.String("database-uri", "sql://sqlite3?dsn=:memory:", "...")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Loads archived finding aid CSV data into a SQL database.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options] path(N) path(N)\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
 
 	archives := flag.Args()

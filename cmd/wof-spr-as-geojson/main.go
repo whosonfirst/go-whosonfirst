@@ -17,6 +17,7 @@ import (
 	"bufio"
 	"context"
 	"flag"
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -31,6 +32,13 @@ func main() {
 	path := flag.String("path", "places.#.wof:path", "A valid tidwall/gjson query path for finding the path for each element in your SPR response.")
 
 	wof_cb := flag.Bool("as-wof", false, "Parse each item returned by -path as though it were a Who's On First style ID/path.")
+
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Reads features referenced by a standard places response and outputs a GeoJSON FeatureCollection.\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\t %s [options]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Valid options are:\n\n")
+		flag.PrintDefaults()
+	}
 
 	flag.Parse()
 

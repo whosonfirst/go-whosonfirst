@@ -74,7 +74,7 @@ go build -mod vendor -ldflags="-s -w" -tags null -o bin/wof-sql-index cmd/wof-sq
 
 ## Tests
 
-Tests are also incomplete at this time. Because of build tags (see below) the easiest way to run test it to use the handy `tests` Makefile tagret which will assign any necessary default tags. For example:
+Tests are incomplete at this time. Because of build tags (see below) the easiest way to run test it to use the handy `tests` Makefile tagret which will assign any necessary default tags. For example:
 
 ```
 $> make test

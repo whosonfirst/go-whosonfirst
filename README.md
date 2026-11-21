@@ -94,6 +94,10 @@ Build tags are still in flux.
 
 ## Packages that have merged/superseded in to this package
 
+### [whosonfirst/wof-cli](https://github.com/whosonfirst/wof-cli)
+
+Replace with `github.com/whosonfirst/go-whosonfirst/v4/cmd/wof` and `github.com/whosonfirst/go-whosonfirst/v4/app/wof`..
+
 ### [whosonfirst/go-reader-findingaid](https://github.com/whosonfirst/go-reader-findingaid)
 
 Replace with `github.com/whosonfirst/go-whosonfirst/v4/findingaid/reader`.

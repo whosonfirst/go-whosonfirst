@@ -2,6 +2,10 @@
 
 Go package for common Who's On First functionality and interfaces.
 
+## Documentation
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/whosonfirst/go-whosonfirst.svg)](https://pkg.go.dev/github.com/whosonfirst/go-whosonfirst)
+
 ## Motivation
 
 This package is work in progress and aims to merge a whole bunch of disparate `go-whosonfirst-*` packages in to one.
@@ -18,11 +22,47 @@ Version "4" aims to introduce the least amount of change as possible to existing
 
 For example the `whosonfirst/go-whosonfirst/v4/iterate` and `whosonfirst/go-whosonfirst/v4/github` packages may be refactored into non-WOF-specific packages. This remains "tomorrow's problem" for the time being.
 
-## Documentation
+## Package and directory guide
 
-Documentation is incomplete at this time.
+Paths below are relative to the repository root. For importable packages, prefix the path with `github.com/whosonfirst/go-whosonfirst/v4/`.
 
-Documentation for individual packages which have been merged in to this one have also been copied in to their respective folders. There is outstanding work to unify all that documentation into a coherent whole.
+| Directory | Packages and purpose |
+| --- | --- |
+| [`app`](app/) | Command implementations: `app/wof` assembles the `wof` CLI; `app/database/sql/tables` subpackages create, index, and prune SQL tables. `app/derivatives/server`, `app/export`, `app/fetch/records`, and `app/findingaid/resolve` serve derivatives, export records, fetch records, and resolve IDs, respectively. `app/iterate` subpackages count, emit, and write records; `app/spatial` subpackages run point-in-polygon and intersection queries, rebuild hierarchies, and run gRPC and web services. |
+| [`cmd`](cmd/) | Executable `main` packages for the `wof` CLI, standalone record-processing and database tools, spatial and derivative services, and browser-facing WebAssembly entry points. |
+| [`concordances`](concordances/) | Lists distinct keys in `wof:concordances`, which links Who's On First records to identifiers from other datasets. |
+| [`database`](database/) | `database/sql` opens SQL databases; its `tables`, `indexer`, `prune`, `spr`, and `writer` subpackages define tables, index and remove records, query standard places results, and write records. Under `database/opensearch`, `client`, `document`, `indexer`, `schema/v2`, and `writer` configure clients, transform and index records, define mappings, and write documents. |
+| [`derivatives`](derivatives/) | Registers record providers for generating derivative representations. `derivatives/http` parses requests and `derivatives/http/api` serves responses; `derivatives/image` and `derivatives/svg` render raster images and SVG. |
+| [`edtf`](edtf/) | Updates legacy Extended Date/Time Format (EDTF) values in Who's On First records. |
+| [`errors`](errors/) | The package at this path is named `derivatives`; it defines `ErrNotImplemented` and `ErrNotFound`. |
+| [`export`](export/) | Prepares records for storage by applying defaults, validating properties, and formatting output. `export/properties` prepares individual properties, `export/app/export` provides a CLI runner, and `export/wasm` exposes record preparation to JavaScript. |
+| [`feature`](feature/) | Defines feature-property errors. `feature/alt` handles alternate geometry records, `feature/constants` defines reserved IDs, and `feature/geometry` and `feature/properties` interpret record geometries and properties. |
+| [`fetch`](fetch/) | Retrieves Who's On First records by ID and can recursively fetch their ancestors. |
+| [`findingaid`](findingaid/) | Represents the repositories in a finding aid, which maps record IDs to their repositories. `findingaid/provider` supplies iterator sources, `findingaid/producer` builds the mappings (including SQL and document-store writers), `findingaid/resolver` looks them up, and `findingaid/reader` uses them to read records. |
+| [`flags`](flags/) | Defines filter interfaces for Who's On First queries. The `custom`, `date`, `existential`, `geometry`, and `placetypes` subpackages implement filters for custom values, dates, record status, geometries, and place types. |
+| [`format`](format/) | Formats Who's On First GeoJSON documents for storage. `format/wasm` exposes the formatter to JavaScript. |
+| [`geo`](geo/) | Finds a point inside an `orb` geometry. |
+| [`geojson`](geojson/) | Configures the JSON encoder and decoder used by `orb`'s GeoJSON package. |
+| [`github`](github/) | Groups GitHub API helpers: `github/client` configures clients, `github/organizations` lists and creates organization repositories, `github/repositories` lists changed files in commits, and `github/util` provides a legacy client helper. |
+| [`hierarchies`](hierarchies/) | Works with Who's On First record hierarchies, including labeling and merging them. |
+| [`http`](http/) | Extracts Who's On First IDs from HTTP requests. `http/webfinger` resolves IDs through WebFinger. |
+| [`id`](id/) | Defines interfaces and implementations for generating unique Who's On First IDs. |
+| [`iterate`](iterate/) | Defines record iterators and implementations for local sources. The `bucket`, `git` (including `git/github`), `parquet`, `reader`, and `sql` subpackages add blob storage, Git and GitHub, Parquet, reader-backed, and SQL sources. `iterate/filters` selects records, `iterate/flags` configures iterators from the CLI, `iterate/writer` forwards records to writers, and `iterate/fixtures` supports tests. |
+| [`names`](names/) | Processes multilingual record names. `names/tags` parses Who's On First language tags, and `names/utils` converts between those tags and RFC 5646. |
+| [`parquet`](parquet/) | Converts Who's On First GeoJSON features to Parquet rows, writes them, and finds records by ID in Parquet files. |
+| [`placetypes`](placetypes/) | Defines place types and their hierarchical relationships. `placetypes/draw` graphs the relationships with Graphviz, `placetypes/filter` selects place types, and `placetypes/wasm` exposes lookup, validation, and relationship queries to JavaScript. |
+| [`properties`](properties/) | Reads machine-readable Who's On First property definitions. `properties/index` catalogs and indexes directories of those definitions. |
+| [`reader`](reader/) | Reads records by ID through a `go-reader` backend as bytes, streams, or GeoJSON features. |
+| [`sources`](sources/) | Looks up metadata about the data sources cited in Who's On First records. |
+| [`spatial`](spatial/) | Defines spatial indexing and filtering interfaces. `spatial/application` configures indexes, `spatial/database` registers backends, and `spatial/filter`, `spatial/query`, `spatial/geo`, and `spatial/maptile` support spatial lookups. `spatial/hierarchy` and `spatial/hierarchy/filter` resolve hierarchies from query results. `spatial/pmtiles` uses PMTiles with a cache subpackage; `spatial/sqlite` uses SQLite and includes a Well-Known Text parser. Under `spatial/grpc` are request helpers, server code, and generated bindings; under `spatial/www` are HTTP middleware, API handlers, and web assets. `spatial/fixtures` and `spatial/fixtures/microhoods` support tests. |
+| [`spr`](spr/) | Defines standard places results (SPRs), compact summaries of Who's On First records. `spr/geojson` converts results to GeoJSON, `spr/sort` orders them, `spr/sqlite` queries them from SQLite, and `spr/util` converts a result to a string-valued map. |
+| [`travel`](travel/) | Follows record links such as parents, hierarchy entries, and supersession links. `travel/traveler` provides handlers for individual relationship types. |
+| [`uri`](uri/) | Parses and constructs record paths and URIs for primary records and alternate geometries. |
+| [`validate`](validate/) | Checks record properties and GeoJSON syntax. `validate/wasm` exposes validation to JavaScript. |
+| [`vendor`](vendor/) | Local copies of third-party Go dependencies; not part of the Who's On First package API. |
+| [`wof`](wof/) | Registers and constructs `wof` subcommands. Its subpackages inspect records (`show`, `open`, `repos`, `uri`), edit records (`edit`, `property`, `deprecate`, `supersede`, `hierarchy/rebuild`), work with geometry (`centroid`, `geometry`, `pip`), and process records (`emit`, `export`, `format`, `index`, `validate`). The editor has HTTP and static assets; `reader`, `writer`, `uris`, and `internal/update` share record I/O, URI expansion, and update logic. |
+| `work` | Local working datasets and generated files, such as Parquet exports; not a Go package. |
+| [`writer`](writer/) | Writes GeoJSON features or bytes through a `go-writer` backend, optionally applying a custom exporter. |
 
 ## Tests
 
